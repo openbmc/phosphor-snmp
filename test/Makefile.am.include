@@ -1,0 +1,18 @@
+AM_CPPFLAGS = \
+	-I${top_srcdir} \
+	-I${top_builddir} \
+	-Igtest \
+	$(GTEST_CPPFLAGS) \
+	$(CODE_COVERAGE_CPPFLAGS)
+
+AM_LDFLAGS = -lgtest_main -lgtest -lstdc++fs \
+	$(OESDK_TESTCASE_FLAGS) \
+	$(CODE_COVERAGE_LIBS)
+
+AM_CXXFLAGS = $(PTHREAD_CFLAGS) \
+	$(CODE_COVERAGE_CXXFLAGS)
+
+test_notification_SOURCES = \
+	%reldir%/test_error_notification.cpp
+
+check_PROGRAMS += %reldir%/notification
