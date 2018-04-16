@@ -115,6 +115,17 @@ class Notification
         void sendTrap();
 
     protected:
+        /** @brief Add the variable in the snmp pdu object.
+         *  @param[in] pdu - SNMP pdu object.
+         *  @param[in] objID -  SNMP object identifier.
+         *  @param[in] objIDLen - Object identifier length.
+         *  @param[in] type - ASN type of object.
+         *  @param[in] val - Value of the object.
+         *  @returns 0 on success otherwise 1.
+         */
+        int addPDUVar(netsnmp_pdu* pdu, const oid* objID, size_t objIDLen,
+                      u_char type, void* val);
+
         /** @brief get the SNMP notification type in the mib
          *         defined format.
          *         This is pure virtual function all the subclasses
