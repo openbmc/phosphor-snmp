@@ -58,8 +58,6 @@ bool Notification::addPDUVar(netsnmp_pdu& pdu, const OID& objID,
 
 void Notification::sendTrap()
 {
-    log<level::DEBUG>("Sending SNMP Trap");
-
     constexpr auto comm = "public";
     constexpr auto localHost  = "127.0.0.1";
     netsnmp_session session { 0 };
@@ -138,7 +136,8 @@ void Notification::sendTrap()
 
     }
 
-    log<level::DEBUG>("Sent SNMP Trap");
+    log<level::DEBUG>("Sent SNMP Trap",
+                      entry("MGR=%s", mgr.c_str()));
 }
 
 } // namespace snmp
