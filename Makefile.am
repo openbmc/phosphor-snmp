@@ -14,3 +14,11 @@ libsnmp_la_LDFLAGS = \
 		-lnetsnmp \
 		-lcrypto \
 		-version-info 0:0:0 -shared
+
+sbin_PROGRAMS = send-trap
+
+send_trap_SOURCES = \
+		main.cpp
+
+send_trap_LDADD = \
+		-lsnmp
