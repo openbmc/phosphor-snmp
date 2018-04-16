@@ -16,6 +16,9 @@ AC_PROG_MAKE_SET
 LT_PREREQ([2.4.6])
 LT_INIT([dlopen disable-static shared])
 
+PKG_CHECK_MODULES([PHOSPHOR_LOGGING], [phosphor-logging],,\
+AC_MSG_ERROR(["Requires phosphor-logging package."]))
+
 AC_CHECK_HEADERS([net-snmp/net-snmp-config.h],,\
     AC_MSG_ERROR(["Requires net-snmp headers"]))
 
@@ -24,5 +27,4 @@ LT_INIT # Required for systemd linking
 
 AC_CONFIG_FILES([Makefile])
 AC_OUTPUT
-
 
