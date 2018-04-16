@@ -111,6 +111,17 @@ class Notification
         void sendTrap();
 
     protected:
+        /** @brief Add the variable in the snmp pdu object.
+         *  @param[in] pdu - SNMP pdu object.
+         *  @param[in] objID -  SNMP object identifier.
+         *  @param[in] objIDLen - Object identifier length.
+         *  @param[in] type - ASN type of object.
+         *  @param[in] val - Value of the object.
+         *  @returns true on success otherwise false.
+         */
+        bool addPDUVar(netsnmp_pdu& pdu, const OID& objID, size_t objIDLen,
+                       u_char type, Value val);
+
         /** @brief get the SNMP notification type in the mib
          *         defined format.
          *         This is pure virtual function all the subclasses
@@ -125,6 +136,8 @@ class Notification
         virtual std::vector<Object> getFieldOIDList() = 0;
 
 };
+
+class TestErrorNotification;
 
 /** @class ErrorNotification
  *  @brief subclass of Notification
@@ -207,6 +220,8 @@ class ErrorNotification : public Notification
 
             return objectList;
         }
+
+        friend class TestErrorNotification;
 
 };
 
