@@ -1,5 +1,6 @@
 # export these headers
-nobase_include_HEADERS = snmp_notification.hpp
+nobase_include_HEADERS = snmp.hpp \
+		snmp_notification.hpp
 
 libsnmpdir = ${libdir}
 
