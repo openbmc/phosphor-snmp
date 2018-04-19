@@ -9,7 +9,8 @@ sbin_PROGRAMS = phosphor-network-snmpconf
 
 noinst_HEADERS = \
 		snmp_client.hpp \
-		snmp_conf_manager.hpp
+		snmp_conf_manager.hpp \
+		snmp_util.hpp
 
 phosphor_network_snmpconf_SOURCES = \
 		snmp_main.cpp \
@@ -51,7 +52,8 @@ libsnmpdir = ${libdir}
 
 libsnmp_LTLIBRARIES = libsnmp.la
 libsnmp_la_SOURCES = \
-		snmp_notification.cpp
+		snmp_notification.cpp \
+		snmp_util.cpp
 
 libsnmp_la_LDFLAGS = \
 		$(SDBUSPLUS_LIBS) \
