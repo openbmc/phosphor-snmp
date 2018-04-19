@@ -1,0 +1,21 @@
+description: >
+methods:
+    - name: Client
+      description: >
+          Create network client endpoint.
+      parameters:
+        - name: Address
+          type: string
+          description: >
+              IP Address.
+        - name: Port
+          type: uint16
+          description: >
+              Network port.
+        - name: AddressFamily
+          type: enum[xyz.openbmc_project.Network.Client.IPProtocol]
+          description: >
+              protocol type can be IPv4 or IPv6 etc.
+
+      errors:
+        - xyz.openbmc_project.Common.Error.InvalidArgument
