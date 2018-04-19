@@ -1,4 +1,5 @@
 #include "snmp_notification.hpp"
+#include "snmp_util.hpp"
 
 #include <phosphor-logging/elog-errors.hpp>
 #include <phosphor-logging/log.hpp>
@@ -59,7 +60,6 @@ bool Notification::addPDUVar(netsnmp_pdu& pdu, const OID& objID,
 void Notification::sendTrap()
 {
     constexpr auto comm = "public";
-    constexpr auto localHost  = "127.0.0.1";
     netsnmp_session session { 0 };
 
     snmp_sess_init(&session);
@@ -73,67 +73,67 @@ void Notification::sendTrap()
     session.callback = nullptr;
     session.callback_magic = nullptr;
 
-    // TODO:- get it from settings D-bus object.
-    session.peername = const_cast<char*>(localHost);
+    auto mgrs = getManagers();
 
-    // create the session
-    auto ss = snmp_add(&session,
-                       netsnmp_transport_open_client("snmptrap",
-                                                     session.peername),
-                       nullptr, nullptr);
-    if (!ss)
+    for (auto& mgr : mgrs)
     {
-        log<level::ERR>("Unable to get the snmp session.",
-                        entry("SNMPMANAGER=%s", session.peername));
-        elog<InternalFailure>();
-    }
-
-    // Wrap the raw pointer in RAII
-    snmpSessionPtr sessionPtr(ss, &::snmp_close);
-
-    ss = nullptr;
-
-    auto pdu = snmp_pdu_create(SNMP_MSG_TRAP2);
-    if (!pdu)
-    {
-        log<level::ERR>("Failed to create notification PDU");
-        elog<InternalFailure>();
-    }
-
-    pdu->trap_type = SNMP_TRAP_ENTERPRISESPECIFIC;
-
-
-    auto trapInfo =  getTrapOID();
-
-    if (!snmp_pdu_add_variable(pdu, SNMPTrapOID,
-                               sizeof(SNMPTrapOID) / sizeof(oid),
-                               ASN_OBJECT_ID, trapInfo.first.data(),
-                               trapInfo.second * sizeof(oid)))
-    {
-        log<level::ERR>("Failed to add the SNMP var(trapID)");
-        snmp_free_pdu(pdu);
-        elog<InternalFailure>();
-    }
-
-    auto objectList = getFieldOIDList();
-
-    for (const auto& object : objectList)
-    {
-        if (!addPDUVar(*pdu, std::get<0>(object), std::get<1>(object),
-                       std::get<2>(object), std::get<3>(object)))
+        session.peername = const_cast<char*>(mgr.c_str());
+        // create the session
+        auto ss = snmp_add(&session,
+                           netsnmp_transport_open_client("snmptrap",
+                                                         session.peername),
+                           nullptr, nullptr);
+        if (!ss)
         {
-            log<level::ERR>("Failed to add the SNMP var");
+            log<level::ERR>("Unable to get the snmp session.",
+                            entry("SNMPMANAGER=%s", mgr.c_str()));
+            elog<InternalFailure>();
+        }
+
+        // Wrap the raw pointer in RAII
+        snmpSessionPtr sessionPtr(ss, &::snmp_close);
+
+        ss = nullptr;
+
+        auto pdu = snmp_pdu_create(SNMP_MSG_TRAP2);
+        if (!pdu)
+        {
+            log<level::ERR>("Failed to create notification PDU");
+            elog<InternalFailure>();
+        }
+
+        pdu->trap_type = SNMP_TRAP_ENTERPRISESPECIFIC;
+
+        auto trapInfo =  getTrapOID();
+
+        if (!snmp_pdu_add_variable(pdu, SNMPTrapOID,
+                                   sizeof(SNMPTrapOID) / sizeof(oid),
+                                   ASN_OBJECT_ID, trapInfo.first.data(),
+                                   trapInfo.second * sizeof(oid)))
+        {
+            log<level::ERR>("Failed to add the SNMP var(trapID)");
             snmp_free_pdu(pdu);
             elog<InternalFailure>();
         }
-    }
 
-    // pdu is freed by snmp_send
-    if (!snmp_send(sessionPtr.get(), pdu))
-    {
-        log<level::ERR>("Failed to send the snmp trap.");
-        elog<InternalFailure>();
+        auto objectList = getFieldOIDList();
 
+        for (const auto& object : objectList)
+        {
+            if (!addPDUVar(*pdu, std::get<0>(object), std::get<1>(object),
+                           std::get<2>(object),std::get<3>(object)))
+            {
+                log<level::ERR>("Failed to add the SNMP var");
+                snmp_free_pdu(pdu);
+                elog<InternalFailure>();
+            }
+        }
+        // pdu is freed by snmp_send
+        if (!snmp_send(sessionPtr.get(), pdu))
+        {
+            log<level::ERR>("Failed to send the snmp trap.");
+            elog<InternalFailure>();
+        }
     }
 
     log<level::DEBUG>("Sent SNMP Trap",
