@@ -119,8 +119,8 @@ class Notification
          *  @param[in] val - Value of the object.
          *  @returns true on success otherwise false.
          */
-        bool addPDUVar(netsnmp_pdu& pdu, const oid& objID, size_t objIDLen,
-                      u_char type, Value val);
+        bool addPDUVar(netsnmp_pdu& pdu, const OID& objID, size_t objIDLen,
+                       u_char type, Value val);
 
         /** @brief get the SNMP notification type in the mib
          *         defined format.
