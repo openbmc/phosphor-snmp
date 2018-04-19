@@ -1,0 +1,16 @@
+description: >
+methods:
+    - name: Client
+      description: >
+          Create network client endpoint.
+      parameters:
+        - name: Address
+          type: string
+          description: >
+              IP Address.
+        - name: Port
+          type: uint16
+          description: >
+              Network port.
+      errors:
+        - xyz.openbmc_project.Common.Error.InvalidArgument
