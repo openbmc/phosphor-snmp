@@ -10,7 +10,7 @@
 /* Need a custom deleter for freeing up sd_event */
 struct EventDeleter
 {
-    void operator()(sd_event* event) const
+    void operator()(sd_event *event) const
     {
         event = sd_event_unref(event);
     }
@@ -18,13 +18,13 @@ struct EventDeleter
 
 using EventPtr = std::unique_ptr<sd_event, EventDeleter>;
 
-int main(int argc, char* argv[])
+int main(int argc, char *argv[])
 {
     using namespace phosphor::logging;
 
     auto bus = sdbusplus::bus::new_default();
 
-    sd_event* event = nullptr;
+    sd_event *event = nullptr;
     auto r = sd_event_default(&event);
     if (r < 0)
     {
