@@ -37,6 +37,14 @@ ObjectValueTree getManagedObjects(sdbusplus::bus::bus& bus,
 
 namespace network
 {
+
+/* @brief checks that the given ip address valid or not.
+ * @param[in] addressFamily - IP address family(AF_INET/AF_INET6).
+ * @param[in] address - IP address.
+ * @returns true if it is valid otherwise false.
+ */
+bool isValidIP(int addressFamily, const std::string& address);
+
 namespace snmp
 {
 

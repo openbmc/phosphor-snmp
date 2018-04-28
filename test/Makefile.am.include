@@ -29,10 +29,12 @@ AM_LDFLAGS = \
 
 test_notification_SOURCES = \
 	%reldir%/test_error_notification.cpp \
-	%reldir%/test_snmp_conf_manager.cpp
+	%reldir%/test_snmp_conf_manager.cpp \
+	%reldir%/test_snmp_util.cpp
 
 test_notification_LDADD = $(top_builddir)/phosphor_network_snmpconf-snmp_conf_manager.o \
 	$(top_builddir)/phosphor_network_snmpconf-snmp_client.o \
+    $(top_builddir)/phosphor_network_snmpconf-snmp_util.o \
 	$(top_builddir)/xyz/openbmc_project/Network/Client/Create/phosphor_network_snmpconf-server.o
 
 check_PROGRAMS += %reldir%/notification
