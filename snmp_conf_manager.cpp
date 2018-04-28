@@ -1,8 +1,14 @@
 #include "config.h"
 #include "snmp_conf_manager.hpp"
+#include "snmp_util.hpp"
+#include "xyz/openbmc_project/Common/error.hpp"
+
+#include <phosphor-logging/elog-errors.hpp>
 #include <phosphor-logging/log.hpp>
 
 #include <experimental/filesystem>
+
+#include <arpa/inet.h>
 
 namespace phosphor
 {
@@ -12,6 +18,8 @@ namespace snmp
 {
 
 using namespace phosphor::logging;
+using namespace sdbusplus::xyz::openbmc_project::Common::Error;
+using Argument = xyz::openbmc_project::Common::InvalidArgument;
 
 ConfManager::ConfManager(sdbusplus::bus::bus& bus, const char* objPath):
     details::CreateIface(bus, objPath, true),
@@ -22,6 +30,17 @@ ConfManager::ConfManager(sdbusplus::bus::bus& bus, const char* objPath):
 void ConfManager::client(std::string ipaddress, uint16_t port,
                          IPProtocol addressType)
 {
+
+    int addressFamily = (addressType == IPProtocol::IPv4) ? AF_INET : AF_INET6;
+
+    if (!isValidIP(addressFamily, ipaddress))
+    {
+        log<level::ERR>("Not a valid IP address"),
+                        entry("ADDRESS=%s", ipaddress.c_str());
+        elog<InvalidArgument>(Argument::ARGUMENT_NAME("IPaddress"),
+                              Argument::ARGUMENT_VALUE(ipaddress.c_str()));
+    }
+
     std::experimental::filesystem::path objPath;
     objPath /= objectPath;
     objPath /= generateId(ipaddress, port);
