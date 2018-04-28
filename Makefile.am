@@ -16,6 +16,7 @@ phosphor_network_snmpconf_SOURCES = \
 		snmp_main.cpp \
 		snmp_conf_manager.cpp \
 		snmp_client.cpp \
+		snmp_util.cpp \
 		xyz/openbmc_project/Network/Client/Create/server.cpp
 
 CLEANFILES = \
