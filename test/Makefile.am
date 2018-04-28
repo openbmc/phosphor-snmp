@@ -6,7 +6,8 @@ check_PROGRAMS = test
 
 test_SOURCES = \
 	test_error_notification.cpp \
-	test_snmp_conf_manager.cpp
+	test_snmp_conf_manager.cpp \
+	test_snmp_util.cpp
 
 generic_cpp_flags = -Igtest $(GTEST_CPPFLAGS) $(AM_CPPFLAGS)
 
@@ -30,4 +31,6 @@ test_LDFLAGS  = ${generic_ld_flags}
 
 test_LDADD = $(top_builddir)/phosphor_network_snmpconf-snmp_conf_manager.o \
 		$(top_builddir)/phosphor_network_snmpconf-snmp_client.o \
+		$(top_builddir)/phosphor_network_snmpconf-snmp_serialize.o \
+		$(top_builddir)/phosphor_network_snmpconf-snmp_util.o \
 		$(top_builddir)/xyz/openbmc_project/Network/Client/Create/phosphor_network_snmpconf-server.o
