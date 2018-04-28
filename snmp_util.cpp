@@ -1,6 +1,8 @@
 #include "snmp_util.hpp"
 #include "xyz/openbmc_project/Common/error.hpp"
 
+#include <arpa/inet.h>
+
 #include <phosphor-logging/elog-errors.hpp>
 #include <phosphor-logging/log.hpp>
 
@@ -37,6 +39,14 @@ ObjectValueTree getManagedObjects(sdbusplus::bus::bus& bus,
 
 namespace network
 {
+
+bool isValidIP(int addressFamily, const std::string& address)
+{
+    unsigned char buf[sizeof(struct in6_addr)];
+
+    return inet_pton(addressFamily, address.c_str(), buf) > 0;
+}
+
 namespace snmp
 {
 
