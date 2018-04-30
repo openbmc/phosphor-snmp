@@ -46,6 +46,16 @@ class Client : public Ifaces
     Client(sdbusplus::bus::bus &bus, const char *objPath, ConfManager &parent,
            const std::string &address, uint16_t port);
 
+    /** @brief Constructor to put object onto bus at a dbus path.
+     *  @param[in] bus - Bus to attach to.
+     *  @param[in] objPath - Path to attach at.
+     *  @param[in] parent - Parent D-bus Object.
+     */
+    Client(sdbusplus::bus::bus &bus, const char *objPath, ConfManager &parent) :
+        Ifaces(bus, objPath, true), parent(parent)
+    {
+    }
+
     /** @brief Delete this d-bus object.
      */
     void delete_() override;
