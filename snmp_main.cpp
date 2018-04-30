@@ -45,5 +45,7 @@ int main(int argc, char *argv[])
     auto manager = std::make_unique<phosphor::network::snmp::ConfManager>(
         bus, OBJ_NETWORK_SNMP);
 
+    manager->restoreClients();
+
     return sd_event_loop(eventPtr.get());
 }
