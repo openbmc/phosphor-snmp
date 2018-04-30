@@ -7,7 +7,8 @@ check_PROGRAMS = test
 test_SOURCES = \
 	test_error_notification.cpp \
 	test_snmp_conf_manager.cpp \
-	test_snmp_util.cpp
+	test_snmp_util.cpp \
+	test_snmp_serialize.cpp
 
 generic_cpp_flags = -Igtest $(GTEST_CPPFLAGS) $(AM_CPPFLAGS)
 
