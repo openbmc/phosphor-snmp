@@ -10,13 +10,15 @@ sbin_PROGRAMS = phosphor-network-snmpconf
 noinst_HEADERS = \
 		snmp_client.hpp \
 		snmp_conf_manager.hpp \
-		snmp_util.hpp
+		snmp_util.hpp \
+		snmp_serialize.hpp
 
 phosphor_network_snmpconf_SOURCES = \
 		snmp_main.cpp \
 		snmp_conf_manager.cpp \
 		snmp_client.cpp \
 		snmp_util.cpp \
+		snmp_serialize.cpp \
 		xyz/openbmc_project/Network/Client/Create/server.cpp
 
 CLEANFILES = \
