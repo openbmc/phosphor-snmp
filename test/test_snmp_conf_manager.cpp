@@ -14,36 +14,41 @@ namespace snmp
 
 class TestSNMPConfManager : public testing::Test
 {
-  public:
-    sdbusplus::bus::bus bus;
-    ConfManager manager;
-    std::string confDir;
-    TestSNMPConfManager()
-        : bus(sdbusplus::bus::new_default()), manager(bus, ""){};
+    public:
 
-    ~TestSNMPConfManager()
-    {
-    }
+        sdbusplus::bus::bus bus;
+        ConfManager manager;
+        std::string confDir;
+        TestSNMPConfManager()
+            : bus(sdbusplus::bus::new_default()),
+            manager(bus, "")
+        {
+            char tmp[] = "/tmp/snmpManager.XXXXXX";
+            std::string confDir = mkdtemp(tmp);
+            manager.dbusPersistentLocation = confDir;
+        }
 
-    void createSNMPClient(std::string ipaddress, uint16_t port,
-                          IPProtocol addressType)
-    {
-        manager.client(ipaddress, port, addressType);
-    }
+        ~TestSNMPConfManager()
+        {
+            fs::remove_all(manager.dbusPersistentLocation);
+        }
 
-    ClientList &getSNMPClients()
-    {
-        return manager.clients;
-    }
+        void createSNMPClient(std::string ipaddress, uint16_t port,
+                              IPProtocol addressType)
+        {
+            manager.client(ipaddress, port, addressType);
+        }
 
-    void deleteSNMPClient(std::string ipaddress)
-    {
-        if (manager.clients.find(ipaddress) != manager.clients.end())
+        ClientList& getSNMPClients()
+        {
+            return manager.clients;
+        }
+
+        void deleteSNMPClient(std::string ipaddress)
         {
             auto &it = manager.clients[ipaddress];
             it->delete_();
         }
-    }
 };
 
 // Add Single SNMP Client
