@@ -57,6 +57,11 @@ class ConfManager : public details::CreateIface
          */
         void deleteSNMPClient(const std::string& ipaddress);
 
+        /** @brief Construct manager/client dbus objects from their persisted
+         *         representations.
+         */
+        void restoreClients();
+
     protected:
 
         /** @brief generates the id by doing hash of ipaddress, port

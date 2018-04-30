@@ -1,5 +1,6 @@
 #include "config.h"
 #include "snmp_conf_manager.hpp"
+#include "snmp_serialize.hpp"
 #include "snmp_util.hpp"
 #include "xyz/openbmc_project/Common/error.hpp"
 
@@ -45,15 +46,19 @@ void ConfManager::client(std::string ipaddress, uint16_t port,
     objPath /= objectPath;
     objPath /= generateId(ipaddress, port);
 
-    this->clients.emplace(
-        ipaddress,
-        std::make_unique<phosphor::network::snmp::Client>(
-            bus,
-            objPath.string().c_str(),
-            *this,
-            ipaddress,
-            port,
-            addressType));
+    auto client = std::make_unique<phosphor::network::snmp::Client>(
+                    bus,
+                    objPath.string().c_str(),
+                    *this,
+                    ipaddress,
+                    port,
+                    addressType);
+
+    // save the D-Bus object
+    serialize(*client);
+
+    this->clients.emplace(ipaddress,std::move(client));
+
 }
 
 std::string ConfManager::generateId(const std::string& ipaddress,
@@ -80,6 +85,42 @@ void ConfManager::deleteSNMPClient(const std::string& ipaddress)
     }
     this->clients.erase(it);
 }
+
+void ConfManager::restoreClients()
+{
+    if (!fs::exists(SNMP_CONF_PERSIST_PATH) ||
+         fs::is_empty(SNMP_CONF_PERSIST_PATH))
+    {
+        return;
+    }
+
+    for (auto& confFile :
+         fs::recursive_directory_iterator(SNMP_CONF_PERSIST_PATH))
+    {
+        if (!fs::is_regular_file(confFile))
+        {
+            continue;
+        }
+
+
+        auto managerID = confFile.path().filename().string();
+        auto pos = managerID.find(SEPRATOR);
+        auto ipaddress = managerID.substr(0, pos);
+        auto port_str = managerID.substr(pos + 1);
+        uint16_t port = stoi(port_str, nullptr);
+
+        fs::path objPath = objectPath;
+        objPath /= generateId(ipaddress, port);
+        auto manager = std::make_unique<Client>(bus, objPath.string().c_str(), *this);
+        if (deserialize(confFile.path(), *manager))
+        {
+            manager->emit_object_added();
+            this->clients.emplace(ipaddress, std::move(manager));
+        }
+
+    }
+}
+
 
 }//namespace snmp
 }//namespace network
