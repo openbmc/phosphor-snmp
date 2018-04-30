@@ -134,10 +134,11 @@ void Notification::sendTrap()
             log<level::ERR>("Failed to send the snmp trap.");
             elog<InternalFailure>();
         }
+
+        log<level::DEBUG>("Sent SNMP Trap",
+                          entry("MGR=%s", mgr.c_str()));
     }
 
-    log<level::DEBUG>("Sent SNMP Trap",
-                      entry("MGR=%s", mgr.c_str()));
 }
 
 } // namespace snmp
