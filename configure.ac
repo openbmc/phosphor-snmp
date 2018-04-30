@@ -48,6 +48,16 @@ AC_ARG_VAR(OBJ_NETWORK_SNMP, [The network snmp root DBus object path])
 AS_IF([test "x$OBJ_NETWORK_SNMP" == "x"], [OBJ_NETWORK_SNMP="/xyz/openbmc_project/network/snmp/manager"])
 AC_DEFINE_UNQUOTED([OBJ_NETWORK_SNMP], ["$OBJ_NETWORK_SNMP"], [The network snmp root DBus object path])
 
+AC_ARG_VAR(CLASS_VERSION, [Class version to register with Cereal])
+AS_IF([test "x$CLASS_VERSION" == "x"], [CLASS_VERSION=1])
+AC_DEFINE_UNQUOTED([CLASS_VERSION], [$CLASS_VERSION], [Class version to register with Cereal])
+
+AC_ARG_VAR(SNMP_CONF_PERSIST_PATH, [path of directory having persisted snmp managers.])
+AS_IF([test "x$SNMP_CONF_PERSIST_PATH" == "x"], \
+    [SNMP_CONF_PERSIST_PATH="/var/lib/phosphor-snmp/managers/"])
+AC_DEFINE_UNQUOTED([SNMP_CONF_PERSIST_PATH], ["$SNMP_CONF_PERSIST_PATH"], \
+    [Path of directory having persisted snmp managers.])
+
 
 # Checks for library functions
 LT_INIT # Required for systemd linking

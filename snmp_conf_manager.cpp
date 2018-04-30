@@ -1,5 +1,6 @@
 #include "config.h"
 #include "snmp_conf_manager.hpp"
+#include "snmp_serialize.hpp"
 #include "snmp_util.hpp"
 #include "xyz/openbmc_project/Common/error.hpp"
 
@@ -23,6 +24,7 @@ using Argument = xyz::openbmc_project::Common::InvalidArgument;
 
 ConfManager::ConfManager(sdbusplus::bus::bus& bus, const char* objPath):
     details::CreateIface(bus, objPath, true),
+    dbusPersistentLocation(SNMP_CONF_PERSIST_PATH),
     bus(bus),
     objectPath(objPath) {}
 
@@ -48,15 +50,18 @@ void ConfManager::client(std::string ipaddress, uint16_t port,
         objPath /= objectPath;
         objPath /= generateId(ipaddress, port);
 
-        this->clients.emplace(
-            ipaddress,
-            std::make_unique<phosphor::network::snmp::Client>(
-                bus,
-                objPath.string().c_str(),
-                *this,
-                ipaddress,
-                port,
-                addressType));
+        auto client = std::make_unique<phosphor::network::snmp::Client>(
+                        bus,
+                        objPath.string().c_str(),
+                        *this,
+                        ipaddress,
+                        port,
+                        addressType);
+
+        // save the D-Bus object
+        serialize(*client, dbusPersistentLocation);
+
+        this->clients.emplace(ipaddress,std::move(client));
     }
 }
 
@@ -84,6 +89,41 @@ void ConfManager::deleteSNMPClient(const std::string& ipaddress)
     }
     this->clients.erase(it);
 }
+
+void ConfManager::restoreClients()
+{
+    if (!fs::exists(dbusPersistentLocation) ||
+         fs::is_empty(dbusPersistentLocation))
+    {
+        return;
+    }
+
+    for (auto& confFile :
+         fs::recursive_directory_iterator(dbusPersistentLocation))
+    {
+        if (!fs::is_regular_file(confFile))
+        {
+            continue;
+        }
+
+        auto managerID = confFile.path().filename().string();
+        auto pos = managerID.find(SEPRATOR);
+        auto ipaddress = managerID.substr(0, pos);
+        auto port_str = managerID.substr(pos + 1);
+        uint16_t port = stoi(port_str, nullptr);
+
+        fs::path objPath = objectPath;
+        objPath /= generateId(ipaddress, port);
+        auto manager = std::make_unique<Client>(bus, objPath.string().c_str(), *this);
+        if (deserialize(confFile.path(), *manager))
+        {
+            manager->emit_object_added();
+            this->clients.emplace(ipaddress, std::move(manager));
+        }
+
+    }
+}
+
 
 }//namespace snmp
 }//namespace network
