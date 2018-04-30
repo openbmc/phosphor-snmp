@@ -21,10 +21,16 @@ class TestSNMPConfManager : public testing::Test
         std::string confDir;
         TestSNMPConfManager()
             : bus(sdbusplus::bus::new_default()),
-              manager(bus, "/tmp/test") {};
+            manager(bus, "/tmp/test")
+        {
+            char tmp[] = "/tmp/snmpManager.XXXXXX";
+            std::string confDir = mkdtemp(tmp);
+            manager.dbusPersistentLocation = confDir;
+        }
 
         ~TestSNMPConfManager()
         {
+            fs::remove_all(manager.dbusPersistentLocation);
         }
 
         void createSNMPClient(std::string ipaddress, uint16_t port,

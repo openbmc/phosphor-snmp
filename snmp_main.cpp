@@ -48,5 +48,7 @@ int main(int argc, char* argv[])
                        bus,
                        OBJ_NETWORK_SNMP);
 
+    manager->restoreClients();
+
     return sd_event_loop(eventPtr.get());
 }
