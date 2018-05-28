@@ -87,6 +87,28 @@ void ConfManager::deleteSNMPClient(const std::string& ipaddress)
                         entry("IP=%s", ipaddress.c_str()));
         return;
     }
+
+    std::error_code ec;
+    // remove the persistent file
+    fs::path fileName = dbusPersistentLocation;
+    fileName /= it->second->address() + SEPRATOR +
+                std::to_string(it->second->port());
+
+    if (fs::exists(fileName))
+    {
+        if (!fs::remove(fileName, ec))
+        {
+            log<level::ERR>("Unable to delete the file",
+                            entry("FILE=%s", fileName.c_str()),
+                            entry("ERROR=%d", ec.value()));
+        }
+    }
+    else
+    {
+        log<level::ERR>("File doesn't exist",
+                        entry("FILE=%s", fileName.c_str()));
+    }
+    // remove the D-Bus Object.
     this->clients.erase(it);
 }
 
