@@ -1,0 +1,7 @@
+Code-Review+2: Ratan Gupta <ratagupt@linux.vnet.ibm.com>
+Verified+1: Ratan Gupta <ratagupt@linux.vnet.ibm.com>
+Submitted-by: Ratan Gupta <ratagupt@linux.vnet.ibm.com>
+Submitted-at: Wed, 30 May 2018 11:41:45 +0000
+Reviewed-on: https://gerrit.openbmc-project.xyz/10700
+Project: openbmc/phosphor-snmp
+Branch: refs/heads/master
