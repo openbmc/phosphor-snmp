@@ -60,7 +60,7 @@ fs::path serialize(const Client& manager, const fs::path& dir)
     fs::create_directories(dir);
     auto address = manager.address();
     auto port = manager.port();
-    fileName /= address + SEPRATOR + std::to_string(port);
+    fileName /= address + SEPARATOR + std::to_string(port);
 
     std::ofstream os(fileName.string(), std::ios::binary);
     cereal::BinaryOutputArchive oarchive(os);

@@ -87,7 +87,7 @@ void ConfManager::deleteSNMPClient(const std::string& address)
     // remove the persistent file
     fs::path fileName = dbusPersistentLocation;
     fileName /=
-        it->second->address() + SEPRATOR + std::to_string(it->second->port());
+        it->second->address() + SEPARATOR + std::to_string(it->second->port());
 
     if (fs::exists(fileName))
     {
@@ -124,7 +124,7 @@ void ConfManager::restoreClients()
         }
 
         auto managerID = confFile.path().filename().string();
-        auto pos = managerID.find(SEPRATOR);
+        auto pos = managerID.find(SEPARATOR);
         auto ipaddress = managerID.substr(0, pos);
         auto port_str = managerID.substr(pos + 1);
         uint16_t port = stoi(port_str, nullptr);

@@ -10,7 +10,7 @@ namespace network
 namespace snmp
 {
 
-constexpr auto SEPRATOR = "_";
+constexpr auto SEPARATOR = "_";
 
 namespace fs = std::experimental::filesystem;
 
