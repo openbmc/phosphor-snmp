@@ -20,7 +20,7 @@ found at the following location.
 It defines the object descriptions needed for a management application to be
 notified of an error entry in the OpenBMC log.
 
-https://github.com/openbmc/phosphor-snmp/mibs
+https://github.com/openbmc/phosphor-snmp/tree/master/mibs
 
 The phosphor-snmp repository exposes the following lib and the D-Bus service
 
