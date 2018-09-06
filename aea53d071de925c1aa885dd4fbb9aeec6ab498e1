@@ -1,0 +1,8 @@
+Ok-To-Test+1: Jenkins <openbmc-ci-admin@ozlabs.org>
+Verified+1: Jenkins <openbmc-ci-admin@ozlabs.org>
+Code-Review+2: Ratan Gupta <ratagupt@linux.vnet.ibm.com>
+Submitted-by: Ratan Gupta <ratagupt@linux.vnet.ibm.com>
+Submitted-at: Thu, 06 Sep 2018 12:32:36 +0000
+Reviewed-on: https://gerrit.openbmc-project.xyz/12522
+Project: openbmc/phosphor-snmp
+Branch: refs/heads/master
