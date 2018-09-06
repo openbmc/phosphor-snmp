@@ -50,8 +50,9 @@ class ConfManager : public details::CreateIface
     /** @brief Function to create snmp manager details D-Bus object.
      *  @param[in] address- IP address/Hostname.
      *  @param[in] port - network port.
+     *  @returns D-Bus object path
      */
-    void client(std::string address, uint16_t port) override;
+    std::string client(std::string address, uint16_t port) override;
 
     /* @brief delete the D-Bus object of the given ipaddress.
      * @param[in] address - IP address/Hostname.
