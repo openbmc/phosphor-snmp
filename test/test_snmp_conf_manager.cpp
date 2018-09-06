@@ -89,5 +89,5 @@ TEST_F(TestSNMPConfManager, DeleteSNMPClient)
 }
 
 } // namespace snmp
-} // namespce network
+} // namespace network
 } // namespace phosphor

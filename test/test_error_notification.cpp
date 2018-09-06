@@ -55,6 +55,6 @@ TEST_F(TestErrorNotification, GetASNType)
     EXPECT_EQ(ASN_OCTET_STR, type);
 }
 
-} // namespec snmp
-} // namespce network
+} // namespace snmp
+} // namespace network
 } // namespace phosphor

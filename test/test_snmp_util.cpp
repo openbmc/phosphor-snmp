@@ -66,6 +66,6 @@ TEST(TestUtil, IpValidation)
     EXPECT_TRUE(isLocal);
 }
 
-} // namespae snmp
-} // namespce network
+} // namespace snmp
+} // namespace network
 } // namespace phosphor
