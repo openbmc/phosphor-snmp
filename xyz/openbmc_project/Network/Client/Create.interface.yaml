@@ -14,3 +14,8 @@ methods:
               Network port.
       errors:
         - xyz.openbmc_project.Common.Error.InvalidArgument
+      returns:
+        - name: path
+          type: string
+          description: >
+              Path of the object which has been created.

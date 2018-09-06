@@ -29,13 +29,20 @@ ConfManager::ConfManager(sdbusplus::bus::bus& bus, const char* objPath) :
 {
 }
 
-void ConfManager::client(std::string address, uint16_t port)
+std::string ConfManager::client(std::string address, uint16_t port)
 {
+    // create the D-Bus object path so that we can pass the same
+    // if we find the object having the same address.
+
+    std::experimental::filesystem::path objPath;
+    objPath /= objectPath;
+    objPath /= generateId(address, port);
+
     auto clientEntry = this->clients.find(address);
     if (clientEntry != this->clients.end())
     {
-        // address is already there
-        return;
+        // address is already there return the old one.
+        return objPath.string();
     }
     try
     {
@@ -50,16 +57,13 @@ void ConfManager::client(std::string address, uint16_t port)
                               Argument::ARGUMENT_VALUE(address.c_str()));
     }
     // create the D-Bus object
-    std::experimental::filesystem::path objPath;
-    objPath /= objectPath;
-    objPath /= generateId(address, port);
-
     auto client = std::make_unique<phosphor::network::snmp::Client>(
         bus, objPath.string().c_str(), *this, address, port);
     // save the D-Bus object
     serialize(*client, dbusPersistentLocation);
 
     this->clients.emplace(address, std::move(client));
+    return objPath.string();
 }
 
 std::string ConfManager::generateId(const std::string& address, uint16_t port)
