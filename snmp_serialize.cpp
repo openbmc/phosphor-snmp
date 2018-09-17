@@ -20,6 +20,9 @@ namespace network
 namespace snmp
 {
 
+using IPProtocol =
+    sdbusplus::xyz::openbmc_project::Network::server::Client::IPProtocol;
+
 using namespace phosphor::logging;
 
 /** @brief Function required by Cereal to perform serialization.
@@ -32,7 +35,7 @@ using namespace phosphor::logging;
 template <class Archive>
 void save(Archive& archive, const Client& manager, const std::uint32_t version)
 {
-    archive(manager.address(), manager.port());
+    archive(manager.addressFamily(), manager.address(), manager.port());
 }
 
 /** @brief Function required by Cereal to perform deserialization.
@@ -47,11 +50,13 @@ void load(Archive& archive, Client& manager, const std::uint32_t version)
 {
     std::string ipaddress{};
     uint16_t port{};
+    IPProtocol addressFamily{};
 
-    archive(ipaddress, port);
+    archive(addressFamily, ipaddress, port);
 
     manager.address(ipaddress);
     manager.port(port);
+    manager.addressFamily(addressFamily);
 }
 
 fs::path serialize(const Client& manager, const fs::path& dir)

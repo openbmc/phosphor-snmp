@@ -39,7 +39,7 @@ class TestSerialize : public testing::Test
 
 TEST_F(TestSerialize, serialize)
 {
-    Client client(bus, clientObjPath, manager, "1.1.1.1", 23);
+    Client client(bus, clientObjPath, manager, "1.1.1.1", 23, IPProtocol::IPv4);
 
     auto path = serialize(client, manager.dbusPersistentLocation);
     Client restoreClient(bus, clientObjPath, manager);
@@ -48,6 +48,7 @@ TEST_F(TestSerialize, serialize)
 
     EXPECT_EQ("1.1.1.1", restoreClient.address());
     EXPECT_EQ(23, restoreClient.port());
+    EXPECT_EQ(IPProtocol::IPv4, restoreClient.addressFamily());
 }
 
 TEST_F(TestSerialize, deserialize_non_existent_file)

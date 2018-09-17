@@ -42,9 +42,10 @@ class Client : public Ifaces
      *  @param[in] parent - Parent D-bus Object.
      *  @param[in] address - IPaddress/Hostname.
      *  @param[in] port - network port.
+     *  @param[in] addressType - Address type(IPv4/IPv6).
      */
     Client(sdbusplus::bus::bus &bus, const char *objPath, ConfManager &parent,
-           const std::string &address, uint16_t port);
+           const std::string &address, uint16_t port, IPProtocol addressType);
 
     /** @brief Constructor to put object onto bus at a dbus path.
      *  @param[in] bus - Bus to attach to.

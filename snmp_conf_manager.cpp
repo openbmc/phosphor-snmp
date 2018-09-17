@@ -29,7 +29,8 @@ ConfManager::ConfManager(sdbusplus::bus::bus& bus, const char* objPath) :
 {
 }
 
-void ConfManager::client(std::string address, uint16_t port)
+void ConfManager::client(std::string address, uint16_t port,
+                         IPProtocol addressType)
 {
     auto clientEntry = this->clients.find(address);
     if (clientEntry != this->clients.end())
@@ -55,7 +56,7 @@ void ConfManager::client(std::string address, uint16_t port)
     objPath /= generateId(address, port);
 
     auto client = std::make_unique<phosphor::network::snmp::Client>(
-        bus, objPath.string().c_str(), *this, address, port);
+        bus, objPath.string().c_str(), *this, address, port, addressType);
     // save the D-Bus object
     serialize(*client, dbusPersistentLocation);
 
