@@ -30,9 +30,10 @@ class TestSNMPConfManager : public testing::Test
         fs::remove_all(manager.dbusPersistentLocation);
     }
 
-    void createSNMPClient(std::string ipaddress, uint16_t port)
+    void createSNMPClient(std::string ipaddress, uint16_t port,
+                          IPProtocol addressType)
     {
-        manager.client(ipaddress, port);
+        manager.client(ipaddress, port, addressType);
     }
 
     ClientList &getSNMPClients()
@@ -52,7 +53,7 @@ TEST_F(TestSNMPConfManager, AddSNMPClient)
 {
     using namespace sdbusplus::xyz::openbmc_project::Common::Error;
 
-    createSNMPClient("192.168.1.1", 24);
+    createSNMPClient("192.168.1.1", 24, IPProtocol::IPv4);
 
     auto &clients = getSNMPClients();
     EXPECT_EQ(1, clients.size());
@@ -64,8 +65,8 @@ TEST_F(TestSNMPConfManager, AddMultipleSNMPClient)
 {
     using namespace sdbusplus::xyz::openbmc_project::Common::Error;
 
-    createSNMPClient("192.168.1.1", 24);
-    createSNMPClient("192.168.1.2", 24);
+    createSNMPClient("192.168.1.1", 24, IPProtocol::IPv4);
+    createSNMPClient("192.168.1.2", 24, IPProtocol::IPv4);
 
     auto &clients = getSNMPClients();
     EXPECT_EQ(2, clients.size());
@@ -78,8 +79,8 @@ TEST_F(TestSNMPConfManager, DeleteSNMPClient)
 {
     using namespace sdbusplus::xyz::openbmc_project::Common::Error;
 
-    createSNMPClient("192.168.1.1", 24);
-    createSNMPClient("192.168.1.2", 24);
+    createSNMPClient("192.168.1.1", 24, IPProtocol::IPv4);
+    createSNMPClient("192.168.1.2", 24, IPProtocol::IPv4);
 
     auto &clients = getSNMPClients();
     EXPECT_EQ(2, clients.size());

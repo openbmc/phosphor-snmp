@@ -9,12 +9,14 @@ namespace snmp
 {
 
 Client::Client(sdbusplus::bus::bus& bus, const char* objPath,
-               ConfManager& parent, const std::string& address, uint16_t port) :
+               ConfManager& parent, const std::string& address, uint16_t port,
+               IPProtocol addressType) :
     Ifaces(bus, objPath, true),
     parent(parent)
 {
     this->address(address);
     this->port(port);
+    this->addressFamily(addressType);
 
     // Emit deferred signal.
     emit_object_added();
