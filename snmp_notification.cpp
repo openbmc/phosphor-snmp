@@ -13,6 +13,7 @@ namespace network
 namespace snmp
 {
 
+namespace variant_ns = sdbusplus::message::variant_ns;
 using namespace phosphor::logging;
 using namespace sdbusplus::xyz::openbmc_project::Common::Error;
 
@@ -27,28 +28,28 @@ bool Notification::addPDUVar(netsnmp_pdu& pdu, const OID& objID,
     {
         case ASN_INTEGER:
         {
-            auto ltmp = val.get<int32_t>();
+            auto ltmp = variant_ns::get<int32_t>(val);
             varList = snmp_pdu_add_variable(&pdu, objID.data(), objIDLen, type,
                                             &ltmp, sizeof(ltmp));
         }
         break;
         case ASN_UNSIGNED:
         {
-            auto ltmp = val.get<uint32_t>();
+            auto ltmp = variant_ns::get<uint32_t>(val);
             varList = snmp_pdu_add_variable(&pdu, objID.data(), objIDLen, type,
                                             &ltmp, sizeof(ltmp));
         }
         break;
         case ASN_OPAQUE_U64:
         {
-            auto ltmp = val.get<uint64_t>();
+            auto ltmp = variant_ns::get<uint64_t>(val);
             varList = snmp_pdu_add_variable(&pdu, objID.data(), objIDLen, type,
                                             &ltmp, sizeof(ltmp));
         }
         break;
         case ASN_OCTET_STR:
         {
-            auto value = val.get<std::string>();
+            const auto& value = variant_ns::get<std::string>(val);
             varList = snmp_pdu_add_variable(&pdu, objID.data(), objIDLen, type,
                                             value.c_str(), value.length());
         }
