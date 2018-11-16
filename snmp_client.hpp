@@ -21,6 +21,8 @@ using Ifaces = sdbusplus::server::object::object<
     sdbusplus::xyz::openbmc_project::Network::server::Client,
     sdbusplus::xyz::openbmc_project::Object::server::Delete>;
 
+using Id = size_t;
+
 /** @class Client
  *  @brief represents the snmp client configuration
  *  @details A concrete implementation for the
@@ -61,6 +63,8 @@ class Client : public Ifaces
     void delete_() override;
 
   private:
+    /** Client ID. */
+    Id id;
     /** @brief Parent D-Bus Object. */
     ConfManager &parent;
 };

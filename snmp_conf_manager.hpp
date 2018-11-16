@@ -15,8 +15,7 @@ namespace network
 namespace snmp
 {
 
-using IPAddress = std::string;
-using ClientList = std::map<IPAddress, std::unique_ptr<Client>>;
+using ClientList = std::map<Id, std::unique_ptr<Client>>;
 namespace fs = std::experimental::filesystem;
 
 namespace details
@@ -54,10 +53,10 @@ class ConfManager : public details::CreateIface
      */
     std::string client(std::string address, uint16_t port) override;
 
-    /* @brief delete the D-Bus object of the given ipaddress.
-     * @param[in] address - IP address/Hostname.
+    /* @brief delete the D-Bus object of the given ID.
+     * @param[in] id - client identifier.
      */
-    void deleteSNMPClient(const std::string& address);
+    void deleteSNMPClient(Id id);
 
     /** @brief Construct manager/client D-Bus objects from their persisted
      *         representations.
@@ -67,14 +66,6 @@ class ConfManager : public details::CreateIface
     /** @brief location of the persisted D-Bus object.*/
     fs::path dbusPersistentLocation;
 
-  protected:
-    /** @brief generates the id by doing hash of ipaddress, port
-     *  @param[in] address - IP address/Hostname.
-     *  @param[in] port - network port.
-     *  @return hash string.
-     */
-    static std::string generateId(const std::string& address, uint16_t port);
-
   private:
     /** @brief sdbusplus DBus bus object. */
     sdbusplus::bus::bus& bus;
@@ -82,8 +73,11 @@ class ConfManager : public details::CreateIface
     /** @brief Path of Object. */
     std::string objectPath;
 
-    /** @brief map of IPAddress dbus objects and their names */
+    /** @brief map of SNMP Client dbus objects and their ID */
     ClientList clients;
+
+    /** @brief Id of the last SNMP manager entry */
+    Id clientId = 0;
 
     friend class TestSNMPConfManager;
 };

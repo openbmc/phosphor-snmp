@@ -11,6 +11,7 @@ namespace snmp
 Client::Client(sdbusplus::bus::bus& bus, const char* objPath,
                ConfManager& parent, const std::string& address, uint16_t port) :
     Ifaces(bus, objPath, true),
+    id(std::stol(std::experimental::filesystem::path(objPath).filename())),
     parent(parent)
 {
     this->address(address);
@@ -22,7 +23,7 @@ Client::Client(sdbusplus::bus::bus& bus, const char* objPath,
 
 void Client::delete_()
 {
-    parent.deleteSNMPClient(this->address());
+    parent.deleteSNMPClient(id);
 }
 
 } // namespace snmp
