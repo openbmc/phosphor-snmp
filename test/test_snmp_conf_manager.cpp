@@ -13,6 +13,8 @@ namespace snmp
 {
 
 auto managerObjPath = "/xyz/openbmc_test/snmp/manager";
+using InternalFailure =
+    sdbusplus::xyz::openbmc_project::Common::Error::InternalFailure;
 
 class TestSNMPConfManager : public testing::Test
 {
@@ -20,7 +22,8 @@ class TestSNMPConfManager : public testing::Test
     sdbusplus::bus::bus bus;
     ConfManager manager;
     std::string confDir;
-    TestSNMPConfManager() : bus(sdbusplus::bus::new_default()), manager(bus, managerObjPath)
+    TestSNMPConfManager() :
+        bus(sdbusplus::bus::new_default()), manager(bus, managerObjPath)
     {
         char tmp[] = "/tmp/snmpManager.XXXXXX";
         std::string confDir = mkdtemp(tmp);
@@ -100,6 +103,13 @@ TEST_F(TestSNMPConfManager, AddMultipleSNMPClient)
 
     EXPECT_EQ(true, isClientExist("192.168.1.1"));
     EXPECT_EQ(true, isClientExist("192.168.1.2"));
+}
+
+// Add duplicate SNMP client
+TEST_F(TestSNMPConfManager, AddDuplicateSNMPClient)
+{
+    createSNMPClient("192.168.1.1", 24);
+    EXPECT_THROW(createSNMPClient("192.168.1.1", 24), InternalFailure);
 }
 
 // Delete SNMP client
