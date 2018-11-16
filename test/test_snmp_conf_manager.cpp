@@ -13,6 +13,8 @@ namespace snmp
 {
 
 auto managerObjPath = "/xyz/openbmc_test/snmp/manager";
+using InvalidArgument =
+    sdbusplus::xyz::openbmc_project::Common::Error::InvalidArgument;
 
 class TestSNMPConfManager : public testing::Test
 {
@@ -101,6 +103,13 @@ TEST_F(TestSNMPConfManager, AddMultipleSNMPClient)
 
     EXPECT_EQ(true, isClientExist("192.168.1.1"));
     EXPECT_EQ(true, isClientExist("192.168.1.2"));
+}
+
+// Add duplicate SNMP client
+TEST_F(TestSNMPConfManager, AddDuplicateSNMPClient)
+{
+    createSNMPClient("192.168.1.1", 24);
+    EXPECT_THROW(createSNMPClient("192.168.1.1", 24), InvalidArgument);
 }
 
 // Delete SNMP client
