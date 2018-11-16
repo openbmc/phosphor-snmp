@@ -31,13 +31,9 @@ ConfManager::ConfManager(sdbusplus::bus::bus& bus, const char* objPath) :
 
 std::string ConfManager::client(std::string address, uint16_t port)
 {
-    auto clientEntry = this->clients.find(address);
-    if (clientEntry != this->clients.end())
-    {
-        log<level::ERR>("Client already configured"),
-            entry("ADDRESS=%s", address.c_str());
-        elog<InternalFailure>();
-    }
+    // TODO: Check whether the given manager is already there or not.
+
+    lastClientId++;
     try
     {
         // just to check whether given address is valid or not.
@@ -51,45 +47,35 @@ std::string ConfManager::client(std::string address, uint16_t port)
                               Argument::ARGUMENT_VALUE(address.c_str()));
     }
 
+    // create the D-Bus object
     std::experimental::filesystem::path objPath;
     objPath /= objectPath;
-    objPath /= generateId(address, port);
-    // create the D-Bus object
+    objPath /= std::to_string(lastClientId);
+
     auto client = std::make_unique<phosphor::network::snmp::Client>(
         bus, objPath.string().c_str(), *this, address, port);
-    // save the D-Bus object
-    serialize(*client, dbusPersistentLocation);
 
-    this->clients.emplace(address, std::move(client));
+    // save the D-Bus object
+    serialize(lastClientId, *client, dbusPersistentLocation);
+
+    this->clients.emplace(lastClientId, std::move(client));
     return objPath.string();
 }
 
-std::string ConfManager::generateId(const std::string& address, uint16_t port)
+void ConfManager::deleteSNMPClient(Id id)
 {
-    std::stringstream hexId;
-    std::string hashString = address;
-    hashString += std::to_string(port);
-
-    // Only want 8 hex digits.
-    hexId << std::hex << ((std::hash<std::string>{}(hashString)) & 0xFFFFFFFF);
-    return hexId.str();
-}
-
-void ConfManager::deleteSNMPClient(const std::string& address)
-{
-    auto it = clients.find(address);
+    auto it = clients.find(id);
     if (it == clients.end())
     {
         log<level::ERR>("Unable to delete the snmp client.",
-                        entry("ADDRESS=%s", address.c_str()));
+                        entry("ID=%d", id));
         return;
     }
 
     std::error_code ec;
     // remove the persistent file
     fs::path fileName = dbusPersistentLocation;
-    fileName /=
-        it->second->address() + SEPARATOR + std::to_string(it->second->port());
+    fileName /= std::to_string(id);
 
     if (fs::exists(fileName))
     {
@@ -126,19 +112,20 @@ void ConfManager::restoreClients()
         }
 
         auto managerID = confFile.path().filename().string();
-        auto pos = managerID.find(SEPARATOR);
-        auto ipaddress = managerID.substr(0, pos);
-        auto port_str = managerID.substr(pos + 1);
-        uint16_t port = stoi(port_str, nullptr);
+        Id idNum = std::stol(managerID);
 
         fs::path objPath = objectPath;
-        objPath /= generateId(ipaddress, port);
+        objPath /= managerID;
         auto manager =
             std::make_unique<Client>(bus, objPath.string().c_str(), *this);
         if (deserialize(confFile.path(), *manager))
         {
             manager->emit_object_added();
-            this->clients.emplace(ipaddress, std::move(manager));
+            this->clients.emplace(idNum, std::move(manager));
+            if (idNum > lastClientId)
+            {
+                lastClientId = idNum;
+            }
         }
     }
 }

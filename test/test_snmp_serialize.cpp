@@ -39,10 +39,13 @@ class TestSerialize : public testing::Test
 
 TEST_F(TestSerialize, serialize)
 {
-    Client client(bus, clientObjPath, manager, "1.1.1.1", 23);
+    std::string objPath = clientObjPath;
+    objPath += "/" + std::to_string(1);
 
-    auto path = serialize(client, manager.dbusPersistentLocation);
-    Client restoreClient(bus, clientObjPath, manager);
+    Client client(bus, objPath.c_str(), manager, "1.1.1.1", 23);
+
+    auto path = serialize(1, client, manager.dbusPersistentLocation);
+    Client restoreClient(bus, objPath.c_str(), manager);
 
     deserialize(path, restoreClient);
 
@@ -52,9 +55,12 @@ TEST_F(TestSerialize, serialize)
 
 TEST_F(TestSerialize, deserialize_non_existent_file)
 {
-    Client client(bus, clientObjPath, manager);
+    std::string objPath = clientObjPath;
+    objPath += "/" + std::to_string(1);
+
+    Client client(bus, objPath.c_str(), manager);
     fs::path path = manager.dbusPersistentLocation;
-    path /= "snmpTest";
+    path /= "1";
 
     auto ret = deserialize(path, client);
 
@@ -63,12 +69,15 @@ TEST_F(TestSerialize, deserialize_non_existent_file)
 
 TEST_F(TestSerialize, deserialize_empty_file)
 {
-    Client restoreClient(bus, clientObjPath, manager);
+    std::string objPath = clientObjPath;
+    objPath += "/" + std::to_string(1);
+
+    Client restoreClient(bus, objPath.c_str(), manager);
 
     std::fstream file;
 
     fs::path path = manager.dbusPersistentLocation;
-    path /= "snmpTest";
+    path /= "1";
 
     file.open(path.string(), std::ofstream::out);
     file.close();
