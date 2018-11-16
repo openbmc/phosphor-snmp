@@ -14,13 +14,14 @@ constexpr auto SEPARATOR = "_";
 
 namespace fs = std::experimental::filesystem;
 
-/** @brief Serialize and persist SNMP manager/client D-Bus object
+/** @brief Serialize and persist SNMP manager/client D-Bus object.
+ *  @param[in] id - filename of the persisted LDAP mapper entry
  *  @param[in] manager - const reference to snmp client/manager object.
  *  @param[in] path -  path of persistent location where D-Bus object would be
  * saved.
  *  @return fs::path - pathname of persisted snmp manager/client file.
  */
-fs::path serialize(const Client& manager, const fs::path& path);
+fs::path serialize(Id id, const Client& manager, const fs::path& path);
 
 /** @brief Deserialze SNMP manager/client info into a D-Bus object
  *  @param[in] path - pathname of persisted manager/client file.

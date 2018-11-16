@@ -39,9 +39,12 @@ class TestSerialize : public testing::Test
 
 TEST_F(TestSerialize, serialize)
 {
-    Client client(bus, clientObjPath, manager, "1.1.1.1", 23);
+    auto objPath = clientObjPath;
+    objPath += "/" + std::to_string(1);
 
-    auto path = serialize(client, manager.dbusPersistentLocation);
+    Client client(bus, objPath, manager, "1.1.1.1", 23);
+
+    auto path = serialize(1, client, manager.dbusPersistentLocation);
     Client restoreClient(bus, clientObjPath, manager);
 
     deserialize(path, restoreClient);

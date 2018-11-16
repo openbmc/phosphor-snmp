@@ -1,4 +1,5 @@
 #pragma once
+#include <experimental/filesystem>
 
 #include "xyz/openbmc_project/Network/Client/server.hpp"
 #include "xyz/openbmc_project/Object/Delete/server.hpp"
@@ -20,6 +21,8 @@ class ConfManager;
 using Ifaces = sdbusplus::server::object::object<
     sdbusplus::xyz::openbmc_project::Network::server::Client,
     sdbusplus::xyz::openbmc_project::Object::server::Delete>;
+
+using Id = size_t;
 
 /** @class Client
  *  @brief represents the snmp client configuration
@@ -52,7 +55,9 @@ class Client : public Ifaces
      *  @param[in] parent - Parent D-bus Object.
      */
     Client(sdbusplus::bus::bus &bus, const char *objPath, ConfManager &parent) :
-        Ifaces(bus, objPath, true), parent(parent)
+        Ifaces(bus, objPath, true),
+        id(std::stol(std::experimental::filesystem::path(objPath).filename())),
+        parent(parent)
     {
     }
 
@@ -61,6 +66,8 @@ class Client : public Ifaces
     void delete_() override;
 
   private:
+    /** Client ID. */
+    Id id;
     /** @brief Parent D-Bus Object. */
     ConfManager &parent;
 };
