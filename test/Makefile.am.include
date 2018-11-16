@@ -31,7 +31,8 @@ test_notification_SOURCES = \
 	%reldir%/test_error_notification.cpp \
 	%reldir%/test_snmp_conf_manager.cpp \
 	%reldir%/test_snmp_util.cpp \
-	%reldir%/test_snmp_serialize.cpp
+	%reldir%/test_snmp_serialize.cpp \
+	%reldir%/test_snmp_client.cpp
 
 test_notification_LDADD = $(top_builddir)/phosphor_network_snmpconf-snmp_conf_manager.o \
 	$(top_builddir)/phosphor_network_snmpconf-snmp_client.o \
