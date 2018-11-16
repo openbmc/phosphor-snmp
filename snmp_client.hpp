@@ -58,6 +58,27 @@ class Client : public Ifaces
     {
     }
 
+    /** @brief Update the address of the object.
+     *
+     *  @param[in] value - address
+     *
+     *  @return On success the updated address
+     */
+
+    std::string address(std::string value) override;
+
+    /** @brief Update the port
+     *
+     *  @param[in] value - port number
+     *
+     *  @return On success the updated port number
+     */
+    uint16_t port(uint16_t value) override;
+
+    using sdbusplus::xyz::openbmc_project::Network::server::Client::address;
+
+    using sdbusplus::xyz::openbmc_project::Network::server::Client::port;
+
     /** @brief Delete this d-bus object.
      */
     void delete_() override;
