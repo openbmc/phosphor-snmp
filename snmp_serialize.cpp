@@ -54,13 +54,11 @@ void load(Archive& archive, Client& manager, const std::uint32_t version)
     manager.port(port);
 }
 
-fs::path serialize(const Client& manager, const fs::path& dir)
+fs::path serialize(Id id, const Client& manager, const fs::path& dir)
 {
     fs::path fileName = dir;
     fs::create_directories(dir);
-    auto address = manager.address();
-    auto port = manager.port();
-    fileName /= address + SEPARATOR + std::to_string(port);
+    fileName /= std::to_string(id);
 
     std::ofstream os(fileName.string(), std::ios::binary);
     cereal::BinaryOutputArchive oarchive(os);
