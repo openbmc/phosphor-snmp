@@ -63,6 +63,15 @@ class ConfManager : public details::CreateIface
      */
     void restoreClients();
 
+    /** @brief Check if client is already configured or not.
+     *
+     *  @param[in] address - SNMP manager address.
+     *  @param[in] port -    SNMP manager port.
+     *
+     *  @return throw exception if client is already configured.
+     */
+    void checkClientConfigured(const std::string& address, uint16_t port);
+
     /** @brief location of the persisted D-Bus object.*/
     fs::path dbusPersistentLocation;
 
