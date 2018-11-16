@@ -31,7 +31,8 @@ ConfManager::ConfManager(sdbusplus::bus::bus& bus, const char* objPath) :
 
 std::string ConfManager::client(std::string address, uint16_t port)
 {
-    // TODO: Check whether the given manager is already there or not.
+    // will throw exception if it is already configured.
+    checkClientConfigured(address, port);
 
     lastClientId++;
     try
@@ -60,6 +61,29 @@ std::string ConfManager::client(std::string address, uint16_t port)
 
     this->clients.emplace(lastClientId, std::move(client));
     return objPath.string();
+}
+
+void ConfManager::checkClientConfigured(const std::string& address,
+                                        uint16_t port)
+{
+    if (address.empty())
+    {
+        log<level::ERR>("Invalid address");
+        elog<InvalidArgument>(Argument::ARGUMENT_NAME("ADDRESS"),
+                              Argument::ARGUMENT_VALUE(address.c_str()));
+    }
+
+    for (const auto& val : clients)
+    {
+        if (val.second.get()->address() == address &&
+            val.second.get()->port() == port)
+        {
+            log<level::ERR>("Client already exist");
+            // TODO Add the error(Object already exist) in the D-Bus interface
+            // then make the change here,meanwhile send the Internal Failure.
+            elog<InternalFailure>();
+        }
+    }
 }
 
 void ConfManager::deleteSNMPClient(Id id)
