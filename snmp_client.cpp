@@ -1,5 +1,6 @@
 #include "snmp_client.hpp"
 #include "snmp_conf_manager.hpp"
+#include "snmp_serialize.hpp"
 
 namespace phosphor
 {
@@ -19,6 +20,34 @@ Client::Client(sdbusplus::bus::bus& bus, const char* objPath,
 
     // Emit deferred signal.
     emit_object_added();
+}
+
+std::string Client::address(std::string value)
+{
+    if (value == Ifaces::address())
+    {
+        return value;
+    }
+
+    parent.checkClientConfigured(value, port());
+
+    auto addr = Ifaces::address(value);
+    serialize(id, *this, parent.dbusPersistentLocation);
+    return addr;
+}
+
+uint16_t Client::port(uint16_t value)
+{
+    if (value == Ifaces::port())
+    {
+        return value;
+    }
+
+    parent.checkClientConfigured(address(), value);
+
+    auto port = Ifaces::port(value);
+    serialize(id, *this, parent.dbusPersistentLocation);
+    return port;
 }
 
 void Client::delete_()
