@@ -20,23 +20,23 @@ LT_INIT([dlopen disable-static shared])
 AX_CXX_COMPILE_STDCXX_17([noext])
 
 # Checks for libraries.
-AX_PKG_CHECK_MODULES([SYSTEMD], [], [libsystemd >= 221], [],\
+PKG_CHECK_MODULES([SYSTEMD], [libsystemd >= 221], [],\
 [AC_MSG_ERROR(["Systemd version should be greater then 221."])])
 
-AX_PKG_CHECK_MODULES([SDBUSPLUS], [sdbusplus], [], [],\
+PKG_CHECK_MODULES([SDBUSPLUS], [sdbusplus], [],\
 [AC_MSG_ERROR(["Requires sdbusplus package."])])
 
 
 AC_PATH_PROG([SDBUSPLUSPLUS], [sdbus++])
 
-AX_PKG_CHECK_MODULES([PHOSPHOR_LOGGING], [], [phosphor-logging], [],\
+PKG_CHECK_MODULES([PHOSPHOR_LOGGING], [phosphor-logging], [],\
 [AC_MSG_ERROR(["Requires phosphor-logging package."])])
 
 # Checks for header files.
 AC_CHECK_HEADER(systemd/sd-bus.h, ,\
 [AC_MSG_ERROR([Could not find systemd/sd-bus.h...systemd development package required])])
 
-AX_PKG_CHECK_MODULES([PHOSPHOR_DBUS_INTERFACES], [], [phosphor-dbus-interfaces],\
+PKG_CHECK_MODULES([PHOSPHOR_DBUS_INTERFACES], [phosphor-dbus-interfaces],\
 [], [AC_MSG_ERROR(["phosphor-dbus-interfaces required and not found."])])
 
 AC_CHECK_HEADERS([net-snmp/net-snmp-config.h],,\
