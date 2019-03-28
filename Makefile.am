@@ -5,7 +5,7 @@ nobase_include_HEADERS = snmp.hpp \
 nobase_nodist_include_HEADERS = \
 		xyz/openbmc_project/Network/Client/Create/server.hpp
 
-sbin_PROGRAMS = phosphor-network-snmpconf
+bin_PROGRAMS = phosphor-network-snmpconf
 
 noinst_HEADERS = \
 		snmp_client.hpp \
