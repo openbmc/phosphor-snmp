@@ -1,7 +1,7 @@
 AC_PREREQ([2.69])
 AC_INIT([phosphor-snmp], [1.0], [https://github.com/openbmc/openbmc/phosphor-snmp.git])
 AC_LANG([C++])
-AM_INIT_AUTOMAKE([subdir-objects -Wall -Werror foreign])
+AM_INIT_AUTOMAKE([subdir-objects -Wall -Wno-portability -Werror foreign])
 AM_SILENT_RULES([yes])
 
 # Compiler flags
@@ -65,6 +65,10 @@ AC_SUBST(GTEST_CPPFLAGS)
 
 # Add the code covererage
 AX_CODE_COVERAGE
+m4_ifdef([_AX_CODE_COVERAGE_RULES],
+    [AM_CONDITIONAL(AUTOCONF_CODE_COVERAGE_2019_01_06, [true])],
+    [AM_CONDITIONAL(AUTOCONF_CODE_COVERAGE_2019_01_06, [false])])
+AX_ADD_AM_MACRO_STATIC([])
 
 AC_ARG_ENABLE([oe-sdk],
     AS_HELP_STRING([--enable-oe-sdk], [Link testcases absolutely against OE SDK so they can be ran within it.])

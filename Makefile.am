@@ -69,7 +69,13 @@ libsnmp_la_LDFLAGS = \
 pkgconfiglibdir = ${libdir}/pkgconfig
 pkgconfiglib_DATA = phosphor-snmp.pc
 
+if AUTOCONF_CODE_COVERAGE_2019_01_06
+include $(top_srcdir)/aminclude_static.am
+clean-local: code-coverage-clean
+distclean-local: code-coverage-dist-clean
+else
 @CODE_COVERAGE_RULES@
+endif
 
 check_PROGRAMS =
 XFAIL_TESTS =
@@ -77,7 +83,3 @@ XFAIL_TESTS =
 include test/Makefile.am.include
 
 TESTS = $(check_PROGRAMS)
-
-clean-local: code-coverage-clean
-dist-clean-local: code-coverage-dist-clean
-
