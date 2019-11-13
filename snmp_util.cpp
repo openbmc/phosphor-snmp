@@ -45,7 +45,8 @@ namespace network
 
 std::string resolveAddress(const std::string& address)
 {
-    addrinfo hints{0};
+    addrinfo hints;
+    memset(&hints, 0, sizeof(hints));
     addrinfo* addr = nullptr;
 
     hints.ai_family = AF_UNSPEC;
