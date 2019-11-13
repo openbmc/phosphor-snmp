@@ -1,0 +1,3 @@
+# Feature List
+
+option('tests', type: 'feature', description: 'Build tests', value: 'enabled')
