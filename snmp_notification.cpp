@@ -25,29 +25,25 @@ bool Notification::addPDUVar(netsnmp_pdu& pdu, const OID& objID,
     netsnmp_variable_list* varList = nullptr;
     switch (type)
     {
-        case ASN_INTEGER:
-        {
+        case ASN_INTEGER: {
             auto ltmp = std::get<int32_t>(val);
             varList = snmp_pdu_add_variable(&pdu, objID.data(), objIDLen, type,
                                             &ltmp, sizeof(ltmp));
         }
         break;
-        case ASN_UNSIGNED:
-        {
+        case ASN_UNSIGNED: {
             auto ltmp = std::get<uint32_t>(val);
             varList = snmp_pdu_add_variable(&pdu, objID.data(), objIDLen, type,
                                             &ltmp, sizeof(ltmp));
         }
         break;
-        case ASN_OPAQUE_U64:
-        {
+        case ASN_OPAQUE_U64: {
             auto ltmp = std::get<uint64_t>(val);
             varList = snmp_pdu_add_variable(&pdu, objID.data(), objIDLen, type,
                                             &ltmp, sizeof(ltmp));
         }
         break;
-        case ASN_OCTET_STR:
-        {
+        case ASN_OCTET_STR: {
             const auto& value = std::get<std::string>(val);
             varList = snmp_pdu_add_variable(&pdu, objID.data(), objIDLen, type,
                                             value.c_str(), value.length());
@@ -60,8 +56,8 @@ bool Notification::addPDUVar(netsnmp_pdu& pdu, const OID& objID,
 void Notification::sendTrap()
 {
     constexpr auto comm = "public";
-    netsnmp_session session{0};
-
+    netsnmp_session session;
+    memset(&session, 0, sizeof(session));
     snmp_sess_init(&session);
 
     init_snmp("snmpapp");

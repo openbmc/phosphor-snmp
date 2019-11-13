@@ -1,0 +1,3 @@
+# Feature List
+option('oe-sdk', type: 'feature', description: 'Enable OE SDK')
+option('tests', type: 'feature', description: 'Build tests', value: 'enabled')
