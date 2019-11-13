@@ -1,0 +1,30 @@
+# List of Command-line variables
+
+option(
+    'busname-network-snmp', type: 'string',
+    value: 'xyz.openbmc_project.Network.SNMP',
+    description: 'The DBus busname to own',
+)
+
+option(
+    'obj-network-snmp', type: 'string',
+    value: '/xyz/openbmc_project/network/snmp/manager',
+    description: 'The network snmp root DBus object path',
+)
+
+option(
+    'class-version', type: 'integer',
+    value: 1,
+    description: 'Class version to register with Cereal',
+)
+
+option(
+    'snmp-conf-persist-path', type: 'string',
+    value: '/var/lib/phosphor-snmp/managers/',
+    description: 'Path of directory having persisted snmp managers',
+)
+
+# Feature List
+
+option('tests', type: 'feature', description: 'Build tests', value: 'enabled')
+option('oe-sdk', type: 'feature', description: 'Enable OE SDK')
