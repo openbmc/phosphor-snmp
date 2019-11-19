@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa34109e_a7ddb044",
+        "filename": "meson_options.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-11-19T18:02:53Z",
+      "side": 1,
+      "message": "IMO none of these should really be configurable.  I realize they were before but to simplify things you could just hardcode all these in config.h.",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 1
+      },
+      "revId": "6d829a4f2515fc8964a66f3c984d6f500ee056a3",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a574aa9f_d52f81ac",
+        "filename": "meson_options.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-11-19T18:02:53Z",
+      "side": 1,
+      "message": "Do you have access to docker?  I suggest running the same environment as the OpenBMC CI and just drop support for cross compiling unit tests.",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 63
+      },
+      "revId": "6d829a4f2515fc8964a66f3c984d6f500ee056a3",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1694eee1_4d0cbbfe",
+        "filename": "test/meson.build",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-11-19T18:02:53Z",
+      "side": 1,
+      "message": "suggest dropping support for this.",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 5
+      },
+      "revId": "6d829a4f2515fc8964a66f3c984d6f500ee056a3",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a83ec45a_c0ab8086",
+        "filename": "test/meson.build",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-11-19T18:02:53Z",
+      "side": 1,
+      "message": "this should not be necessary?",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 60
+      },
+      "revId": "6d829a4f2515fc8964a66f3c984d6f500ee056a3",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29c9b889_3d0eba43",
+        "filename": "test/meson.build",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-11-19T18:02:53Z",
+      "side": 1,
+      "message": "why is this not a dependency?",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 40
+      },
+      "revId": "6d829a4f2515fc8964a66f3c984d6f500ee056a3",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a3915ad_32c22884",
+        "filename": "test/meson.build",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-11-19T18:02:53Z",
+      "side": 1,
+      "message": "suggest dropping support for this.",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 78
+      },
+      "revId": "6d829a4f2515fc8964a66f3c984d6f500ee056a3",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea0d7392_52222342",
+        "filename": "test/meson.build",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-11-19T18:02:53Z",
+      "side": 1,
+      "message": "why is this needed?",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 43
+      },
+      "revId": "6d829a4f2515fc8964a66f3c984d6f500ee056a3",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    }
+  ]
+}
