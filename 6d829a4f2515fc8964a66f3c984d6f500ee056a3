@@ -117,6 +117,30 @@
     },
     {
       "key": {
+        "uuid": "e3422adb_d4c96c45",
+        "filename": "test/meson.build",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000401
+      },
+      "writtenOn": "2019-11-20T09:46:16Z",
+      "side": 1,
+      "message": "The reference manual of meson (https://mesonbuild.com/Reference-manual.html) specified:\n\n\"Objects created with dependency or find_library (for external deps) or declare_dependency can be put under `dependencies`.\n\nOne or more shared or static libraries (built by this project) that this target should be linked with should be mentioned in \"link_with\". The arguments can also be custom targets.\"\n\nSo here, libsnmp is a shared library and hence I included it in \"link_with\" arg.",
+      "parentUuid": "29c9b889_3d0eba43",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 40
+      },
+      "revId": "6d829a4f2515fc8964a66f3c984d6f500ee056a3",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1a3915ad_32c22884",
         "filename": "test/meson.build",
         "patchSetId": 2
