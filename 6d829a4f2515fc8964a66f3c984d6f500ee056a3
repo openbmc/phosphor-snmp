@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0f0652a4_dc9d73f2",
+        "filename": "meson_options.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000401
+      },
+      "writtenOn": "2020-01-06T09:52:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa34109e_a7ddb044",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 1
+      },
+      "revId": "6d829a4f2515fc8964a66f3c984d6f500ee056a3",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a574aa9f_d52f81ac",
         "filename": "meson_options.txt",
         "patchSetId": 2
@@ -115,6 +139,30 @@
       "revId": "6d829a4f2515fc8964a66f3c984d6f500ee056a3",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed99dca8_5b16c80f",
+        "filename": "test/meson.build",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000401
+      },
+      "writtenOn": "2020-01-06T09:52:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a83ec45a_c0ab8086",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 60
+      },
+      "revId": "6d829a4f2515fc8964a66f3c984d6f500ee056a3",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
     },
     {
       "key": {
