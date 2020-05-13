@@ -48,8 +48,7 @@ using OID = std::array<oid, MAX_OID_LEN>;
 using OID_LEN = size_t;
 using Type = u_char;
 
-using Value =
-    sdbusplus::message::variant<uint32_t, uint64_t, int32_t, std::string>;
+using Value = std::variant<uint32_t, uint64_t, int32_t, std::string>;
 // Generic snmp trap ID
 oid SNMPTrapOID[] = {1, 3, 6, 1, 6, 3, 1, 1, 4, 1, 0};
 
