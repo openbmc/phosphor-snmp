@@ -13,7 +13,6 @@
 namespace phosphor
 {
 
-namespace variant_ns = sdbusplus::message::variant_ns;
 using namespace phosphor::logging;
 using namespace sdbusplus::xyz::openbmc_project::Common::Error;
 
@@ -104,8 +103,8 @@ std::vector<std::string> getManagers()
             auto& intfMap = objIter.second;
             auto& snmpClientProps = intfMap.at(clientIntf);
             auto& address =
-                variant_ns::get<std::string>(snmpClientProps.at("Address"));
-            auto& port = variant_ns::get<uint16_t>(snmpClientProps.at("Port"));
+                std::get<std::string>(snmpClientProps.at("Address"));
+            auto& port = std::get<uint16_t>(snmpClientProps.at("Port"));
             auto ipaddress = phosphor::network::resolveAddress(address);
             auto mgr = std::move(ipaddress);
             if (port > 0)
