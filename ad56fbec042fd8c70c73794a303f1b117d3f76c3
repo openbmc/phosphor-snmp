@@ -1,0 +1,303 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "18f79591_c90ed169",
+        "filename": "meson.build",
+        "patchSetId": 6
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000206
+      },
+      "writtenOn": "2020-06-16T14:44:17Z",
+      "side": 1,
+      "message": "should be \u003e\u003d right ?\nother wise it break once poky moves beyond that version.",
+      "range": {
+        "startLine": 5,
+        "startChar": 39,
+        "endLine": 5,
+        "endChar": 47
+      },
+      "revId": "ad56fbec042fd8c70c73794a303f1b117d3f76c3",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15266fd7_8c1c937e",
+        "filename": "meson.build",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000206
+      },
+      "writtenOn": "2020-06-16T14:44:17Z",
+      "side": 1,
+      "message": "do you also want to enable lto as well ?\n\nand also please untab the file",
+      "range": {
+        "startLine": 11,
+        "startChar": 3,
+        "endLine": 11,
+        "endChar": 28
+      },
+      "revId": "ad56fbec042fd8c70c73794a303f1b117d3f76c3",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5951344_0cb9fc6a",
+        "filename": "meson.build",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000206
+      },
+      "writtenOn": "2020-06-16T14:44:17Z",
+      "side": 1,
+      "message": "probably need a comment, as to why we need this , just for future reference as this flag is not present in the configure.ac.",
+      "range": {
+        "startLine": 33,
+        "startChar": 8,
+        "endLine": 33,
+        "endChar": 20
+      },
+      "revId": "ad56fbec042fd8c70c73794a303f1b117d3f76c3",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8c95e55_968e89b9",
+        "filename": "meson.build",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000206
+      },
+      "writtenOn": "2020-06-16T14:44:17Z",
+      "side": 1,
+      "message": "is this not enforced by werror\u003dtrue ? can you check ?",
+      "range": {
+        "startLine": 34,
+        "startChar": 8,
+        "endLine": 34,
+        "endChar": 24
+      },
+      "revId": "ad56fbec042fd8c70c73794a303f1b117d3f76c3",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac5b490d_23d9e8b7",
+        "filename": "meson.build",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000206
+      },
+      "writtenOn": "2020-06-16T14:44:17Z",
+      "side": 1,
+      "message": "redundant ?, you can use it directly right ?",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 11
+      },
+      "revId": "ad56fbec042fd8c70c73794a303f1b117d3f76c3",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52e1cd1e_50ef7a6f",
+        "filename": "meson.build",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000206
+      },
+      "writtenOn": "2020-06-16T14:44:17Z",
+      "side": 1,
+      "message": "not needed since c++17,can you see if we have an experimental::filesystem and then migrate them to std::filesystem ?\n\nso we can remove this dep.",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 41
+      },
+      "revId": "ad56fbec042fd8c70c73794a303f1b117d3f76c3",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0be07cef_f5ef7983",
+        "filename": "meson.build",
+        "patchSetId": 6
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000206
+      },
+      "writtenOn": "2020-06-16T14:44:17Z",
+      "side": 1,
+      "message": "all the other things looks okay to me, but should this come from meson_options ?",
+      "range": {
+        "startLine": 86,
+        "startChar": 22,
+        "endLine": 86,
+        "endChar": 44
+      },
+      "revId": "ad56fbec042fd8c70c73794a303f1b117d3f76c3",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f977134_cc03b052",
+        "filename": "snmp_main.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000206
+      },
+      "writtenOn": "2020-06-16T14:44:17Z",
+      "side": 1,
+      "message": "it should be either char** argv or char* argv[] , not both ?\n\ni would suggest a new commit prior to this commit with these changes alone.",
+      "range": {
+        "startLine": 21,
+        "startChar": 32,
+        "endLine": 21,
+        "endChar": 40
+      },
+      "revId": "ad56fbec042fd8c70c73794a303f1b117d3f76c3",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7325f548_a1c1a6e7",
+        "filename": "snmp_notification.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000206
+      },
+      "writtenOn": "2020-06-16T14:44:17Z",
+      "side": 1,
+      "message": "this is clang-10 issue. is the clang-10 not run ?",
+      "range": {
+        "startLine": 28,
+        "startChar": 8,
+        "endLine": 28,
+        "endChar": 27
+      },
+      "revId": "ad56fbec042fd8c70c73794a303f1b117d3f76c3",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9badc2a_cf376bab",
+        "filename": "test/meson.build",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000206
+      },
+      "writtenOn": "2020-06-16T14:44:17Z",
+      "side": 1,
+      "message": "this depenedency is not required.\n\nuse can use dependency gtest with a flag to get the main for gtest as far as i know.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 37
+      },
+      "revId": "ad56fbec042fd8c70c73794a303f1b117d3f76c3",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d007d65_8b810859",
+        "filename": "test/meson.build",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000206
+      },
+      "writtenOn": "2020-06-16T14:44:17Z",
+      "side": 1,
+      "message": "do you want to sort thse files in any way ?",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 11
+      },
+      "revId": "ad56fbec042fd8c70c73794a303f1b117d3f76c3",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69810587_e2a6bb58",
+        "filename": "test/meson.build",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000206
+      },
+      "writtenOn": "2020-06-16T14:44:17Z",
+      "side": 1,
+      "message": "untab",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 2
+      },
+      "revId": "ad56fbec042fd8c70c73794a303f1b117d3f76c3",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f58777e0_c320d8d6",
+        "filename": "test/meson.build",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000206
+      },
+      "writtenOn": "2020-06-16T14:44:17Z",
+      "side": 1,
+      "message": "I dont see any header files in test directory , do we need this ?",
+      "range": {
+        "startLine": 38,
+        "startChar": 43,
+        "endLine": 38,
+        "endChar": 47
+      },
+      "revId": "ad56fbec042fd8c70c73794a303f1b117d3f76c3",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    }
+  ]
+}
