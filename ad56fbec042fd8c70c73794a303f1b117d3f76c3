@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ecc8c9cb_a9780357",
+        "filename": "meson.build",
+        "patchSetId": 6
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000401
+      },
+      "writtenOn": "2020-06-17T08:47:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "18f79591_c90ed169",
+      "range": {
+        "startLine": 5,
+        "startChar": 39,
+        "endLine": 5,
+        "endChar": 47
+      },
+      "revId": "ad56fbec042fd8c70c73794a303f1b117d3f76c3",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "15266fd7_8c1c937e",
         "filename": "meson.build",
         "patchSetId": 6
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "e47cb0d7_c46e239a",
+        "filename": "meson.build",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000401
+      },
+      "writtenOn": "2020-06-17T08:47:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15266fd7_8c1c937e",
+      "range": {
+        "startLine": 11,
+        "startChar": 3,
+        "endLine": 11,
+        "endChar": 28
+      },
+      "revId": "ad56fbec042fd8c70c73794a303f1b117d3f76c3",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c5951344_0cb9fc6a",
         "filename": "meson.build",
         "patchSetId": 6
@@ -59,6 +107,30 @@
       "writtenOn": "2020-06-16T14:44:17Z",
       "side": 1,
       "message": "probably need a comment, as to why we need this , just for future reference as this flag is not present in the configure.ac.",
+      "range": {
+        "startLine": 33,
+        "startChar": 8,
+        "endLine": 33,
+        "endChar": 20
+      },
+      "revId": "ad56fbec042fd8c70c73794a303f1b117d3f76c3",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d13fd09_17bffa49",
+        "filename": "meson.build",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000401
+      },
+      "writtenOn": "2020-06-17T08:47:12Z",
+      "side": 1,
+      "message": "Referred it from the commit for enabling meson for bmcweb. It says \u0027It suppresses the # of Note messages during cross-compilation\u0027\n\nBut anyway, in this repo, I tested without this flag and there were no such messages and hence I will remove it in my next patchset",
+      "parentUuid": "c5951344_0cb9fc6a",
       "range": {
         "startLine": 33,
         "startChar": 8,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "51ecfe67_09ade7c7",
+        "filename": "meson.build",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000401
+      },
+      "writtenOn": "2020-06-17T08:47:12Z",
+      "side": 1,
+      "message": "Yes, this error is being enforced in one place. Hence added this flag to suppress the same.",
+      "parentUuid": "b8c95e55_968e89b9",
+      "range": {
+        "startLine": 34,
+        "startChar": 8,
+        "endLine": 34,
+        "endChar": 24
+      },
+      "revId": "ad56fbec042fd8c70c73794a303f1b117d3f76c3",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ac5b490d_23d9e8b7",
         "filename": "meson.build",
         "patchSetId": 6
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "8b24df7b_d8c92f02",
+        "filename": "meson.build",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000401
+      },
+      "writtenOn": "2020-06-17T08:47:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ac5b490d_23d9e8b7",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 11
+      },
+      "revId": "ad56fbec042fd8c70c73794a303f1b117d3f76c3",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "52e1cd1e_50ef7a6f",
         "filename": "meson.build",
         "patchSetId": 6
@@ -128,6 +248,30 @@
       "writtenOn": "2020-06-16T14:44:17Z",
       "side": 1,
       "message": "not needed since c++17,can you see if we have an experimental::filesystem and then migrate them to std::filesystem ?\n\nso we can remove this dep.",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 41
+      },
+      "revId": "ad56fbec042fd8c70c73794a303f1b117d3f76c3",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb489dd9_ab8fec9d",
+        "filename": "meson.build",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000401
+      },
+      "writtenOn": "2020-06-17T08:47:12Z",
+      "side": 1,
+      "message": "Yup. Moved \u0027em and removed this dependency. Will push my next patchset",
+      "parentUuid": "52e1cd1e_50ef7a6f",
       "range": {
         "startLine": 57,
         "startChar": 0,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "9f109b2f_49e969cc",
+        "filename": "meson.build",
+        "patchSetId": 6
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000401
+      },
+      "writtenOn": "2020-06-17T08:47:12Z",
+      "side": 1,
+      "message": "Since this option is made configurable in the Autotools, I am moving this to the meson_options file.",
+      "parentUuid": "0be07cef_f5ef7983",
+      "range": {
+        "startLine": 86,
+        "startChar": 22,
+        "endLine": 86,
+        "endChar": 44
+      },
+      "revId": "ad56fbec042fd8c70c73794a303f1b117d3f76c3",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0f977134_cc03b052",
         "filename": "snmp_main.cpp",
         "patchSetId": 6
@@ -183,6 +351,30 @@
       "revId": "ad56fbec042fd8c70c73794a303f1b117d3f76c3",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "575aa114_70975258",
+        "filename": "snmp_main.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000401
+      },
+      "writtenOn": "2020-06-17T08:47:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0f977134_cc03b052",
+      "range": {
+        "startLine": 21,
+        "startChar": 32,
+        "endLine": 21,
+        "endChar": 40
+      },
+      "revId": "ad56fbec042fd8c70c73794a303f1b117d3f76c3",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "7649055d_3f4a1b89",
+        "filename": "snmp_notification.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000401
+      },
+      "writtenOn": "2020-06-17T08:47:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7325f548_a1c1a6e7",
+      "range": {
+        "startLine": 28,
+        "startChar": 8,
+        "endLine": 28,
+        "endChar": 27
+      },
+      "revId": "ad56fbec042fd8c70c73794a303f1b117d3f76c3",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e9badc2a_cf376bab",
         "filename": "test/meson.build",
         "patchSetId": 6
@@ -229,6 +445,30 @@
       "revId": "ad56fbec042fd8c70c73794a303f1b117d3f76c3",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd8c83c1_7418e9a8",
+        "filename": "test/meson.build",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000401
+      },
+      "writtenOn": "2020-06-17T08:47:12Z",
+      "side": 1,
+      "message": "Yes, adding an attr \u0027main: true\u0027 in the gtest would do. Removed it!",
+      "parentUuid": "e9badc2a_cf376bab",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 37
+      },
+      "revId": "ad56fbec042fd8c70c73794a303f1b117d3f76c3",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
     },
     {
       "key": {
@@ -255,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "1afa25cc_1efe3e99",
+        "filename": "test/meson.build",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000401
+      },
+      "writtenOn": "2020-06-17T08:47:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4d007d65_8b810859",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 11
+      },
+      "revId": "ad56fbec042fd8c70c73794a303f1b117d3f76c3",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "69810587_e2a6bb58",
         "filename": "test/meson.build",
         "patchSetId": 6
@@ -278,6 +542,30 @@
     },
     {
       "key": {
+        "uuid": "5f35d218_3b9b868e",
+        "filename": "test/meson.build",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000401
+      },
+      "writtenOn": "2020-06-17T08:47:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69810587_e2a6bb58",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 2
+      },
+      "revId": "ad56fbec042fd8c70c73794a303f1b117d3f76c3",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f58777e0_c320d8d6",
         "filename": "test/meson.build",
         "patchSetId": 6
@@ -298,6 +586,30 @@
       "revId": "ad56fbec042fd8c70c73794a303f1b117d3f76c3",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8d818e5_9801759e",
+        "filename": "test/meson.build",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000401
+      },
+      "writtenOn": "2020-06-17T08:47:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f58777e0_c320d8d6",
+      "range": {
+        "startLine": 38,
+        "startChar": 43,
+        "endLine": 38,
+        "endChar": 47
+      },
+      "revId": "ad56fbec042fd8c70c73794a303f1b117d3f76c3",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
     }
   ]
 }
