@@ -1,7 +1,10 @@
-#include <gtest/gtest.h>
-#include <netinet/in.h>
 #include "snmp_util.hpp"
+
+#include <netinet/in.h>
+
 #include <xyz/openbmc_project/Common/error.hpp>
+
+#include <gtest/gtest.h>
 
 namespace phosphor
 {

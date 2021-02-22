@@ -1,14 +1,14 @@
 #pragma once
 
-#include <stdint.h>
-#include <sys/types.h>
-#include <sys/socket.h>
 #include <netdb.h>
+#include <stdint.h>
+#include <sys/socket.h>
+#include <sys/types.h>
+
+#include <sdbusplus/server.hpp>
 
 #include <map>
 #include <string>
-
-#include <sdbusplus/server.hpp>
 
 namespace phosphor
 {

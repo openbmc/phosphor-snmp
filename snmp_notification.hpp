@@ -23,9 +23,13 @@
 
 #pragma once
 
+// net-snmp requires a very specific header include order.
+// disable clang-format around this block
+// clang-format off
 #include <net-snmp/net-snmp-config.h>
 #include <net-snmp/net-snmp-includes.h>
 #include <net-snmp/agent/net-snmp-agent-includes.h>
+// clang-format on
 
 #include <sdbusplus/server.hpp>
 
@@ -59,24 +63,29 @@ using Object = std::tuple<OID, OID_LEN, Type, Value>;
  *  @tparam T - type of object from ASN type would be decided.
  *  @returns the ASN object type.
  */
-template <typename T> u_char getASNType() = delete;
+template <typename T>
+u_char getASNType() = delete;
 
-template <> u_char getASNType<uint32_t>()
+template <>
+u_char getASNType<uint32_t>()
 {
     return ASN_UNSIGNED;
 }
 
-template <> u_char getASNType<uint64_t>()
+template <>
+u_char getASNType<uint64_t>()
 {
     return ASN_OPAQUE_U64;
 }
 
-template <> u_char getASNType<int32_t>()
+template <>
+u_char getASNType<int32_t>()
 {
     return ASN_INTEGER;
 }
 
-template <> u_char getASNType<std::string>()
+template <>
+u_char getASNType<std::string>()
 {
     return ASN_OCTET_STR;
 }
@@ -94,10 +103,10 @@ class Notification
 
   public:
     Notification() = default;
-    Notification(const Notification &) = delete;
-    Notification(Notification &&) = default;
-    Notification &operator=(const Notification &) = delete;
-    Notification &operator=(Notification &&) = default;
+    Notification(const Notification&) = delete;
+    Notification(Notification&&) = default;
+    Notification& operator=(const Notification&) = delete;
+    Notification& operator=(Notification&&) = default;
     virtual ~Notification() = default;
 
     /** @brief Send the snmp trap to the configured
@@ -114,7 +123,7 @@ class Notification
      *  @param[in] val - Value of the object.
      *  @returns true on success otherwise false.
      */
-    bool addPDUVar(netsnmp_pdu &pdu, const OID &objID, size_t objIDLen,
+    bool addPDUVar(netsnmp_pdu& pdu, const OID& objID, size_t objIDLen,
                    u_char type, Value val);
 
     /** @brief get the SNMP notification type in the mib
@@ -150,10 +159,10 @@ class OBMCErrorNotification : public Notification
 
   public:
     OBMCErrorNotification() = default;
-    OBMCErrorNotification(const OBMCErrorNotification &) = delete;
-    OBMCErrorNotification(OBMCErrorNotification &&) = default;
-    OBMCErrorNotification &operator=(const OBMCErrorNotification &) = delete;
-    OBMCErrorNotification &operator=(OBMCErrorNotification &&) = default;
+    OBMCErrorNotification(const OBMCErrorNotification&) = delete;
+    OBMCErrorNotification(OBMCErrorNotification&&) = default;
+    OBMCErrorNotification& operator=(const OBMCErrorNotification&) = delete;
+    OBMCErrorNotification& operator=(OBMCErrorNotification&&) = default;
     ~OBMCErrorNotification() = default;
 
     /** @brief Constructor
@@ -166,8 +175,7 @@ class OBMCErrorNotification : public Notification
                           std::string msg) :
         OBMCErrorID(id),
         OBMCErrorTimestamp(ts), OBMCErrorSeverity(sev), OBMCErrorMessage(msg)
-    {
-    }
+    {}
 
   protected:
     std::pair<OID, OID_LEN> getTrapOID() override

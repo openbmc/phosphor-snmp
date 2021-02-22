@@ -2,8 +2,8 @@
 
 #include "snmp_client.hpp"
 
-#include <xyz/openbmc_project/Network/Client/Create/server.hpp>
 #include <sdbusplus/bus.hpp>
+#include <xyz/openbmc_project/Network/Client/Create/server.hpp>
 
 #include <experimental/filesystem>
 #include <string>

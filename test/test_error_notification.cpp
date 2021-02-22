@@ -1,6 +1,8 @@
 #include "snmp_notification.hpp"
-#include <gtest/gtest.h>
+
 #include <netinet/in.h>
+
+#include <gtest/gtest.h>
 
 namespace phosphor
 {
