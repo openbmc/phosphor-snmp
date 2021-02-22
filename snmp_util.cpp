@@ -1,13 +1,13 @@
 #include "snmp_util.hpp"
+
 #include "xyz/openbmc_project/Common/error.hpp"
 
 #include <arpa/inet.h>
+#include <netdb.h>
 
 #include <phosphor-logging/elog-errors.hpp>
 #include <phosphor-logging/log.hpp>
 
-#include <netdb.h>
-#include <arpa/inet.h>
 #include <string>
 
 namespace phosphor

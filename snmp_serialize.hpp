@@ -1,7 +1,8 @@
 #pragma once
 
-#include <experimental/filesystem>
 #include "snmp_client.hpp"
+
+#include <experimental/filesystem>
 
 namespace phosphor
 {

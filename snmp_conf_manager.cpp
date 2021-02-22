@@ -1,15 +1,17 @@
 #include "config.h"
+
 #include "snmp_conf_manager.hpp"
+
 #include "snmp_serialize.hpp"
 #include "snmp_util.hpp"
 #include "xyz/openbmc_project/Common/error.hpp"
+
+#include <arpa/inet.h>
 
 #include <phosphor-logging/elog-errors.hpp>
 #include <phosphor-logging/log.hpp>
 
 #include <experimental/filesystem>
-
-#include <arpa/inet.h>
 
 namespace phosphor
 {
@@ -26,8 +28,7 @@ ConfManager::ConfManager(sdbusplus::bus::bus& bus, const char* objPath) :
     details::CreateIface(bus, objPath, true),
     dbusPersistentLocation(SNMP_CONF_PERSIST_PATH), bus(bus),
     objectPath(objPath)
-{
-}
+{}
 
 std::string ConfManager::client(std::string address, uint16_t port)
 {

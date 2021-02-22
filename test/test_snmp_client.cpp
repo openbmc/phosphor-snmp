@@ -1,9 +1,9 @@
-#include <gtest/gtest.h>
+#include "snmp_conf_manager.hpp"
+#include "snmp_serialize.hpp"
 
 #include <xyz/openbmc_project/Common/error.hpp>
 
-#include "snmp_conf_manager.hpp"
-#include "snmp_serialize.hpp"
+#include <gtest/gtest.h>
 
 namespace phosphor
 {
