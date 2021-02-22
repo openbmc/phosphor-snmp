@@ -1,11 +1,13 @@
-#include <experimental/filesystem>
-#include <fstream>
-#include <gtest/gtest.h>
-#include <netinet/in.h>
-
 #include "snmp_client.hpp"
 #include "snmp_conf_manager.hpp"
 #include "snmp_serialize.hpp"
+
+#include <netinet/in.h>
+
+#include <experimental/filesystem>
+#include <fstream>
+
+#include <gtest/gtest.h>
 
 namespace phosphor
 {

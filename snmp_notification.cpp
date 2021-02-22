@@ -1,10 +1,10 @@
 #include "snmp_notification.hpp"
+
 #include "snmp_util.hpp"
+#include "xyz/openbmc_project/Common/error.hpp"
 
 #include <phosphor-logging/elog-errors.hpp>
 #include <phosphor-logging/log.hpp>
-
-#include "xyz/openbmc_project/Common/error.hpp"
 
 namespace phosphor
 {

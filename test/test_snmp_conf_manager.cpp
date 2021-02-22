@@ -1,9 +1,9 @@
 #include "snmp_conf_manager.hpp"
-
 #include "xyz/openbmc_project/Common/error.hpp"
 
-#include <gtest/gtest.h>
 #include <sdbusplus/bus.hpp>
+
+#include <gtest/gtest.h>
 
 namespace phosphor
 {
@@ -40,14 +40,14 @@ class TestSNMPConfManager : public testing::Test
         return manager.client(ipaddress, port);
     }
 
-    ClientList &getSNMPClients()
+    ClientList& getSNMPClients()
     {
         return manager.clients;
     }
 
-    bool isClientExist(const std::string &ipaddress)
+    bool isClientExist(const std::string& ipaddress)
     {
-        for (const auto &val : manager.clients)
+        for (const auto& val : manager.clients)
         {
             if (val.second.get()->address() == ipaddress)
             {
@@ -59,7 +59,7 @@ class TestSNMPConfManager : public testing::Test
 
     void deleteSNMPClient(std::string ipaddress)
     {
-        for (const auto &val : manager.clients)
+        for (const auto& val : manager.clients)
         {
             if (val.second.get()->address() == ipaddress)
             {
@@ -80,7 +80,7 @@ TEST_F(TestSNMPConfManager, AddSNMPClient)
     EXPECT_EQ(path, expectedPath);
 
     // check whether the client created
-    auto &clients = getSNMPClients();
+    auto& clients = getSNMPClients();
     EXPECT_EQ(1, clients.size());
     EXPECT_EQ(true, isClientExist("192.168.1.1"));
 }
@@ -98,7 +98,7 @@ TEST_F(TestSNMPConfManager, AddMultipleSNMPClient)
     EXPECT_EQ(path, expectedPath);
 
     // check both the clients get created
-    auto &clients = getSNMPClients();
+    auto& clients = getSNMPClients();
     EXPECT_EQ(2, clients.size());
 
     EXPECT_EQ(true, isClientExist("192.168.1.1"));
@@ -118,7 +118,7 @@ TEST_F(TestSNMPConfManager, DeleteSNMPClient)
     createSNMPClient("192.168.1.1", 24);
     createSNMPClient("192.168.1.2", 24);
 
-    auto &clients = getSNMPClients();
+    auto& clients = getSNMPClients();
     EXPECT_EQ(2, clients.size());
 
     deleteSNMPClient("192.168.1.1");

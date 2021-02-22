@@ -14,7 +14,8 @@ namespace snmp
  * @param[in] tArgs - arguments for the trap.
  */
 
-template <typename T, typename... ArgTypes> void sendTrap(ArgTypes&&... tArgs)
+template <typename T, typename... ArgTypes>
+void sendTrap(ArgTypes&&... tArgs)
 {
     T obj(std::forward<ArgTypes>(tArgs)...);
     obj.sendTrap();

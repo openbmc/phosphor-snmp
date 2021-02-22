@@ -1,12 +1,11 @@
 #pragma once
-#include <experimental/filesystem>
-
 #include "xyz/openbmc_project/Network/Client/server.hpp"
 #include "xyz/openbmc_project/Object/Delete/server.hpp"
 
 #include <sdbusplus/bus.hpp>
 #include <sdbusplus/server/object.hpp>
 
+#include <experimental/filesystem>
 #include <string>
 
 namespace phosphor
@@ -33,10 +32,10 @@ class Client : public Ifaces
 {
   public:
     Client() = delete;
-    Client(const Client &) = delete;
-    Client &operator=(const Client &) = delete;
-    Client(Client &&) = delete;
-    Client &operator=(Client &&) = delete;
+    Client(const Client&) = delete;
+    Client& operator=(const Client&) = delete;
+    Client(Client&&) = delete;
+    Client& operator=(Client&&) = delete;
     virtual ~Client() = default;
 
     /** @brief Constructor to put object onto bus at a dbus path.
@@ -46,20 +45,19 @@ class Client : public Ifaces
      *  @param[in] address - IPaddress/Hostname.
      *  @param[in] port - network port.
      */
-    Client(sdbusplus::bus::bus &bus, const char *objPath, ConfManager &parent,
-           const std::string &address, uint16_t port);
+    Client(sdbusplus::bus::bus& bus, const char* objPath, ConfManager& parent,
+           const std::string& address, uint16_t port);
 
     /** @brief Constructor to put object onto bus at a dbus path.
      *  @param[in] bus - Bus to attach to.
      *  @param[in] objPath - Path to attach at.
      *  @param[in] parent - Parent D-bus Object.
      */
-    Client(sdbusplus::bus::bus &bus, const char *objPath, ConfManager &parent) :
+    Client(sdbusplus::bus::bus& bus, const char* objPath, ConfManager& parent) :
         Ifaces(bus, objPath, true),
         id(std::stol(std::experimental::filesystem::path(objPath).filename())),
         parent(parent)
-    {
-    }
+    {}
 
     /** @brief Update the address of the object.
      *
@@ -89,7 +87,7 @@ class Client : public Ifaces
     /** Client ID. */
     Id id;
     /** @brief Parent D-Bus Object. */
-    ConfManager &parent;
+    ConfManager& parent;
 };
 
 } // namespace snmp

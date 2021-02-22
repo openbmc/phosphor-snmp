@@ -1,12 +1,15 @@
-#include <cereal/types/string.hpp>
-#include <cereal/types/vector.hpp>
-#include <cereal/archives/binary.hpp>
-#include <fstream>
+#include "config.h"
 
 #include "snmp_serialize.hpp"
+
 #include "snmp_client.hpp"
+
+#include <cereal/archives/binary.hpp>
+#include <cereal/types/string.hpp>
+#include <cereal/types/vector.hpp>
 #include <phosphor-logging/log.hpp>
-#include "config.h"
+
+#include <fstream>
 
 // Register class version
 // From cereal documentation;
