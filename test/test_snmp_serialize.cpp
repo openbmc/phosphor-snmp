@@ -41,11 +41,13 @@ TEST_F(TestSerialize, serialize)
 {
     std::string objPath = clientObjPath;
     objPath += "/" + std::to_string(1);
+    std::string objPath2 = clientObjPath;
+    objPath2 += "/" + std::to_string(2);
 
     Client client(bus, objPath.c_str(), manager, "1.1.1.1", 23);
 
     auto path = serialize(1, client, manager.dbusPersistentLocation);
-    Client restoreClient(bus, objPath.c_str(), manager);
+    Client restoreClient(bus, objPath2.c_str(), manager);
 
     deserialize(path, restoreClient);
 

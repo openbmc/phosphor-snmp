@@ -65,11 +65,13 @@ TEST_F(TestSNMPClient, CheckPersistency)
 {
     std::string objPath = mgrObjPath;
     objPath += "/" + std::to_string(1);
+    std::string objPath2 = mgrObjPath;
+    objPath2 += "/" + std::to_string(2);
 
     Client client(bus, objPath.c_str(), manager, "1.1.1.1", 23);
     client.address("2.2.2.2");
 
-    Client restoreClient(bus, objPath.c_str(), manager);
+    Client restoreClient(bus, objPath2.c_str(), manager);
     auto persistentPath = manager.dbusPersistentLocation;
     persistentPath += "/1";
     deserialize(persistentPath, restoreClient);
