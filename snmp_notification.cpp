@@ -102,10 +102,25 @@ void Notification::sendTrap()
             elog<InternalFailure>();
         }
 
+        // https://tools.ietf.org/search/rfc3416#page-22
+        // add the sysUpTime.0 [RFC3418]
+        auto sysuptime = get_uptime();
+        std::string sysuptimeStr = std::to_string(sysuptime);
+
+        if (snmp_add_var(pdu, sysuptimeOID, sizeof(sysuptimeOID) / sizeof(oid),
+                         't', sysuptimeStr.c_str()))
+
+        {
+            log<level::ERR>("Failed to add the SNMP var(systime)");
+            snmp_free_pdu(pdu);
+            elog<InternalFailure>();
+        }
+
         pdu->trap_type = SNMP_TRAP_ENTERPRISESPECIFIC;
 
         auto trapInfo = getTrapOID();
 
+        // add the snmpTrapOID.0 [RFC3418]
         if (!snmp_pdu_add_variable(pdu, SNMPTrapOID,
                                    sizeof(SNMPTrapOID) / sizeof(oid),
                                    ASN_OBJECT_ID, trapInfo.first.data(),

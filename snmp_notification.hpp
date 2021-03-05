@@ -55,6 +55,7 @@ using Type = u_char;
 using Value = std::variant<uint32_t, uint64_t, int32_t, std::string>;
 // Generic snmp trap ID
 oid SNMPTrapOID[] = {1, 3, 6, 1, 6, 3, 1, 1, 4, 1, 0};
+oid sysuptimeOID[] = {1, 3, 6, 1, 2, 1, 1, 3, 0};
 
 using Object = std::tuple<OID, OID_LEN, Type, Value>;
 
