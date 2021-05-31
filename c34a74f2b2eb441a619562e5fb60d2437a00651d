@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9275cde6_1e0bf784",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000382
+      },
+      "writtenOn": "2021-05-31T13:38:11Z",
+      "side": 1,
+      "message": "This is IBM only reference. Please remove",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 87
+      },
+      "revId": "c34a74f2b2eb441a619562e5fb60d2437a00651d",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    }
+  ]
+}
