@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "d5d01af1_17c01adc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000401
+      },
+      "writtenOn": "2021-06-08T08:14:40Z",
+      "side": 1,
+      "message": "The dbus call works just fine: (throws Invalida arg)\n\n\u003e busctl call xyz.openbmc_project.Network.SNMP /xyz/openbmc_project/network/snmp/manager xyz.openbmc_project.Network.Client.Create Client sq \"10.10.10\" 20\n\u003e Call failed: Invalid argument was given.\n\n\n\u003e busctl call xyz.openbmc_project.Network.SNMP /xyz/openbmc_project/network/snmp/manager xyz.openbmc_project.Network.Client.Create Client sq \"10.10.10.bb\" 20\n\u003e Call failed: Invalid argument was given.\n\n\n\u003e busctl call xyz.openbmc_project.Network.SNMP /xyz/openbmc_project/network/snmp/manager xyz.openbmc_project.Network.Client.Create Client sq \"10.10.10.10.bb\" 20\n\u003e Call failed: Invalid argument was given.\n\n\n\u003e busctl call xyz.openbmc_project.Network.SNMP /xyz/openbmc_project/network/snmp/manager xyz.openbmc_project.Network.Client.Create Client sq \"10.10.10.1000\" 20\n\u003e Call failed: Invalid argument was given.",
+      "parentUuid": "bc4d114a_6a202068",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 105
+      },
+      "revId": "808e0f69c5c5fc0a198b7e4ca998afd7dd5bf0c6",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f71e5bcf_371d3ea0",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
