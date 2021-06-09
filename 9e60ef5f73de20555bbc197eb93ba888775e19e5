@@ -1,0 +1,9 @@
+Code-Review+1: Sunitha Harish <sunithaharish04@gmail.com>
+Code-Review+2: Ratan Gupta <ratankgupta31@gmail.com>
+Ok-To-Test+1: OpenBMC CI <openbmcbump-ci@yahoo.com>
+Verified+1: OpenBMC CI <openbmcbump-ci@yahoo.com>
+Submitted-by: Ratan Gupta <ratankgupta31@gmail.com>
+Submitted-at: Wed, 09 Jun 2021 12:33:24 +0000
+Reviewed-on: https://gerrit.openbmc-project.xyz/c/openbmc/phosphor-snmp/+/43661
+Project: openbmc/phosphor-snmp
+Branch: refs/heads/master
