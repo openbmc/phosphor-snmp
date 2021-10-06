@@ -41,7 +41,7 @@ std::string ConfManager::client(std::string address, uint16_t port)
         // just to check whether given address is valid or not.
         resolveAddress(address);
     }
-    catch (InternalFailure& e)
+    catch (const InternalFailure& e)
     {
         log<level::ERR>("Not a valid address"),
             entry("ADDRESS=%s", address.c_str());

@@ -82,7 +82,7 @@ bool deserialize(const fs::path& path, Client& manager)
         }
         return false;
     }
-    catch (cereal::Exception& e)
+    catch (const cereal::Exception& e)
     {
         log<level::ERR>(e.what());
         std::error_code ec;
