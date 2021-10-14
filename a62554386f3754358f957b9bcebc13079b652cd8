@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "54194ef6_10b45c11",
+        "filename": "meson.build",
+        "patchSetId": 8
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000022
+      },
+      "writtenOn": "2021-10-14T17:21:34Z",
+      "side": 1,
+      "message": "meson_version: \u0027\u003e\u003d0.57.0\u0027",
+      "range": {
+        "startLine": 5,
+        "startChar": 42,
+        "endLine": 5,
+        "endChar": 48
+      },
+      "revId": "a62554386f3754358f957b9bcebc13079b652cd8",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29fc91b4_d8bc228a",
+        "filename": "meson.build",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000022
+      },
+      "writtenOn": "2021-10-14T17:21:34Z",
+      "side": 1,
+      "message": "pp_std\u003dc++20",
+      "range": {
+        "startLine": 10,
+        "startChar": 11,
+        "endLine": 10,
+        "endChar": 24
+      },
+      "revId": "a62554386f3754358f957b9bcebc13079b652cd8",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65570601_0c23d9bc",
+        "filename": "meson.build",
+        "patchSetId": 8
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000022
+      },
+      "writtenOn": "2021-10-14T17:21:34Z",
+      "side": 1,
+      "message": "c++20",
+      "range": {
+        "startLine": 18,
+        "startChar": 29,
+        "endLine": 18,
+        "endChar": 34
+      },
+      "revId": "a62554386f3754358f957b9bcebc13079b652cd8",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ee6fd03_65a1d21e",
+        "filename": "meson.build",
+        "patchSetId": 8
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000022
+      },
+      "writtenOn": "2021-10-14T17:21:34Z",
+      "side": 1,
+      "message": "It should go on to to test/meson.build.",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 86
+      },
+      "revId": "a62554386f3754358f957b9bcebc13079b652cd8",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "921dda2e_0206fcad",
+        "filename": "meson.build",
+        "patchSetId": 8
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000022
+      },
+      "writtenOn": "2021-10-14T17:21:34Z",
+      "side": 1,
+      "message": "\u0027sdbusplus\u0027 pulls in systemd since it needs systemd directly.So we can remove this.",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 53
+      },
+      "revId": "a62554386f3754358f957b9bcebc13079b652cd8",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4bb9f6cd_f8cd8ef2",
+        "filename": "test/meson.build",
+        "patchSetId": 8
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000022
+      },
+      "writtenOn": "2021-10-14T17:21:34Z",
+      "side": 1,
+      "message": "This is not needed.",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 5
+      },
+      "revId": "a62554386f3754358f957b9bcebc13079b652cd8",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c348ba41_b92a54b8",
+        "filename": "test/meson.build",
+        "patchSetId": 8
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000022
+      },
+      "writtenOn": "2021-10-14T17:21:34Z",
+      "side": 1,
+      "message": "not needed.",
+      "range": {
+        "startLine": 39,
+        "startChar": 21,
+        "endLine": 39,
+        "endChar": 78
+      },
+      "revId": "a62554386f3754358f957b9bcebc13079b652cd8",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    }
+  ]
+}
