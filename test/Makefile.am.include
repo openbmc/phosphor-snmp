@@ -37,7 +37,6 @@ test_notification_SOURCES = \
 test_notification_LDADD = $(top_builddir)/phosphor_network_snmpconf-snmp_conf_manager.o \
 	$(top_builddir)/phosphor_network_snmpconf-snmp_client.o \
 	$(top_builddir)/phosphor_network_snmpconf-snmp_serialize.o \
-    $(top_builddir)/phosphor_network_snmpconf-snmp_util.o \
-	$(top_builddir)/xyz/openbmc_project/Network/Client/Create/phosphor_network_snmpconf-server.o
+    $(top_builddir)/phosphor_network_snmpconf-snmp_util.o
 
 check_PROGRAMS += %reldir%/notification

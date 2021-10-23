@@ -2,9 +2,6 @@
 nobase_include_HEADERS = snmp.hpp \
 		snmp_notification.hpp
 
-nobase_nodist_include_HEADERS = \
-		xyz/openbmc_project/Network/Client/Create/server.hpp
-
 bin_PROGRAMS = phosphor-network-snmpconf
 
 noinst_HEADERS = \
@@ -18,16 +15,7 @@ phosphor_network_snmpconf_SOURCES = \
 		snmp_conf_manager.cpp \
 		snmp_client.cpp \
 		snmp_util.cpp \
-		snmp_serialize.cpp \
-		xyz/openbmc_project/Network/Client/Create/server.cpp
-
-CLEANFILES = \
-		xyz/openbmc_project/Network/Client/Create/server.cpp \
-		xyz/openbmc_project/Network/Client/Create/server.hpp
-
-BUILT_SOURCES = \
-        xyz/openbmc_project/Network/Client/Create/server.cpp \
-        xyz/openbmc_project/Network/Client/Create/server.hpp
+		snmp_serialize.cpp
 
 phosphor_network_snmpconf_LDFLAGS = \
 		$(SYSTEMD_LIBS) \
@@ -41,15 +29,6 @@ phosphor_network_snmpconf_CXXFLAGS = \
 		$(SDBUSPLUS_CFLAGS) \
 		$(PHOSPHOR_DBUS_INTERFACES_CFLAGS) \
 		$(PHOSPHOR_LOGGING_CFLAGS)
-
-xyz/openbmc_project/Network/Client/Create/server.cpp: xyz/openbmc_project/Network/Client/Create.interface.yaml xyz/openbmc_project/Network/Client/Create/server.hpp
-	@mkdir -p `dirname $@`
-	$(SDBUSPLUSPLUS) -r $(srcdir) interface server-cpp xyz.openbmc_project.Network.Client.Create > $@
-
-xyz/openbmc_project/Network/Client/Create/server.hpp: xyz/openbmc_project/Network/Client/Create.interface.yaml
-	@mkdir -p `dirname $@`
-	$(SDBUSPLUSPLUS) -r $(srcdir) interface server-header xyz.openbmc_project.Network.Client.Create > $@
-	sed -i '5i #include \"xyz\/openbmc_project\/Network\/Client\/server.hpp\"' $@
 
 libsnmpdir = ${libdir}
 
