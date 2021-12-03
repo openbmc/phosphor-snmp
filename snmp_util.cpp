@@ -72,6 +72,15 @@ std::string resolveAddress(const std::string& address)
         elog<InternalFailure>();
     }
 
+    unsigned char buf[sizeof(struct in6_addr)];
+    int isValid = inet_pton(AF_INET, ipaddress, buf);
+    if (isValid < 1)
+    {
+        log<level::ERR>("dzjtest Invalid address",
+                        entry("ADDRESS=%s", address.c_str()));
+        elog<InternalFailure>();
+    }
+
     return ipaddress;
 }
 
