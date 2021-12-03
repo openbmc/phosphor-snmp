@@ -72,6 +72,25 @@ std::string resolveAddress(const std::string& address)
         elog<InternalFailure>();
     }
 
+    unsigned char buf[sizeof(struct in6_addr)];
+    int isValid = inet_pton(AF_INET, ipaddress, buf);
+    if (isValid < 0)
+    {
+        log<level::ERR>("Invalid address",
+                        entry("ADDRESS=%s", address.c_str()));
+        elog<InternalFailure>();
+    }
+    if (isValid == 0)
+    {
+        int isValid6 = inet_pton(AF_INET6, ipaddress, buf);
+        if (isValid6 < 1)
+        {
+            log<level::ERR>("Invalid address",
+                            entry("ADDRESS=%s", address.c_str()));
+            elog<InternalFailure>();
+        }
+    }
+
     return ipaddress;
 }
 
