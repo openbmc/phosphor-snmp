@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c99e1d41_51436a27",
+        "filename": "snmp_conf_manager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000022
+      },
+      "writtenOn": "2021-12-03T09:47:03Z",
+      "side": 0,
+      "message": "This was the functionality which was brought in where we are verifying whether the given address is correct or not.\nIf you want that this API should support host name then come up with some solution.",
+      "range": {
+        "startLine": 39,
+        "startChar": 3,
+        "endLine": 50,
+        "endChar": 5
+      },
+      "revId": "d560529eb7e22c0b78fb0def20f57c6f35be9dfe",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    }
+  ]
+}
