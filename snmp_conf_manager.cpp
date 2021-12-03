@@ -74,15 +74,6 @@ void ConfManager::checkClientConfigured(const std::string& address,
                               Argument::ARGUMENT_VALUE(address.c_str()));
     }
 
-    unsigned char buf[sizeof(struct in6_addr)];
-    int isValid = inet_pton(AF_INET, address.c_str(), buf);
-    if (isValid < 1)
-    {
-        log<level::ERR>("Invalid address");
-        elog<InvalidArgument>(Argument::ARGUMENT_NAME("ADDRESS"),
-                              Argument::ARGUMENT_VALUE(address.c_str()));
-    }
-
     for (const auto& val : clients)
     {
         if (val.second.get()->address() == address &&
