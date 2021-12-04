@@ -21,13 +21,12 @@ class TestSNMPConfManager : public testing::Test
   public:
     sdbusplus::bus::bus bus;
     ConfManager manager;
-    std::string confDir;
     TestSNMPConfManager() :
         bus(sdbusplus::bus::new_default()), manager(bus, managerObjPath)
     {
         char tmp[] = "/tmp/snmpManager.XXXXXX";
-        std::string confDir = mkdtemp(tmp);
-        manager.dbusPersistentLocation = confDir;
+        auto confDir = mkdtemp(tmp);
+        manager.dbusPersistentLocation = std::move(confDir);
     }
 
     ~TestSNMPConfManager()
