@@ -60,8 +60,7 @@ bool Notification::addPDUVar(netsnmp_pdu& pdu, const OID& objID,
 void Notification::sendTrap()
 {
     constexpr auto comm = "public";
-    netsnmp_session session{0};
-
+    netsnmp_session session{};
     snmp_sess_init(&session);
 
     init_snmp("snmpapp");

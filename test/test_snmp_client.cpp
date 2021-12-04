@@ -22,12 +22,11 @@ class TestSNMPClient : public testing::Test
   public:
     sdbusplus::bus::bus bus;
     ConfManager manager;
-    std::string confDir;
     TestSNMPClient() :
         bus(sdbusplus::bus::new_default()), manager(bus, mgrObjPath)
     {
         char tmp[] = "/tmp/snmpClient.XXXXXX";
-        std::string confDir = mkdtemp(tmp);
+        auto confDir = mkdtemp(tmp);
         manager.dbusPersistentLocation = confDir;
     }
 

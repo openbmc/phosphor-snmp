@@ -21,12 +21,16 @@ class TestSNMPConfManager : public testing::Test
   public:
     sdbusplus::bus::bus bus;
     ConfManager manager;
+    // confDir could have been created locally in the
+    // TestSNMPConfManager but somehow that is leading
+    // to segmentation fault while running the unit test.
+    // TODO: https://github.com/openbmc/phosphor-snmp/issues/5
     std::string confDir;
     TestSNMPConfManager() :
         bus(sdbusplus::bus::new_default()), manager(bus, managerObjPath)
     {
         char tmp[] = "/tmp/snmpManager.XXXXXX";
-        std::string confDir = mkdtemp(tmp);
+        confDir = mkdtemp(tmp);
         manager.dbusPersistentLocation = confDir;
     }
 
