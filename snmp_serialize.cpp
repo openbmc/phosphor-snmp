@@ -33,7 +33,8 @@ using namespace phosphor::logging;
  *                       a serialized data across code levels
  */
 template <class Archive>
-void save(Archive& archive, const Client& manager, const std::uint32_t version)
+void save(Archive& archive, const Client& manager,
+          const std::uint32_t /*version*/)
 {
     archive(manager.address(), manager.port());
 }
@@ -46,7 +47,7 @@ void save(Archive& archive, const Client& manager, const std::uint32_t version)
  *                       a serialized data across code levels
  */
 template <class Archive>
-void load(Archive& archive, Client& manager, const std::uint32_t version)
+void load(Archive& archive, Client& manager, const std::uint32_t /*version*/)
 {
     std::string ipaddress{};
     uint16_t port{};

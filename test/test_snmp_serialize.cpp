@@ -4,7 +4,7 @@
 
 #include <netinet/in.h>
 
-#include <experimental/filesystem>
+#include <filesystem>
 #include <fstream>
 
 #include <gtest/gtest.h>
@@ -17,7 +17,7 @@ namespace snmp
 {
 
 constexpr auto clientObjPath = "/xyz/openbmc_test/snmp/client";
-namespace fs = std::experimental::filesystem;
+namespace fs = std::filesystem;
 
 class TestSerialize : public testing::Test
 {

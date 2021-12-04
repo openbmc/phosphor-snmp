@@ -19,7 +19,7 @@ struct EventDeleter
 
 using EventPtr = std::unique_ptr<sd_event, EventDeleter>;
 
-int main(int argc, char* argv[])
+int main(int /*argc*/, char ** /*argv[]*/)
 {
     using namespace phosphor::logging;
 
