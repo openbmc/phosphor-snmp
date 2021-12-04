@@ -1,0 +1,9 @@
+# Feature List
+option(
+    'snmp-conf-persist-path', type: 'string',
+    value: '/var/lib/phosphor-snmp/managers/',
+    description: 'Path of directory having persisted snmp managers',
+)
+
+option('oe-sdk', type: 'feature', description: 'Enable OE SDK')
+option('tests', type: 'feature', description: 'Build tests', value: 'enabled')
