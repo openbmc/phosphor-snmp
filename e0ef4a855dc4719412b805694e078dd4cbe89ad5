@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "54c1a464_69169007",
+        "filename": "test/test_snmp_client.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-12-16T12:51:52Z",
+      "side": 1,
+      "message": "My previous comment was to make line 29 auto OR make this a move, not both.  It probably doesn\u0027t matter in this particular case because std::string doesn\u0027t have a r-value constructor from char*, but with the typical conventions you\u0027ve got a memory violation.\n\n1. Line 29 mkdtemp returns a char*, which is the same value as `tmp` but with the template filled in (the Xs).\n2. Line 30 `std::move(confdir)` returns a (char*\u0026\u0026).\n3. Typical convention of a pointer-\u0026\u0026 means \"I am transferring ownership of this buffer to you\", but the buffer is actually on the stack so you can\u0027t transfer ownership of it.\n\nIt is possible in the future, though probably unlikely, that std::string could take a (char*\u0026\u0026) expecting that you performed a `new` on it and assuming ownership of the buffer itself.  This will cause a crash later on when dbusPersistentLocation is used because it would be pointing to a buffer left on the stack somewhere, which has since been overwritten.",
+      "range": {
+        "startLine": 30,
+        "startChar": 41,
+        "endLine": 30,
+        "endChar": 50
+      },
+      "revId": "e0ef4a855dc4719412b805694e078dd4cbe89ad5",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df50bf83_8201c145",
+        "filename": "test/test_snmp_conf_manager.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-12-16T12:51:52Z",
+      "side": 1,
+      "message": "See previous commentary on std::move.",
+      "range": {
+        "startLine": 29,
+        "startChar": 41,
+        "endLine": 29,
+        "endChar": 50
+      },
+      "revId": "e0ef4a855dc4719412b805694e078dd4cbe89ad5",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    }
+  ]
+}
