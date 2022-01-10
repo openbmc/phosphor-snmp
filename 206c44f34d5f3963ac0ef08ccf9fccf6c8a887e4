@@ -18,6 +18,23 @@
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5560b13c_06ed39c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000022
+      },
+      "writtenOn": "2022-01-10T17:22:09Z",
+      "side": 1,
+      "message": "Thanks Patrick for the review. ",
+      "revId": "206c44f34d5f3963ac0ef08ccf9fccf6c8a887e4",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8c4c234_a131adbe",
@@ -31,6 +48,30 @@
       "writtenOn": "2022-01-10T14:53:05Z",
       "side": 1,
       "message": "After this commit you might want to revise how this is done.  We\u0027ve generally been reducing these kind of configurations.  It is kind of pointless to have a bunch of code in meson for what is effectively a constant in a header file.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 77
+      },
+      "revId": "206c44f34d5f3963ac0ef08ccf9fccf6c8a887e4",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7b0b649_b8a1c82f",
+        "filename": "meson.build",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000022
+      },
+      "writtenOn": "2022-01-10T17:22:09Z",
+      "side": 1,
+      "message": "Sure, Let me fix this with separate commit",
+      "parentUuid": "d8c4c234_a131adbe",
       "range": {
         "startLine": 15,
         "startChar": 0,
@@ -60,6 +101,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2515ba02_313f6e2e",
+        "filename": "meson.build",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000022
+      },
+      "writtenOn": "2022-01-10T17:22:09Z",
+      "side": 1,
+      "message": "your suggestion is to remove the other wrap file too?",
+      "parentUuid": "90a17d91_c3951891",
+      "revId": "206c44f34d5f3963ac0ef08ccf9fccf6c8a887e4",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "95d339fe_7a60ba01",
         "filename": "meson.build",
         "patchSetId": 5
@@ -71,6 +130,30 @@
       "writtenOn": "2022-01-10T14:53:05Z",
       "side": 1,
       "message": "These aren\u0027t needed by libsnmp?  I\u0027m a little surprised.",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 32
+      },
+      "revId": "206c44f34d5f3963ac0ef08ccf9fccf6c8a887e4",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c98d2ae0_25104ab2",
+        "filename": "meson.build",
+        "patchSetId": 5
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000022
+      },
+      "writtenOn": "2022-01-10T17:22:09Z",
+      "side": 1,
+      "message": "Yes, libsnmp is the shared library where we are only giving the function to send the trap with the data, hence we don\u0027t need all other source files.",
+      "parentUuid": "95d339fe_7a60ba01",
       "range": {
         "startLine": 83,
         "startChar": 0,
@@ -100,6 +183,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b0fa0967_9fa750e7",
+        "filename": "meson.build",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000022
+      },
+      "writtenOn": "2022-01-10T17:22:09Z",
+      "side": 1,
+      "message": "snmp_lib is providing the Dbus daemon to configure the Dbus clients.\nlibsnmp : Caller(bmc services) needs to call the function sendTrap with the data which needs to be sent to the snmp trap daemon.",
+      "parentUuid": "7eea41bb_b5c08f25",
+      "revId": "206c44f34d5f3963ac0ef08ccf9fccf6c8a887e4",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "67cc00d6_be943bc2",
         "filename": "meson.build",
         "patchSetId": 5
@@ -111,6 +212,24 @@
       "writtenOn": "2022-01-10T14:53:05Z",
       "side": 1,
       "message": "Doesn\u0027t there need to be a \u0027requires\u0027 line?",
+      "revId": "206c44f34d5f3963ac0ef08ccf9fccf6c8a887e4",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b27acf7_3adb58c0",
+        "filename": "meson.build",
+        "patchSetId": 5
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1000022
+      },
+      "writtenOn": "2022-01-10T17:22:09Z",
+      "side": 1,
+      "message": "Let me see this.",
+      "parentUuid": "67cc00d6_be943bc2",
       "revId": "206c44f34d5f3963ac0ef08ccf9fccf6c8a887e4",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
@@ -134,6 +253,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c9c329bc_40a621a9",
+        "filename": "meson_options.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1000022
+      },
+      "writtenOn": "2022-01-10T17:22:09Z",
+      "side": 1,
+      "message": "I don\u0027t think so it should be configurable, should be hardcoded in the code.\nI will fix this up as a separate commit.",
+      "parentUuid": "ce4f0a85_eb64da38",
+      "revId": "206c44f34d5f3963ac0ef08ccf9fccf6c8a887e4",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f43992a8_3131312a",
         "filename": "test/meson.build",
         "patchSetId": 5
@@ -145,6 +282,30 @@
       "writtenOn": "2022-01-10T14:53:05Z",
       "side": 1,
       "message": "Maybe decrease the line length a little.",
+      "range": {
+        "startLine": 31,
+        "startChar": 80,
+        "endLine": 31,
+        "endChar": 95
+      },
+      "revId": "206c44f34d5f3963ac0ef08ccf9fccf6c8a887e4",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcfb179e_54d78460",
+        "filename": "test/meson.build",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000022
+      },
+      "writtenOn": "2022-01-10T17:22:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f43992a8_3131312a",
       "range": {
         "startLine": 31,
         "startChar": 80,
