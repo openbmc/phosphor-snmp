@@ -48,6 +48,30 @@
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1106ce20_1e98236d",
+        "filename": "test/test_snmp_client.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-01-10T12:44:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94d25277_002b289a",
+      "range": {
+        "startLine": 30,
+        "startChar": 41,
+        "endLine": 30,
+        "endChar": 50
+      },
+      "revId": "e0ef4a855dc4719412b805694e078dd4cbe89ad5",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df50bf83_8201c145",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "Patrick, I tried to follow but seems there is some other issue which is not allowing me to do.I have opened up a issue for the same.\nAim is to migrate the phosphor-snmp to meson.",
       "parentUuid": "df50bf83_8201c145",
+      "range": {
+        "startLine": 29,
+        "startChar": 41,
+        "endLine": 29,
+        "endChar": 50
+      },
+      "revId": "e0ef4a855dc4719412b805694e078dd4cbe89ad5",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21e20b41_0dc1ef2c",
+        "filename": "test/test_snmp_conf_manager.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-01-10T12:44:20Z",
+      "side": 1,
+      "message": "Seems like you\u0027ve taken care of it though?",
+      "parentUuid": "265c9e64_5db01138",
       "range": {
         "startLine": 29,
         "startChar": 41,
