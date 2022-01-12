@@ -137,6 +137,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "83b85935_32a3b39a",
+        "filename": "meson.build",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000022
+      },
+      "writtenOn": "2022-01-12T11:50:49Z",
+      "side": 1,
+      "message": "Yes, I tested to compile this and I didn\u0027t hit the issue related to netsnmp as it was already there on my build system.\n\nphosphor-dbus-interfaces| Program true found: YES (/bin/true)\nphosphor-dbus-interfaces| Build targets in project: 459\nphosphor-dbus-interfaces| Subproject phosphor-dbus-interfaces finished.\n\nDependency phosphor-dbus-interfaces from subproject subprojects/phosphor-dbus-interfaces found: YES 1.0.0\nDependency sdbusplus from subproject subprojects/sdbusplus found: YES 1.0.0\nRun-time dependency phosphor-logging found: NO (tried pkgconfig and cmake)\nLooking for a fallback subproject for the dependency phosphor-logging\n\nExecuting subproject phosphor-logging \n\nphosphor-logging| Project name: phosphor-logging\nphosphor-logging| Project version: 1.0.0\nphosphor-logging| C++ compiler for the host machine: c++ (gcc 7.5.0 \"c++ (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0\")\nphosphor-logging| C++ linker for the host machine: c++ ld.bfd 2.30\nphosphor-logging| Program python3 found: YES (/usr/bin/python3)\nphosphor-logging| Run-time dependency systemd found: YES 237\nphosphor-logging| Dependency sdbusplus found: YES 1.0.0 (cached)\nphosphor-logging| Dependency phosphor-dbus-interfaces found: YES 1.0.0 (cached)\nphosphor-logging| Configuring config.h using configuration\nphosphor-logging| Build targets in project: 461\nphosphor-logging| Subproject phosphor-logging finished.\n\nDependency phosphor-logging from subproject subprojects/phosphor-logging found: YES 1.0.0\nLibrary libnetsnmp found: YES",
+      "parentUuid": "0d199777_3d365863",
+      "revId": "206c44f34d5f3963ac0ef08ccf9fccf6c8a887e4",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "95d339fe_7a60ba01",
         "filename": "meson.build",
         "patchSetId": 5
