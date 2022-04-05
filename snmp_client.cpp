@@ -12,7 +12,7 @@ namespace snmp
 
 Client::Client(sdbusplus::bus::bus& bus, const char* objPath,
                ConfManager& parent, const std::string& address, uint16_t port) :
-    Ifaces(bus, objPath, true),
+    Ifaces(bus, objPath, Ifaces::action::defer_emit),
     id(std::stol(std::filesystem::path(objPath).filename())), parent(parent)
 {
     this->address(address);
