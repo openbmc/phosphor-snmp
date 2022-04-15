@@ -17,7 +17,7 @@ AC_PROG_MKDIR_P
 LT_PREREQ([2.4.6])
 LT_INIT([dlopen disable-static shared])
 
-AX_CXX_COMPILE_STDCXX_17([noext])
+AX_CXX_COMPILE_STDCXX([20],[noext])
 
 # Checks for libraries.
 AX_PKG_CHECK_MODULES([SYSTEMD], [], [libsystemd >= 221])
