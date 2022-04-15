@@ -4,9 +4,6 @@ AC_LANG([C++])
 AM_INIT_AUTOMAKE([subdir-objects -Wall -Wno-portability -Werror foreign])
 AM_SILENT_RULES([yes])
 
-# Compiler flags
-CXXFLAGS="$CXXFLAGS -fpic -Wall -Werror"
-
 # Check for programs
 AC_PROG_CXX
 AM_PROG_AR
@@ -17,7 +14,8 @@ AC_PROG_MKDIR_P
 LT_PREREQ([2.4.6])
 LT_INIT([dlopen disable-static shared])
 
-AX_CXX_COMPILE_STDCXX_17([noext])
+AX_CXX_COMPILE_STDCXX([20],[noext])
+AX_APPEND_COMPILE_FLAGS([-fpic -Wall -Werror], [CXXFLAGS])
 
 # Checks for libraries.
 AX_PKG_CHECK_MODULES([SYSTEMD], [], [libsystemd >= 221])
@@ -54,10 +52,6 @@ AS_IF([test "x$SNMP_CONF_PERSIST_PATH" == "x"], \
     [SNMP_CONF_PERSIST_PATH="/var/lib/phosphor-snmp/managers/"])
 AC_DEFINE_UNQUOTED([SNMP_CONF_PERSIST_PATH], ["$SNMP_CONF_PERSIST_PATH"], \
     [Path of directory having persisted snmp managers.])
-
-
-# Checks for library functions
-LT_INIT # Required for systemd linking
 
 # Check/set gtest specific functions.
 AX_PTHREAD([GTEST_CPPFLAGS="-DGTEST_HAS_PTHREAD=1"],[GTEST_CPPFLAGS="-GTEST_HAS_PTHREAD=0"])
