@@ -26,15 +26,17 @@ ObjectValueTree getManagedObjects(sdbusplus::bus::bus& bus,
                                       "org.freedesktop.DBus.ObjectManager",
                                       "GetManagedObjects");
 
-    auto reply = bus.call(method);
-
-    if (reply.is_method_error())
+    try
+    {
+        auto reply = bus.call(method);
+        reply.read(interfaces);
+    }
+    catch (const sdbusplus::exception::exception& e)
     {
         lg2::error("Failed to get managed objects: {PATH}", "PATH", objPath);
         elog<InternalFailure>();
     }
 
-    reply.read(interfaces);
     return interfaces;
 }
 
