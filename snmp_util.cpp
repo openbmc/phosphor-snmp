@@ -6,7 +6,7 @@
 #include <netdb.h>
 
 #include <phosphor-logging/elog-errors.hpp>
-#include <phosphor-logging/log.hpp>
+#include <phosphor-logging/lg2.hpp>
 
 #include <string>
 
@@ -30,8 +30,7 @@ ObjectValueTree getManagedObjects(sdbusplus::bus::bus& bus,
 
     if (reply.is_method_error())
     {
-        log<level::ERR>("Failed to get managed objects",
-                        entry("PATH=%s", objPath.c_str()));
+        lg2::error("Failed to get managed objects: {PATH}", "PATH", objPath);
         elog<InternalFailure>();
     }
 
@@ -54,8 +53,7 @@ std::string resolveAddress(const std::string& address)
     auto result = getaddrinfo(address.c_str(), NULL, &hints, &addr);
     if (result)
     {
-        log<level::ERR>("getaddrinfo failed",
-                        entry("ADDRESS=%s", address.c_str()));
+        lg2::error("getaddrinfo failed: {ADDRESS}", "ADDRESS", address);
         elog<InternalFailure>();
     }
 
@@ -67,8 +65,7 @@ std::string resolveAddress(const std::string& address)
                          sizeof(ipaddress), NULL, 0, NI_NUMERICHOST);
     if (result)
     {
-        log<level::ERR>("getnameinfo failed",
-                        entry("ADDRESS=%s", address.c_str()));
+        lg2::error("getnameinfo failed: {ADDRESS}", "ADDRESS", address);
         elog<InternalFailure>();
     }
 
@@ -76,8 +73,7 @@ std::string resolveAddress(const std::string& address)
     int isValid = inet_pton(AF_INET, ipaddress, buf);
     if (isValid < 0)
     {
-        log<level::ERR>("Invalid address",
-                        entry("ADDRESS=%s", address.c_str()));
+        lg2::error("Invalid address: {ADDRESS}", "ADDRESS", address);
         elog<InternalFailure>();
     }
     if (isValid == 0)
@@ -85,8 +81,7 @@ std::string resolveAddress(const std::string& address)
         int isValid6 = inet_pton(AF_INET6, ipaddress, buf);
         if (isValid6 < 1)
         {
-            log<level::ERR>("Invalid address",
-                            entry("ADDRESS=%s", address.c_str()));
+            lg2::error("Invalid address: {ADDRESS}", "ADDRESS", address);
             elog<InternalFailure>();
         }
     }
@@ -135,7 +130,7 @@ std::vector<std::string> getManagers()
         }
         catch (const std::exception& e)
         {
-            log<level::ERR>(e.what());
+            lg2::error("Invalid address: {EC}", "EC", e.what());
         }
     }
     return managers;

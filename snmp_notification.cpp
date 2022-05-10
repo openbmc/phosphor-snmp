@@ -4,7 +4,7 @@
 #include "xyz/openbmc_project/Common/error.hpp"
 
 #include <phosphor-logging/elog-errors.hpp>
-#include <phosphor-logging/log.hpp>
+#include <phosphor-logging/lg2.hpp>
 
 namespace phosphor
 {
@@ -84,8 +84,8 @@ void Notification::sendTrap()
             nullptr, nullptr);
         if (!ss)
         {
-            log<level::ERR>("Unable to get the snmp session.",
-                            entry("SNMPMANAGER=%s", mgr.c_str()));
+            lg2::error("Unable to get the snmp session: {SNMPMANAGER}",
+                       "SNMPMANAGER", mgr);
             elog<InternalFailure>();
         }
 
@@ -97,7 +97,7 @@ void Notification::sendTrap()
         auto pdu = snmp_pdu_create(SNMP_MSG_TRAP2);
         if (!pdu)
         {
-            log<level::ERR>("Failed to create notification PDU");
+            lg2::error("Failed to create notification PDU");
             elog<InternalFailure>();
         }
 
@@ -110,7 +110,7 @@ void Notification::sendTrap()
                          't', sysuptimeStr.c_str()))
 
         {
-            log<level::ERR>("Failed to add the SNMP var(systime)");
+            lg2::error("Failed to add the SNMP var(systime)");
             snmp_free_pdu(pdu);
             elog<InternalFailure>();
         }
@@ -125,7 +125,7 @@ void Notification::sendTrap()
                                    ASN_OBJECT_ID, trapInfo.first.data(),
                                    trapInfo.second * sizeof(oid)))
         {
-            log<level::ERR>("Failed to add the SNMP var(trapID)");
+            lg2::error("Failed to add the SNMP var(trapID)");
             snmp_free_pdu(pdu);
             elog<InternalFailure>();
         }
@@ -137,7 +137,7 @@ void Notification::sendTrap()
             if (!addPDUVar(*pdu, std::get<0>(object), std::get<1>(object),
                            std::get<2>(object), std::get<3>(object)))
             {
-                log<level::ERR>("Failed to add the SNMP var");
+                lg2::error("Failed to add the SNMP var");
                 snmp_free_pdu(pdu);
                 elog<InternalFailure>();
             }
@@ -145,11 +145,11 @@ void Notification::sendTrap()
         // pdu is freed by snmp_send
         if (!snmp_send(sessionPtr.get(), pdu))
         {
-            log<level::ERR>("Failed to send the snmp trap.");
+            lg2::error("Failed to send the snmp trap.");
             elog<InternalFailure>();
         }
 
-        log<level::DEBUG>("Sent SNMP Trap", entry("MGR=%s", mgr.c_str()));
+        lg2::debug("Sent SNMP Trap: {MGR}", "MGR", mgr);
     }
 }
 
