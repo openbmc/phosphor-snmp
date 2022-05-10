@@ -2,7 +2,7 @@
 
 #include "snmp_conf_manager.hpp"
 
-#include <phosphor-logging/log.hpp>
+#include <phosphor-logging/lg2.hpp>
 #include <sdbusplus/bus.hpp>
 #include <sdbusplus/server/manager.hpp>
 
@@ -21,15 +21,13 @@ using EventPtr = std::unique_ptr<sd_event, EventDeleter>;
 
 int main(int /*argc*/, char** /*argv[]*/)
 {
-    using namespace phosphor::logging;
-
     auto bus = sdbusplus::bus::new_default();
 
     sd_event* event = nullptr;
     auto r = sd_event_default(&event);
     if (r < 0)
     {
-        log<level::ERR>("Error creating a default sd_event handler");
+        lg2::error("Error creating a default sd_event handler: {RC}", "RC", r);
         return r;
     }
 

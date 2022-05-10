@@ -9,7 +9,7 @@
 #include <arpa/inet.h>
 
 #include <phosphor-logging/elog-errors.hpp>
-#include <phosphor-logging/log.hpp>
+#include <phosphor-logging/lg2.hpp>
 
 #include <filesystem>
 
@@ -44,8 +44,7 @@ std::string ConfManager::client(std::string address, uint16_t port)
     }
     catch (const InternalFailure& e)
     {
-        log<level::ERR>("Not a valid address"),
-            entry("ADDRESS=%s", address.c_str());
+        lg2::error("{ADDRESS} is not a valid address", "ADDRESS", address);
         elog<InvalidArgument>(Argument::ARGUMENT_NAME("Address"),
                               Argument::ARGUMENT_VALUE(address.c_str()));
     }
@@ -70,7 +69,7 @@ void ConfManager::checkClientConfigured(const std::string& address,
 {
     if (address.empty())
     {
-        log<level::ERR>("Invalid address");
+        lg2::error("{ADDRESS} is not a valid address", "ADDRESS", address);
         elog<InvalidArgument>(Argument::ARGUMENT_NAME("ADDRESS"),
                               Argument::ARGUMENT_VALUE(address.c_str()));
     }
@@ -80,7 +79,7 @@ void ConfManager::checkClientConfigured(const std::string& address,
         if (val.second.get()->address() == address &&
             val.second.get()->port() == port)
         {
-            log<level::ERR>("Client already exist");
+            lg2::error("Client already exist");
             // TODO Add the error(Object already exist) in the D-Bus interface
             // then make the change here,meanwhile send the Internal Failure.
             elog<InvalidArgument>(
@@ -95,8 +94,7 @@ void ConfManager::deleteSNMPClient(Id id)
     auto it = clients.find(id);
     if (it == clients.end())
     {
-        log<level::ERR>("Unable to delete the snmp client.",
-                        entry("ID=%d", id));
+        lg2::error("Unable to delete the snmp client: {ID}", "ID", id);
         return;
     }
 
@@ -109,15 +107,13 @@ void ConfManager::deleteSNMPClient(Id id)
     {
         if (!fs::remove(fileName, ec))
         {
-            log<level::ERR>("Unable to delete the file",
-                            entry("FILE=%s", fileName.c_str()),
-                            entry("ERROR=%d", ec.value()));
+            lg2::error("Unable to delete {FILE}: {EC}", "FILE", fileName, "EC",
+                       ec.value());
         }
     }
     else
     {
-        log<level::ERR>("File doesn't exist",
-                        entry("FILE=%s", fileName.c_str()));
+        lg2::error("{FILE} doesn't exist", "FILE", fileName);
     }
     // remove the D-Bus Object.
     this->clients.erase(it);
