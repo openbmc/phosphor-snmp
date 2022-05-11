@@ -35,6 +35,24 @@
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ef5b26d_5c2e1ae5",
+        "filename": "snmp_conf_manager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000397
+      },
+      "writtenOn": "2022-05-11T03:26:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2a34f98_ee39c28d",
+      "revId": "c1549c4f9f8e3708ce8ed1b60ebc33edef173f7a",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "674c2fc3_1421779f",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-05-10T12:23:10Z",
       "side": 1,
       "message": "Would be nice to include \"... handler: {RC}\"",
+      "revId": "c1549c4f9f8e3708ce8ed1b60ebc33edef173f7a",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b683745_8771b964",
+        "filename": "snmp_main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000397
+      },
+      "writtenOn": "2022-05-11T03:26:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "674c2fc3_1421779f",
       "revId": "c1549c4f9f8e3708ce8ed1b60ebc33edef173f7a",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
@@ -75,6 +111,30 @@
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6de6baf8_428afa98",
+        "filename": "snmp_serialize.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000397
+      },
+      "writtenOn": "2022-05-11T03:26:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62343cf5_92b4efc0",
+      "range": {
+        "startLine": 86,
+        "startChar": 44,
+        "endLine": 86,
+        "endChar": 65
+      },
+      "revId": "c1549c4f9f8e3708ce8ed1b60ebc33edef173f7a",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "07caa399_c605d4ef",
@@ -92,6 +152,24 @@
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "279e2ec1_d61a0a30",
+        "filename": "snmp_util.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000397
+      },
+      "writtenOn": "2022-05-11T03:26:39Z",
+      "side": 1,
+      "message": "\u003e Is it useful to save any of the RCs in any of the failures below?\n\nCorrect\nDone",
+      "parentUuid": "07caa399_c605d4ef",
+      "revId": "c1549c4f9f8e3708ce8ed1b60ebc33edef173f7a",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f31c3b01_f6cf0dc9",
@@ -105,6 +183,30 @@
       "writtenOn": "2022-05-10T12:23:10Z",
       "side": 1,
       "message": "...\"ERROR\", e)",
+      "range": {
+        "startLine": 133,
+        "startChar": 41,
+        "endLine": 133,
+        "endChar": 62
+      },
+      "revId": "c1549c4f9f8e3708ce8ed1b60ebc33edef173f7a",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f6a8e60_3520247b",
+        "filename": "snmp_util.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1000397
+      },
+      "writtenOn": "2022-05-11T03:26:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f31c3b01_f6cf0dc9",
       "range": {
         "startLine": 133,
         "startChar": 41,
