@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc558ff0_ff997cb8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000397
+      },
+      "writtenOn": "2022-05-13T10:26:35Z",
+      "side": 1,
+      "message": "@Ratan @MARRI\nCould the chain below give +2?\nhttps://gerrit.openbmc-project.xyz/q/topic:switch-to-meson",
+      "revId": "f87999d10497f0d2e5cc4db06e2d4736282c9ed1",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    }
+  ]
+}
