@@ -85,7 +85,7 @@ TEST_F(TestSNMPConfManager, AddSNMPClient)
 
     // check whether the client created
     auto& clients = getSNMPClients();
-    EXPECT_EQ(1, clients.size());
+    EXPECT_EQ(1U, clients.size());
     EXPECT_EQ(true, isClientExist("192.168.1.1"));
 }
 
@@ -103,7 +103,7 @@ TEST_F(TestSNMPConfManager, AddMultipleSNMPClient)
 
     // check both the clients get created
     auto& clients = getSNMPClients();
-    EXPECT_EQ(2, clients.size());
+    EXPECT_EQ(2U, clients.size());
 
     EXPECT_EQ(true, isClientExist("192.168.1.1"));
     EXPECT_EQ(true, isClientExist("192.168.1.2"));
@@ -123,7 +123,7 @@ TEST_F(TestSNMPConfManager, DeleteSNMPClient)
     createSNMPClient("192.168.1.2", 24);
 
     auto& clients = getSNMPClients();
-    EXPECT_EQ(2, clients.size());
+    EXPECT_EQ(2U, clients.size());
 
     deleteSNMPClient("192.168.1.1");
 
@@ -132,7 +132,7 @@ TEST_F(TestSNMPConfManager, DeleteSNMPClient)
     expectedPath += std::string("/3");
     EXPECT_EQ(path, expectedPath);
 
-    EXPECT_EQ(2, clients.size());
+    EXPECT_EQ(2U, clients.size());
     EXPECT_EQ(true, isClientExist("192.168.1.2"));
     EXPECT_EQ(false, isClientExist("192.168.1.1"));
     EXPECT_EQ(true, isClientExist("192.168.1.3"));

@@ -11,7 +11,7 @@ namespace network
 namespace snmp
 {
 
-constexpr auto ERROR_NOTIF_FIELD_COUNT = 4;
+constexpr size_t ERROR_NOTIF_FIELD_COUNT = 4;
 
 class TestErrorNotification : public testing::Test
 {
