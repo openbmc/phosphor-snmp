@@ -194,33 +194,24 @@ class OBMCErrorNotification : public Notification
         OID_LEN idLen = 11;
         OID id = {1, 3, 6, 1, 4, 1, 49871, 1, 0, 1, 1};
         auto type = getASNType<decltype(OBMCErrorID)>();
-        auto tuple =
-            std::tuple<OID, OID_LEN, Type, Value>(id, idLen, type, OBMCErrorID);
 
-        objectList.emplace_back(std::move(tuple));
+        objectList.emplace_back(id, idLen, type, OBMCErrorID);
 
         id = {1, 3, 6, 1, 4, 1, 49871, 1, 0, 1, 2};
         type = getASNType<decltype(OBMCErrorTimestamp)>();
-        tuple = std::tuple<OID, OID_LEN, Type, Value>(id, idLen, type,
-                                                      OBMCErrorTimestamp);
 
-        objectList.emplace_back(std::move(tuple));
+        objectList.emplace_back(id, idLen, type, OBMCErrorTimestamp);
 
         id = {1, 3, 6, 1, 4, 1, 49871, 1, 0, 1, 3};
         type = getASNType<decltype(OBMCErrorSeverity)>();
 
-        tuple = std::tuple<OID, OID_LEN, Type, Value>(id, idLen, type,
-                                                      OBMCErrorSeverity);
-
-        objectList.emplace_back(std::move(tuple));
+        objectList.emplace_back(id, idLen, type, OBMCErrorSeverity);
 
         id = {1, 3, 6, 1, 4, 1, 49871, 1, 0, 1, 4};
         type = getASNType<decltype(OBMCErrorMessage)>();
 
-        tuple = std::tuple<OID, OID_LEN, Type, Value>(id, idLen, type,
-                                                      OBMCErrorMessage);
+        objectList.emplace_back(id, idLen, type, OBMCErrorMessage);
 
-        objectList.emplace_back(std::move(tuple));
 
         return objectList;
     }
