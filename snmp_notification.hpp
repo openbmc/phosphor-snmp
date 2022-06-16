@@ -33,13 +33,10 @@
 
 #include <sdbusplus/server.hpp>
 
-#include <experimental/any>
 #include <sstream>
 #include <string>
 #include <tuple>
 #include <vector>
-
-namespace any_ns = std::experimental;
 
 namespace phosphor
 {
