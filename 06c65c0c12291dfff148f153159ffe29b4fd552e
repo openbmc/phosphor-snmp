@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33299d42_18dd0b6f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-06-24T11:21:16Z",
+      "side": 1,
+      "message": "Ratan has had plenty of time to give feedback on this trivial change.",
+      "revId": "06c65c0c12291dfff148f153159ffe29b4fd552e",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    }
+  ]
+}
