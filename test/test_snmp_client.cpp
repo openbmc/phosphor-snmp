@@ -20,7 +20,7 @@ auto mgrObjPath = "/xyz/openbmc_test/snmp/manager";
 class TestSNMPClient : public testing::Test
 {
   public:
-    sdbusplus::bus::bus bus;
+    sdbusplus::bus_t bus;
     ConfManager manager;
     TestSNMPClient() :
         bus(sdbusplus::bus::new_default()), manager(bus, mgrObjPath)

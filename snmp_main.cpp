@@ -38,7 +38,7 @@ int main(int /*argc*/, char** /*argv[]*/)
     bus.attach_event(eventPtr.get(), SD_EVENT_PRIORITY_NORMAL);
 
     // Add sdbusplus Object Manager for the 'root' path of the snmp.
-    sdbusplus::server::manager::manager objManager(bus, OBJ_NETWORK_SNMP);
+    sdbusplus::server::manager_t objManager(bus, OBJ_NETWORK_SNMP);
     bus.request_name(BUSNAME_NETWORK_SNMP);
 
     auto manager = std::make_unique<phosphor::network::snmp::ConfManager>(

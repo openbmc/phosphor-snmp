@@ -20,7 +20,7 @@ namespace fs = std::filesystem;
 namespace details
 {
 
-using CreateIface = sdbusplus::server::object::object<
+using CreateIface = sdbusplus::server::object_t<
     sdbusplus::xyz::openbmc_project::Network::Client::server::Create>;
 
 } // namespace details
@@ -43,7 +43,7 @@ class ConfManager : public details::CreateIface
      *  @param[in] bus - Bus to attach to.
      *  @param[in] objPath - Path to attach at.
      */
-    ConfManager(sdbusplus::bus::bus& bus, const char* objPath);
+    ConfManager(sdbusplus::bus_t& bus, const char* objPath);
 
     /** @brief Function to create snmp manager details D-Bus object.
      *  @param[in] address- IP address/Hostname.
@@ -76,7 +76,7 @@ class ConfManager : public details::CreateIface
 
   private:
     /** @brief sdbusplus DBus bus object. */
-    sdbusplus::bus::bus& bus;
+    sdbusplus::bus_t& bus;
 
     /** @brief Path of Object. */
     std::string objectPath;

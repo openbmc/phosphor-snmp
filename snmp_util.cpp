@@ -16,7 +16,7 @@ namespace phosphor
 using namespace phosphor::logging;
 using namespace sdbusplus::xyz::openbmc_project::Common::Error;
 
-ObjectValueTree getManagedObjects(sdbusplus::bus::bus& bus,
+ObjectValueTree getManagedObjects(sdbusplus::bus_t& bus,
                                   const std::string& service,
                                   const std::string& objPath)
 {
@@ -31,7 +31,7 @@ ObjectValueTree getManagedObjects(sdbusplus::bus::bus& bus,
         auto reply = bus.call(method);
         reply.read(interfaces);
     }
-    catch (const sdbusplus::exception::exception& e)
+    catch (const sdbusplus::exception_t& e)
     {
         lg2::error("Failed to get managed objects: {PATH}", "PATH", objPath);
         elog<InternalFailure>();

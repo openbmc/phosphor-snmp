@@ -44,7 +44,7 @@ using ObjectValueTree =
  *  @param[in] objPath - D-Bus object path.
  *  @return On success returns the map of name value pair.
  */
-ObjectValueTree getManagedObjects(sdbusplus::bus::bus& bus,
+ObjectValueTree getManagedObjects(sdbusplus::bus_t& bus,
                                   const std::string& service,
                                   const std::string& objPath);
 

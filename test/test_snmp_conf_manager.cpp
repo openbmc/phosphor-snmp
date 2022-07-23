@@ -19,7 +19,7 @@ using InvalidArgument =
 class TestSNMPConfManager : public testing::Test
 {
   public:
-    sdbusplus::bus::bus bus;
+    sdbusplus::bus_t bus;
     ConfManager manager;
     // confDir could have been created locally in the
     // TestSNMPConfManager but somehow that is leading

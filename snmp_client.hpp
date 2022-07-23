@@ -17,7 +17,7 @@ namespace snmp
 
 class ConfManager;
 
-using Ifaces = sdbusplus::server::object::object<
+using Ifaces = sdbusplus::server::object_t<
     sdbusplus::xyz::openbmc_project::Network::server::Client,
     sdbusplus::xyz::openbmc_project::Object::server::Delete>;
 
@@ -45,7 +45,7 @@ class Client : public Ifaces
      *  @param[in] address - IPaddress/Hostname.
      *  @param[in] port - network port.
      */
-    Client(sdbusplus::bus::bus& bus, const char* objPath, ConfManager& parent,
+    Client(sdbusplus::bus_t& bus, const char* objPath, ConfManager& parent,
            const std::string& address, uint16_t port);
 
     /** @brief Constructor to put object onto bus at a dbus path.
@@ -53,7 +53,7 @@ class Client : public Ifaces
      *  @param[in] objPath - Path to attach at.
      *  @param[in] parent - Parent D-bus Object.
      */
-    Client(sdbusplus::bus::bus& bus, const char* objPath, ConfManager& parent) :
+    Client(sdbusplus::bus_t& bus, const char* objPath, ConfManager& parent) :
         Ifaces(bus, objPath, Ifaces::action::defer_emit),
         id(std::stol(std::filesystem::path(objPath).filename())), parent(parent)
     {}

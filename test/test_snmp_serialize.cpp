@@ -22,7 +22,7 @@ namespace fs = std::filesystem;
 class TestSerialize : public testing::Test
 {
   public:
-    sdbusplus::bus::bus bus;
+    sdbusplus::bus_t bus;
     ConfManager manager;
     TestSerialize() :
         bus(sdbusplus::bus::new_default()),

@@ -24,7 +24,7 @@ using namespace phosphor::logging;
 using namespace sdbusplus::xyz::openbmc_project::Common::Error;
 using Argument = xyz::openbmc_project::Common::InvalidArgument;
 
-ConfManager::ConfManager(sdbusplus::bus::bus& bus, const char* objPath) :
+ConfManager::ConfManager(sdbusplus::bus_t& bus, const char* objPath) :
     details::CreateIface(bus, objPath,
                          details::CreateIface::action::defer_emit),
     dbusPersistentLocation(SNMP_CONF_PERSIST_PATH), bus(bus),
