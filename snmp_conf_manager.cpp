@@ -40,7 +40,7 @@ std::string ConfManager::client(std::string address, uint16_t port)
     try
     {
         // just to check whether given address is valid or not.
-        resolveAddress(address);
+        address = resolveAddress(address);
     }
     catch (const InternalFailure& e)
     {
