@@ -2,6 +2,7 @@
 
 #include "snmp_conf_manager.hpp"
 #include "snmp_serialize.hpp"
+#include "snmp_util.hpp"
 
 namespace phosphor
 {
@@ -31,6 +32,7 @@ std::string Client::address(std::string value)
 
     parent.checkClientConfigured(value, port());
 
+    value = resolveAddress(value);
     auto addr = Ifaces::address(value);
     serialize(id, *this, parent.dbusPersistentLocation);
     return addr;
