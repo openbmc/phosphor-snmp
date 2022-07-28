@@ -82,6 +82,12 @@ class Client : public Ifaces
      */
     void delete_() override;
 
+    /** @brief Get client ID.
+     *
+     * @return Client ID
+     */
+    Id getClientId();
+
   private:
     /** Client ID. */
     Id id;

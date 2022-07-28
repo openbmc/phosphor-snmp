@@ -61,13 +61,22 @@ class TestSNMPConfManager : public testing::Test
         return false;
     }
 
-    void deleteSNMPClient(std::string ipaddress)
+    void deleteSNMPClient(const std::string& ipaddress)
     {
+        std::vector<size_t> ids{};
         for (const auto& val : manager.clients)
         {
             if (val.second.get()->address() == ipaddress)
             {
-                val.second.get()->delete_();
+                ids.emplace_back(val.second.get()->getClientId());
+            }
+        }
+
+        for (const auto& id : ids)
+        {
+            if (manager.clients.contains(id))
+            {
+                manager.clients.at(id)->delete_();
             }
         }
     }
@@ -121,15 +130,17 @@ TEST_F(TestSNMPConfManager, DeleteSNMPClient)
 {
     createSNMPClient("192.168.1.1", 24);
     createSNMPClient("192.168.1.2", 24);
+    createSNMPClient("192.168.1.1", 25);
 
     auto& clients = getSNMPClients();
-    EXPECT_EQ(2U, clients.size());
+    EXPECT_EQ(3U, clients.size());
 
     deleteSNMPClient("192.168.1.1");
+    EXPECT_EQ(1U, clients.size());
 
     auto path = createSNMPClient("192.168.1.3", 24);
     std::string expectedPath = managerObjPath;
-    expectedPath += std::string("/3");
+    expectedPath += std::string("/4");
     EXPECT_EQ(path, expectedPath);
 
     EXPECT_EQ(2U, clients.size());

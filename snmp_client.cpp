@@ -55,6 +55,11 @@ void Client::delete_()
     parent.deleteSNMPClient(id);
 }
 
+Id Client::getClientId()
+{
+    return this->id;
+}
+
 } // namespace snmp
 } // namespace network
 } // namespace phosphor
