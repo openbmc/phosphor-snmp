@@ -82,9 +82,10 @@ class Client : public Ifaces
      */
     void delete_() override;
 
-  private:
     /** Client ID. */
     Id id;
+
+  private:
     /** @brief Parent D-Bus Object. */
     ConfManager& parent;
 };
