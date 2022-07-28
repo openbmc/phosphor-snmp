@@ -36,7 +36,6 @@ std::string ConfManager::client(std::string address, uint16_t port)
     // will throw exception if it is already configured.
     checkClientConfigured(address, port);
 
-    lastClientId++;
     try
     {
         // just to check whether given address is valid or not.
@@ -49,6 +48,7 @@ std::string ConfManager::client(std::string address, uint16_t port)
                               Argument::ARGUMENT_VALUE(address.c_str()));
     }
 
+    lastClientId++;
     // create the D-Bus object
     std::filesystem::path objPath;
     objPath /= objectPath;
