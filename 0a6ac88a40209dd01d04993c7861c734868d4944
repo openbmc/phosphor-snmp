@@ -70,6 +70,30 @@
       },
       "revId": "0a6ac88a40209dd01d04993c7861c734868d4944",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20f5b331_7bb6617a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000400
+      },
+      "writtenOn": "2022-08-17T05:49:33Z",
+      "side": 1,
+      "message": "\u003e Are you saying that we don\u0027t need this commit?\n\nYes. We don\u0027t need this commit",
+      "parentUuid": "dae884f2_55209756",
+      "range": {
+        "startLine": 15,
+        "startChar": 3,
+        "endLine": 15,
+        "endChar": 11
+      },
+      "revId": "0a6ac88a40209dd01d04993c7861c734868d4944",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     }
   ]
 }
