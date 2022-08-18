@@ -1,0 +1,7 @@
+Verified+1: OpenBMC CI <openbmcbump-ci@yahoo.com>
+Code-Review+2: Ratan Gupta <ratankgupta31@gmail.com>
+Submitted-by: George Liu <liuxiwei@inspur.com>
+Submitted-at: Thu, 18 Aug 2022 09:38:47 +0000
+Reviewed-on: https://gerrit.openbmc.org/c/openbmc/phosphor-snmp/+/55983
+Project: openbmc/phosphor-snmp
+Branch: refs/heads/master
