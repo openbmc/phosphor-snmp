@@ -98,7 +98,6 @@ u_char getASNType<std::string>()
 
 class Notification
 {
-
   public:
     Notification() = default;
     Notification(const Notification&) = delete;
@@ -148,7 +147,6 @@ class TestErrorNotification;
  */
 class OBMCErrorNotification : public Notification
 {
-
   private:
     uint32_t OBMCErrorID;
     uint64_t OBMCErrorTimestamp;
