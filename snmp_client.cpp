@@ -17,6 +17,8 @@ Client::Client(sdbusplus::bus_t& bus, const char* objPath, ConfManager& parent,
 {
     this->address(address);
     this->port(port);
+    this->transportProtocol(sdbusplus::xyz::openbmc_project::Network::server::
+                                Client::TransportProtocol::UDP);
 
     // Emit deferred signal.
     emit_object_added();
