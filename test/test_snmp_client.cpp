@@ -41,6 +41,9 @@ TEST_F(TestSNMPClient, UpdateProperty)
     std::string objPath = mgrObjPath;
     objPath += "/" + std::to_string(1);
     Client client(bus, objPath.c_str(), manager, "1.1.1.1", 202);
+    EXPECT_EQ(client.transportProtocol(),
+              sdbusplus::server::xyz::openbmc_project::network::Client::
+                  TransportProtocol::UDP);
     EXPECT_EQ(client.address(), "1.1.1.1");
     EXPECT_EQ(client.port(), 202);
     client.address("2.2.2.2");
