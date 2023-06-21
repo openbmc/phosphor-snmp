@@ -34,6 +34,23 @@
       "parentUuid": "22bd92c5_4f19b544",
       "revId": "a53a5024edeb30778b5f38979b87b00e379d7ae4",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1270e609_15595ddc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-06-21T20:27:10Z",
+      "side": 1,
+      "message": "Looks like the compile failure is unrelated to the dbus interfaces, since I merged those now.",
+      "revId": "a53a5024edeb30778b5f38979b87b00e379d7ae4",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     }
   ]
 }
