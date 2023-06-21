@@ -51,6 +51,24 @@
       "message": "Looks like the compile failure is unrelated to the dbus interfaces, since I merged those now.",
       "revId": "a53a5024edeb30778b5f38979b87b00e379d7ae4",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "308812cb_33eea847",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000182
+      },
+      "writtenOn": "2023-06-21T20:39:54Z",
+      "side": 1,
+      "message": "This error seems from getFieldOIDList when it compiles with c++analyzer, first try with just c++ was fine:\n\nstd::__cxx11::basic_string\u003cchar, std::char_traits\u003cchar\u003e, std::allocator\u003cchar\u003e \u003e \u003e \u003e \u003e phosphor::network::snmp::OBMCErrorNotification::getFieldOIDList()’ at ../../../snmp_notification.hpp:203:32:\n/usr/include/c++/13/variant:460:9: error: writing 1 byte into a region of size 0 [-Werror\u003dstringop-overflow\u003d]",
+      "parentUuid": "1270e609_15595ddc",
+      "revId": "a53a5024edeb30778b5f38979b87b00e379d7ae4",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     }
   ]
 }
