@@ -17,7 +17,7 @@ class TestErrorNotification : public testing::Test
 {
   public:
     OBMCErrorNotification notif;
-    TestErrorNotification()
+    TestErrorNotification() : notif(0, 0, 0, "")
     {
         // Empty
     }
