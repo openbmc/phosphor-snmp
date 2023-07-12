@@ -17,7 +17,7 @@ class TestErrorNotification : public testing::Test
 {
   public:
     OBMCErrorNotification notif;
-    TestErrorNotification()
+    TestErrorNotification() : notif(0, 0, 0, "")
     {
         // Empty
     }
@@ -35,10 +35,10 @@ TEST_F(TestErrorNotification, VerifyErrorNotificationFields)
     EXPECT_EQ(ERROR_NOTIF_FIELD_COUNT, oidList.size());
 
     // Verify the type of each field.
-    EXPECT_EQ(ASN_UNSIGNED, std::get<Type>(oidList[0]));
+    EXPECT_EQ(ASN_INTEGER, std::get<Type>(oidList[0]));
+    EXPECT_EQ(ASN_UNSIGNED, std::get<Type>(oidList[1]));
 
-    EXPECT_EQ(ASN_OPAQUE_U64, std::get<Type>(oidList[1]));
-    EXPECT_EQ(ASN_INTEGER, std::get<Type>(oidList[2]));
+    EXPECT_EQ(ASN_OPAQUE_U64, std::get<Type>(oidList[2]));
     EXPECT_EQ(ASN_OCTET_STR, std::get<Type>(oidList[3]));
 }
 

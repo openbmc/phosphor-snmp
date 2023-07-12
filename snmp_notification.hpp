@@ -154,7 +154,7 @@ class OBMCErrorNotification : public Notification
     std::string OBMCErrorMessage;
 
   public:
-    OBMCErrorNotification() = default;
+    OBMCErrorNotification() = delete;
     OBMCErrorNotification(const OBMCErrorNotification&) = delete;
     OBMCErrorNotification(OBMCErrorNotification&&) = default;
     OBMCErrorNotification& operator=(const OBMCErrorNotification&) = delete;
@@ -186,27 +186,34 @@ class OBMCErrorNotification : public Notification
     {
         std::vector<Object> objectList;
 
-        OID_LEN idLen = 11;
-        OID id = {1, 3, 6, 1, 4, 1, 49871, 1, 0, 1, 1};
-        auto type = getASNType<decltype(OBMCErrorID)>();
+        {
+            OID_LEN idLen = 11;
+            OID id = {1, 3, 6, 1, 4, 1, 49871, 1, 0, 1, 3};
+            u_char type = getASNType<decltype(OBMCErrorSeverity)>();
 
-        objectList.emplace_back(id, idLen, type, OBMCErrorID);
+            objectList.emplace_back(id, idLen, type, OBMCErrorSeverity);
+        }
+        {
+            OID_LEN idLen = 11;
+            OID id = {1, 3, 6, 1, 4, 1, 49871, 1, 0, 1, 1};
+            u_char type = getASNType<decltype(OBMCErrorID)>();
 
-        id = {1, 3, 6, 1, 4, 1, 49871, 1, 0, 1, 2};
-        type = getASNType<decltype(OBMCErrorTimestamp)>();
+            objectList.emplace_back(id, idLen, type, OBMCErrorID);
+        }
+        {
+            OID_LEN idLen = 11;
+            OID id = {1, 3, 6, 1, 4, 1, 49871, 1, 0, 1, 2};
+            u_char type = getASNType<decltype(OBMCErrorTimestamp)>();
 
-        objectList.emplace_back(id, idLen, type, OBMCErrorTimestamp);
+            objectList.emplace_back(id, idLen, type, OBMCErrorTimestamp);
+        }
+        {
+            OID_LEN idLen = 11;
+            OID id = {1, 3, 6, 1, 4, 1, 49871, 1, 0, 1, 4};
+            u_char type = getASNType<decltype(OBMCErrorMessage)>();
 
-        id = {1, 3, 6, 1, 4, 1, 49871, 1, 0, 1, 3};
-        type = getASNType<decltype(OBMCErrorSeverity)>();
-
-        objectList.emplace_back(id, idLen, type, OBMCErrorSeverity);
-
-        id = {1, 3, 6, 1, 4, 1, 49871, 1, 0, 1, 4};
-        type = getASNType<decltype(OBMCErrorMessage)>();
-
-        objectList.emplace_back(id, idLen, type, OBMCErrorMessage);
-
+            objectList.emplace_back(id, idLen, type, OBMCErrorMessage);
+        }
         return objectList;
     }
 
