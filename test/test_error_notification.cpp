@@ -35,11 +35,11 @@ TEST_F(TestErrorNotification, VerifyErrorNotificationFields)
     EXPECT_EQ(ERROR_NOTIF_FIELD_COUNT, oidList.size());
 
     // Verify the type of each field.
-    EXPECT_EQ(ASN_UNSIGNED, std::get<Type>(oidList[0]));
+    EXPECT_EQ(ASN_UNSIGNED, oidList[0].type);
 
-    EXPECT_EQ(ASN_OPAQUE_U64, std::get<Type>(oidList[1]));
-    EXPECT_EQ(ASN_INTEGER, std::get<Type>(oidList[2]));
-    EXPECT_EQ(ASN_OCTET_STR, std::get<Type>(oidList[3]));
+    EXPECT_EQ(ASN_OPAQUE_U64, oidList[1].type);
+    EXPECT_EQ(ASN_INTEGER, oidList[2].type);
+    EXPECT_EQ(ASN_OCTET_STR, oidList[3].type);
 }
 
 TEST_F(TestErrorNotification, GetASNType)
