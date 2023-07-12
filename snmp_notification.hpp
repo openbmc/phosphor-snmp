@@ -148,9 +148,9 @@ class TestErrorNotification;
 class OBMCErrorNotification : public Notification
 {
   private:
-    uint32_t OBMCErrorID;
-    uint64_t OBMCErrorTimestamp;
-    int32_t OBMCErrorSeverity;
+    uint32_t OBMCErrorID = 0;
+    uint64_t OBMCErrorTimestamp = 0;
+    int32_t OBMCErrorSeverity = 0;
     std::string OBMCErrorMessage;
 
   public:
