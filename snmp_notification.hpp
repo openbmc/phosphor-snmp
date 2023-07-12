@@ -35,7 +35,6 @@
 
 #include <sstream>
 #include <string>
-#include <tuple>
 #include <vector>
 
 namespace phosphor
@@ -54,7 +53,13 @@ using Value = std::variant<uint32_t, uint64_t, int32_t, std::string>;
 oid SNMPTrapOID[] = {1, 3, 6, 1, 6, 3, 1, 1, 4, 1, 0};
 oid sysuptimeOID[] = {1, 3, 6, 1, 2, 1, 1, 3, 0};
 
-using Object = std::tuple<OID, OID_LEN, Type, Value>;
+struct Object
+{
+    OID oid;
+    OID_LEN oid_len;
+    Type type;
+    Value value;
+};
 
 /** @brief Get the ASN object type from the given templatized type.
  *         Specialize this template for handling a specific type.

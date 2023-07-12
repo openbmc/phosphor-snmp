@@ -134,8 +134,8 @@ void Notification::sendTrap()
 
         for (const auto& object : objectList)
         {
-            if (!addPDUVar(*pdu, std::get<0>(object), std::get<1>(object),
-                           std::get<2>(object), std::get<3>(object)))
+            if (!addPDUVar(*pdu, object.oid, object.oid_len, object.type,
+                           object.value))
             {
                 lg2::error("Failed to add the SNMP var");
                 snmp_free_pdu(pdu);
