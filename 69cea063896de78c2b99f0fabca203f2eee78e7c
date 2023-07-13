@@ -16,6 +16,24 @@
       "message": "Ed, Sorry, I didn\u0027t get what was the issue and what we are trying to fix here?",
       "revId": "69cea063896de78c2b99f0fabca203f2eee78e7c",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a38dbeb5_816fae58",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2023-07-13T04:56:51Z",
+      "side": 1,
+      "message": "The issue was that the code didn\u0027t build.  This made the code build.  I\u0027m not certain what\u0027s wrong, there appears to be a stack corruption somewhere else that\u0027s causing issues, but this patch fixes it.",
+      "parentUuid": "3aa777a5_1d94d130",
+      "revId": "69cea063896de78c2b99f0fabca203f2eee78e7c",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     }
   ]
 }
