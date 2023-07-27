@@ -88,6 +88,24 @@
       "parentUuid": "7970283c_eea24bfb",
       "revId": "69cea063896de78c2b99f0fabca203f2eee78e7c",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cdcfbbd_c997df80",
+        "filename": "snmp_notification.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2023-07-27T14:53:35Z",
+      "side": 0,
+      "message": "you need to remember the index, you need to use std:get to do a lookup, and the parameters aren’t named.  using a struct solves all of these problems.",
+      "parentUuid": "722465e2_48e5e85a",
+      "revId": "69cea063896de78c2b99f0fabca203f2eee78e7c",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     }
   ]
 }
