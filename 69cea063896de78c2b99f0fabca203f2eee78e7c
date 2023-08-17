@@ -142,6 +142,24 @@
       "parentUuid": "eec3ae56_48567cab",
       "revId": "69cea063896de78c2b99f0fabca203f2eee78e7c",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9134b6cc_9d25e77f",
+        "filename": "snmp_notification.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2023-08-17T15:34:20Z",
+      "side": 0,
+      "message": "\u003e Does that mean we should not use tuple at all? Or if we are using the tuple then don\u0027t use get, Instead use the tie to make it descriptive.\n\u003e Any guidelines here?\n\nDon\u0027t use tuple unless you\u0027re using it for the intended purpose, storing variadic template parameters in generic code in a structure without prior knowledge, or code that needs to combine (ie tuple_cat) two structures without redeclaring each structure.\n\nThis code does neither of those things.",
+      "parentUuid": "0cdb61ce_efc8e377",
+      "revId": "69cea063896de78c2b99f0fabca203f2eee78e7c",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     }
   ]
 }
