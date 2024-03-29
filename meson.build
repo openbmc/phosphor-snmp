@@ -85,7 +85,7 @@ import('pkgconfig').generate(
     libsnmp_lib,
     name: meson.project_name(),
     version: meson.project_version(),
-    requires: sdbusplus_dep,
+    libraries: sdbusplus_dep,
     description: 'Phosphor snmp utilities',
 )
 
