@@ -23,6 +23,26 @@ libsystemd_dep = dependency('libsystemd')
 netsnmp_dep = dependency('netsnmp')
 libcrypto_dep = dependency('libcrypto')
 
+cpp = meson.get_compiler('cpp')
+
+# Get Cereal dependency.
+cereal_dep = dependency('cereal', required: false)
+has_cereal = cpp.has_header_symbol(
+    'cereal/cereal.hpp',
+    'cereal::specialize',
+    dependencies: cereal_dep,
+    required: false)
+if not has_cereal
+    cereal_opts = import('cmake').subproject_options()
+    cereal_opts.add_cmake_defines({'BUILD_TESTS': 'OFF', 'SKIP_PERFORMANCE_COMPARISON': 'ON'})
+    cereal_proj = import('cmake').subproject(
+        'cereal',
+        options: cereal_opts,
+        required: false)
+    assert(cereal_proj.found(), 'cereal is required')
+    cereal_dep = cereal_proj.dependency('cereal')
+endif
+
 snmp_headers = include_directories('.')
 
 deps = [
@@ -30,6 +50,7 @@ deps = [
     phosphor_dbus_interfaces_dep,
     phosphor_logging_dep,
     sdbusplus_dep,
+    cereal_dep,
 ]
 
 sources = [
