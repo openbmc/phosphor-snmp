@@ -174,8 +174,8 @@ class OBMCErrorNotification : public Notification
      */
     OBMCErrorNotification(uint32_t id, uint64_t ts, int32_t sev,
                           std::string msg) :
-        OBMCErrorID(id),
-        OBMCErrorTimestamp(ts), OBMCErrorSeverity(sev), OBMCErrorMessage(msg)
+        OBMCErrorID(id), OBMCErrorTimestamp(ts), OBMCErrorSeverity(sev),
+        OBMCErrorMessage(msg)
     {}
 
   protected:
