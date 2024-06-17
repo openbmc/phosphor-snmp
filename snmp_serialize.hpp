@@ -24,7 +24,7 @@ namespace fs = std::filesystem;
  */
 fs::path serialize(Id id, const Client& manager, const fs::path& path);
 
-/** @brief Deserialze SNMP manager/client info into a D-Bus object
+/** @brief Deserialize SNMP manager/client info into a D-Bus object
  *  @param[in] path - pathname of persisted manager/client file.
  *  @param[in] manager - reference to snmp client/manager object
  *                       which is the target of deserialization.
