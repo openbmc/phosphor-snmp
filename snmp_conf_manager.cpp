@@ -140,8 +140,8 @@ void ConfManager::restoreClients()
 
         fs::path objPath = objectPath;
         objPath /= managerID;
-        auto manager = std::make_unique<Client>(bus, objPath.string().c_str(),
-                                                *this);
+        auto manager =
+            std::make_unique<Client>(bus, objPath.string().c_str(), *this);
         if (deserialize(confFile.path(), *manager))
         {
             manager->emit_object_added();
