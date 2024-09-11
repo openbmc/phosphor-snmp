@@ -115,12 +115,16 @@ std::vector<std::string> getManagers()
 {
     std::vector<std::string> managers;
     auto& bus = getBus();
-    auto objTree = phosphor::getManagedObjects(bus, busName, root);
-    for (const auto& objIter : objTree)
+    try
     {
-        try
+        auto objTree = phosphor::getManagedObjects(bus, busName, root);
+        for (const auto& [_, intfMap] : objTree)
         {
-            auto& intfMap = objIter.second;
+            if (!intfMap.contains(clientIntf))
+            {
+                continue;
+            }
+
             auto& snmpClientProps = intfMap.at(clientIntf);
             auto& address =
                 std::get<std::string>(snmpClientProps.at("Address"));
@@ -134,11 +138,12 @@ std::vector<std::string> getManagers()
             }
             managers.push_back(mgr);
         }
-        catch (const std::exception& e)
-        {
-            lg2::error("Invalid address: {ERROR}", "ERROR", e);
-        }
     }
+    catch (const std::exception& e)
+    {
+        lg2::error("Invalid address: {ERROR}", "ERROR", e);
+    }
+
     return managers;
 }
 
