@@ -52,7 +52,7 @@ std::string resolveAddress(const std::string& address)
     hints.ai_socktype = SOCK_STREAM;
     hints.ai_flags |= AI_CANONNAME;
 
-    auto result = getaddrinfo(address.c_str(), NULL, &hints, &addr);
+    auto result = getaddrinfo(address.c_str(), nullptr, &hints, &addr);
     if (result)
     {
         lg2::error("getaddrinfo failed {ADDRESS}: {RC}", "ADDRESS", address,
@@ -65,7 +65,7 @@ std::string resolveAddress(const std::string& address)
 
     char ipaddress[INET6_ADDRSTRLEN]{0};
     result = getnameinfo(addrPtr->ai_addr, addrPtr->ai_addrlen, ipaddress,
-                         sizeof(ipaddress), NULL, 0, NI_NUMERICHOST);
+                         sizeof(ipaddress), nullptr, 0, NI_NUMERICHOST);
     if (result)
     {
         lg2::error("getnameinfo failed {ADDRESS}: {RC}", "ADDRESS", address,
