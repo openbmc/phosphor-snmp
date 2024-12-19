@@ -33,6 +33,23 @@
       "message": "looks good to me, do not have merge permission for me",
       "revId": "529af264d008d4f496609f2f5030a1abe84df50d",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b95fcc77_a1dff541",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000022
+      },
+      "writtenOn": "2024-12-19T05:56:57Z",
+      "side": 1,
+      "message": "Should avoid such commits, where we are not making any code changes.",
+      "revId": "529af264d008d4f496609f2f5030a1abe84df50d",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     }
   ]
 }
