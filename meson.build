@@ -119,6 +119,6 @@ import('pkgconfig').generate(
 install_headers('snmp.hpp', 'snmp_notification.hpp', subdir: '.')
 
 build_tests = get_option('tests')
-if not build_tests.disabled()
-    subdir('test')
+if build_tests.allowed()
+  subdir('test')
 endif
