@@ -1,19 +1,26 @@
 project(
-    'phosphor-snmp', 'cpp',
-    version : '1.0.0',
+    'phosphor-snmp',
+    'cpp',
+    version: '1.0.0',
     meson_version: '>=1.1.1',
     default_options: [
         'warning_level=3',
         'werror=true',
         'cpp_std=c++23',
         'buildtype=debugoptimized',
-    ]
+    ],
 )
 
 conf_data = configuration_data()
 conf_data.set_quoted('BUSNAME_NETWORK_SNMP', 'xyz.openbmc_project.Network.SNMP')
-conf_data.set_quoted('OBJ_NETWORK_SNMP', '/xyz/openbmc_project/network/snmp/manager')
-conf_data.set_quoted('SNMP_CONF_PERSIST_PATH', '/var/lib/phosphor-snmp/managers/')
+conf_data.set_quoted(
+    'OBJ_NETWORK_SNMP',
+    '/xyz/openbmc_project/network/snmp/manager',
+)
+conf_data.set_quoted(
+    'SNMP_CONF_PERSIST_PATH',
+    '/var/lib/phosphor-snmp/managers/',
+)
 conf_data.set('CLASS_VERSION', 1)
 
 sdbusplus_dep = dependency('sdbusplus')
@@ -31,14 +38,18 @@ has_cereal = cpp.has_header_symbol(
     'cereal/cereal.hpp',
     'cereal::specialize',
     dependencies: cereal_dep,
-    required: false)
+    required: false,
+)
 if not has_cereal
     cereal_opts = import('cmake').subproject_options()
-    cereal_opts.add_cmake_defines({'BUILD_TESTS': 'OFF', 'SKIP_PERFORMANCE_COMPARISON': 'ON'})
+    cereal_opts.add_cmake_defines(
+        {'BUILD_TESTS': 'OFF', 'SKIP_PERFORMANCE_COMPARISON': 'ON'},
+    )
     cereal_proj = import('cmake').subproject(
         'cereal',
         options: cereal_opts,
-        required: false)
+        required: false,
+    )
     assert(cereal_proj.found(), 'cereal is required')
     cereal_dep = cereal_proj.dependency('cereal')
 endif
@@ -61,9 +72,7 @@ sources = [
     'snmp_serialize.cpp',
 ]
 
-configure_file(output: 'config.h',
-    configuration: conf_data
-)
+configure_file(output: 'config.h', configuration: conf_data)
 
 executable(
     'phosphor-network-snmpconf',
@@ -71,7 +80,7 @@ executable(
     implicit_include_directories: true,
     dependencies: deps,
     install: true,
-    install_dir: get_option('bindir')
+    install_dir: get_option('bindir'),
 )
 
 libsnmp_deps = [
@@ -82,10 +91,7 @@ libsnmp_deps = [
     libcrypto_dep,
 ]
 
-libsnmp_sources = files(
-    'snmp_notification.cpp',
-    'snmp_util.cpp',
-)
+libsnmp_sources = files('snmp_notification.cpp', 'snmp_util.cpp')
 
 libsnmp_lib = library(
     'snmp',
@@ -110,13 +116,9 @@ import('pkgconfig').generate(
     description: 'Phosphor snmp utilities',
 )
 
-install_headers(
-    'snmp.hpp',
-    'snmp_notification.hpp',
-    subdir: '.',
-)
+install_headers('snmp.hpp', 'snmp_notification.hpp', subdir: '.')
 
 build_tests = get_option('tests')
 if not build_tests.disabled()
-  subdir('test')
+    subdir('test')
 endif
