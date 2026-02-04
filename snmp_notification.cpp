@@ -86,7 +86,7 @@ void Notification::sendTrap()
         {
             lg2::error("Unable to get the snmp session: {SNMPMANAGER}",
                        "SNMPMANAGER", mgr);
-            elog<InternalFailure>();
+            continue;
         }
 
         // Wrap the raw pointer in RAII
@@ -97,8 +97,10 @@ void Notification::sendTrap()
         auto pdu = snmp_pdu_create(SNMP_MSG_TRAP2);
         if (!pdu)
         {
-            lg2::error("Failed to create notification PDU");
-            elog<InternalFailure>();
+            lg2::error(
+                "Failed to create notification PDU for manager {SNMPMANAGER}",
+                "SNMPMANAGER", mgr);
+            continue;
         }
 
         // https://tools.ietf.org/search/rfc3416#page-22
@@ -110,9 +112,11 @@ void Notification::sendTrap()
                          't', sysuptimeStr.c_str()))
 
         {
-            lg2::error("Failed to add the SNMP var(systime)");
+            lg2::error(
+                "Failed to add SNMP var(sysUpTime) for manager {SNMPMANAGER}",
+                "SNMPMANAGER", mgr);
             snmp_free_pdu(pdu);
-            elog<InternalFailure>();
+            continue;
         }
 
         pdu->trap_type = SNMP_TRAP_ENTERPRISESPECIFIC;
@@ -125,9 +129,11 @@ void Notification::sendTrap()
                                    ASN_OBJECT_ID, trapInfo.first.data(),
                                    trapInfo.second * sizeof(oid)))
         {
-            lg2::error("Failed to add the SNMP var(trapID)");
+            lg2::error(
+                "Failed to add SNMP var(snmpTrapOID.0) for manager {SNMPMANAGER}",
+                "SNMPMANAGER", mgr);
             snmp_free_pdu(pdu);
-            elog<InternalFailure>();
+            continue;
         }
 
         auto objectList = getFieldOIDList();
@@ -137,19 +143,23 @@ void Notification::sendTrap()
             if (!addPDUVar(*pdu, object.oid, object.oid_len, object.type,
                            object.value))
             {
-                lg2::error("Failed to add the SNMP var");
+                lg2::error(
+                    "Failed to add SNMP var (type={TYPE}) for manager {SNMPMANAGER}",
+                    "TYPE", object.type, "SNMPMANAGER", mgr);
                 snmp_free_pdu(pdu);
-                elog<InternalFailure>();
+                goto next_manager;
             }
         }
         // pdu is freed by snmp_send
         if (!snmp_send(sessionPtr.get(), pdu))
         {
-            lg2::error("Failed to send the snmp trap.");
-            elog<InternalFailure>();
+            lg2::error("Failed to send SNMP trap to manager {MGR}", "MGR", mgr);
+            snmp_free_pdu(pdu);
+            continue;
         }
 
         lg2::debug("Sent SNMP Trap: {MGR}", "MGR", mgr);
+    next_manager:;
     }
 }
 
