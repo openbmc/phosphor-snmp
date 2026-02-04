@@ -173,7 +173,7 @@ class OBMCErrorNotification : public Notification
      *  @param[in] msg - The message of the error.
      */
     OBMCErrorNotification(uint32_t id, uint64_t ts, int32_t sev,
-                          std::string msg) :
+                          const std::string& msg) :
         OBMCErrorID(id), OBMCErrorTimestamp(ts), OBMCErrorSeverity(sev),
         OBMCErrorMessage(msg)
     {}
