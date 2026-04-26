@@ -34,8 +34,7 @@ using PropertyMap = std::map<DbusProperty, Value>;
 
 using DbusInterfaceMap = std::map<DbusInterface, PropertyMap>;
 
-using ObjectValueTree =
-    std::map<sdbusplus::message::object_path, DbusInterfaceMap>;
+using ObjectValueTree = std::map<sdbusplus::object_path, DbusInterfaceMap>;
 
 /** @brief Gets all managed objects associated with the given object
  *         path and service.
