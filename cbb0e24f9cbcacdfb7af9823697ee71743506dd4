@@ -1,0 +1,8 @@
+Verified+1: OpenBMC CI <openbmcbump-ci@yahoo.com>
+Code-Review+1: MARRI DEVENDER RAO <devenrao@in.ibm.com>
+Code-Review+2: Ratan Gupta <ratankgupta31@gmail.com>
+Submitted-by: Patrick Williams <patrick@stwcx.xyz>
+Submitted-at: Tue, 28 Apr 2026 14:32:25 +0000
+Reviewed-on: https://gerrit.openbmc.org/c/openbmc/phosphor-snmp/+/89086
+Project: openbmc/phosphor-snmp
+Branch: refs/heads/master
