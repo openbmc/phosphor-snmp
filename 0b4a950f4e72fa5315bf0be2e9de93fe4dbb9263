@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2eccd30a_7f4f86c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002630
+      },
+      "writtenOn": "2026-05-05T06:10:11Z",
+      "side": 1,
+      "message": "@ratankgupta31@gmail.com / @devenrao@in.ibm.com\n\ncan you help to merge this patch ?",
+      "revId": "0b4a950f4e72fa5315bf0be2e9de93fe4dbb9263",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    }
+  ]
+}
