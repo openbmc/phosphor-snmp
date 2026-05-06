@@ -41,6 +41,30 @@
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a8b2c5b_4a1fb035",
+        "filename": "snmp_notification.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1002630
+      },
+      "writtenOn": "2026-05-06T06:40:06Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "9cbc586b_49f8abd5",
+      "range": {
+        "startLine": 150,
+        "startChar": 13,
+        "endLine": 150,
+        "endChar": 34
+      },
+      "revId": "6ddc7f678544417ddaa56deb2d6aaaac0ec8b646",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b8325818_55f21d71",
@@ -64,6 +88,30 @@
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "24c09541_4e2fbe68",
+        "filename": "snmp_notification.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1002630
+      },
+      "writtenOn": "2026-05-06T06:40:06Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "b8325818_55f21d71",
+      "range": {
+        "startLine": 156,
+        "startChar": 61,
+        "endLine": 156,
+        "endChar": 64
+      },
+      "revId": "6ddc7f678544417ddaa56deb2d6aaaac0ec8b646",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "65017349_1db4df20",
@@ -77,6 +125,30 @@
       "writtenOn": "2026-05-06T06:05:40Z",
       "side": 1,
       "message": "remove this too.",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 162,
+        "endChar": 18
+      },
+      "revId": "6ddc7f678544417ddaa56deb2d6aaaac0ec8b646",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9eb80f1_2e86b868",
+        "filename": "snmp_notification.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1002630
+      },
+      "writtenOn": "2026-05-06T06:40:06Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "65017349_1db4df20",
       "range": {
         "startLine": 162,
         "startChar": 0,
