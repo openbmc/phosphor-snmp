@@ -16,6 +16,75 @@
       "message": "@devenrao@in.ibm.com\nThe patch has been rebased and CI passed on Patch Set 2. Could you help submit it?",
       "revId": "6ddc7f678544417ddaa56deb2d6aaaac0ec8b646",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cbc586b_49f8abd5",
+        "filename": "snmp_notification.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000022
+      },
+      "writtenOn": "2026-05-06T06:05:40Z",
+      "side": 1,
+      "message": "Please don\u0027t use goto.",
+      "range": {
+        "startLine": 150,
+        "startChar": 13,
+        "endLine": 150,
+        "endChar": 34
+      },
+      "revId": "6ddc7f678544417ddaa56deb2d6aaaac0ec8b646",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8325818_55f21d71",
+        "filename": "snmp_notification.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1000022
+      },
+      "writtenOn": "2026-05-06T06:05:40Z",
+      "side": 1,
+      "message": "SNMPMANGER?",
+      "range": {
+        "startLine": 156,
+        "startChar": 61,
+        "endLine": 156,
+        "endChar": 64
+      },
+      "revId": "6ddc7f678544417ddaa56deb2d6aaaac0ec8b646",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65017349_1db4df20",
+        "filename": "snmp_notification.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1000022
+      },
+      "writtenOn": "2026-05-06T06:05:40Z",
+      "side": 1,
+      "message": "remove this too.",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 162,
+        "endChar": 18
+      },
+      "revId": "6ddc7f678544417ddaa56deb2d6aaaac0ec8b646",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     }
   ]
 }
