@@ -68,6 +68,7 @@ sources = [
     'snmp_main.cpp',
     'snmp_conf_manager.cpp',
     'snmp_client.cpp',
+    'snmp_community_manager.cpp',
     'snmp_util.cpp',
     'snmp_serialize.cpp',
 ]
