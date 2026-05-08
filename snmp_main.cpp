@@ -1,5 +1,6 @@
 #include "config.h"
 
+#include "snmp_community_manager.hpp"
 #include "snmp_conf_manager.hpp"
 
 #include <phosphor-logging/lg2.hpp>
@@ -45,6 +46,10 @@ int main(int /*argc*/, char** /*argv[]*/)
         bus, OBJ_NETWORK_SNMP);
 
     manager->restoreClients();
+
+    // Create CommunityString manager on the same object path
+    phosphor::network::snmp::CommunityManager communityMgr(
+        bus, OBJ_NETWORK_SNMP);
 
     return sd_event_loop(eventPtr.get());
 }
