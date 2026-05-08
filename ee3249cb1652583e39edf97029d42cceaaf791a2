@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d46e0e3_d46a326b",
+        "filename": "snmp_community_manager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-05-08T14:49:37Z",
+      "side": 1,
+      "message": "Why are you writing a dbus interface by hand?  Please use the generated bindings.",
+      "revId": "ee3249cb1652583e39edf97029d42cceaaf791a2",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    }
+  ]
+}
