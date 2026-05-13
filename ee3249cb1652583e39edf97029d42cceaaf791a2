@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "46641fe0_6e4a150d",
+        "filename": "snmp_community_manager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1002762
+      },
+      "writtenOn": "2026-05-13T05:02:57Z",
+      "side": 1,
+      "message": "Agreed. Reworked to use the sdbusplus generated bindings (sdbusplus::server::object_t\u003c...CommunityString\u003e), same pattern as ConfManager and Client.",
+      "parentUuid": "7d46e0e3_d46a326b",
+      "revId": "ee3249cb1652583e39edf97029d42cceaaf791a2",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c2c05065_8085eb27",
         "filename": "snmp_main.cpp",
         "patchSetId": 3
@@ -31,6 +49,24 @@
       "writtenOn": "2026-05-08T15:35:51Z",
       "side": 1,
       "message": "I suspect there isn\u0027t any need for a unique_ptr on these.  Can\u0027t we just store an instance?",
+      "revId": "ee3249cb1652583e39edf97029d42cceaaf791a2",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00d6f681_fa383c7b",
+        "filename": "snmp_main.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1002762
+      },
+      "writtenOn": "2026-05-13T05:02:57Z",
+      "side": 1,
+      "message": "Done. Changed to a stack-allocated instance.",
+      "parentUuid": "c2c05065_8085eb27",
       "revId": "ee3249cb1652583e39edf97029d42cceaaf791a2",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     }
