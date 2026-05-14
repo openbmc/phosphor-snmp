@@ -36,6 +36,24 @@
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ee1576e_792efb09",
+        "filename": "snmp_community_manager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-05-14T20:56:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46641fe0_6e4a150d",
+      "revId": "ee3249cb1652583e39edf97029d42cceaaf791a2",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2c05065_8085eb27",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "Done. Changed to a stack-allocated instance.",
       "parentUuid": "c2c05065_8085eb27",
+      "revId": "ee3249cb1652583e39edf97029d42cceaaf791a2",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10d0366f_e13aeef7",
+        "filename": "snmp_main.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-05-14T20:56:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00d6f681_fa383c7b",
       "revId": "ee3249cb1652583e39edf97029d42cceaaf791a2",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     }

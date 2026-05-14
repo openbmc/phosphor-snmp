@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4558a192_304f5d2b",
+        "filename": "snmp_community_manager.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-05-14T20:56:13Z",
+      "side": 1,
+      "message": "nit: suggest using json here, and/or something that can be versioned.",
+      "revId": "a357eb1c4f1a2de41754c28a7ff9f1686ecc4528",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    }
+  ]
+}
