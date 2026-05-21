@@ -67,7 +67,7 @@ void Notification::sendTrap()
 
     // TODO: https://github.com/openbmc/openbmc/issues/3145
     session.version = SNMP_VERSION_2c;
-    session.community = (u_char*)comm;
+    session.community = reinterpret_cast<u_char*>(const_cast<char*>(comm));
     session.community_len = strlen(comm);
     session.callback = nullptr;
     session.callback_magic = nullptr;
@@ -137,23 +137,21 @@ void Notification::sendTrap()
         }
 
         auto objectList = getFieldOIDList();
-        bool addVarFailed = false;
-
-        for (const auto& object : objectList)
-        {
-            if (!addPDUVar(*pdu, object.oid, object.oid_len, object.type,
-                           object.value))
-            {
+        auto failed = std::find_if(
+            objectList.begin(), objectList.end(), [&](const auto& object) {
+                if (addPDUVar(*pdu, object.oid, object.oid_len, object.type,
+                              object.value))
+                {
+                    return false;
+                }
                 lg2::error(
                     "Failed to add SNMP var (type={TYPE}) for manager {SNMPMANAGER}",
                     "TYPE", object.type, "SNMPMANAGER", mgr);
-                snmp_free_pdu(pdu);
-                addVarFailed = true;
-                break;
-            }
-        }
-        if (addVarFailed)
+                return true;
+            });
+        if (failed != objectList.end())
         {
+            snmp_free_pdu(pdu);
             continue;
         }
         // pdu is freed by snmp_send
