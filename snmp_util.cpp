@@ -128,7 +128,7 @@ std::vector<std::string> getManagers()
             auto& snmpClientProps = intfMap.at(clientIntf);
             auto& address =
                 std::get<std::string>(snmpClientProps.at("Address"));
-            auto& port = std::get<uint16_t>(snmpClientProps.at("Port"));
+            const auto& port = std::get<uint16_t>(snmpClientProps.at("Port"));
             auto ipaddress = phosphor::network::resolveAddress(address);
             auto mgr = std::move(ipaddress);
             if (port > 0)
