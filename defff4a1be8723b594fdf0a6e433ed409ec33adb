@@ -46,6 +46,30 @@
       },
       "revId": "defff4a1be8723b594fdf0a6e433ed409ec33adb",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f12b100_a746a9d3",
+        "filename": "snmp_notification.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1002630
+      },
+      "writtenOn": "2026-06-05T10:43:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e533a494_dea905a6",
+      "range": {
+        "startLine": 140,
+        "startChar": 28,
+        "endLine": 140,
+        "endChar": 40
+      },
+      "revId": "defff4a1be8723b594fdf0a6e433ed409ec33adb",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     }
   ]
 }
