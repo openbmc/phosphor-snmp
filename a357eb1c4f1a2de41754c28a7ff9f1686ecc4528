@@ -50,6 +50,24 @@
       "message": "nit: suggest using json here, and/or something that can be versioned.",
       "revId": "a357eb1c4f1a2de41754c28a7ff9f1686ecc4528",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90e8aba1_0e5311f1",
+        "filename": "snmp_community_manager.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1002762
+      },
+      "writtenOn": "2026-06-09T10:59:32Z",
+      "side": 1,
+      "message": "Thanks for the suggestion. Could you please give more clarity on this ?",
+      "parentUuid": "4558a192_304f5d2b",
+      "revId": "a357eb1c4f1a2de41754c28a7ff9f1686ecc4528",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     }
   ]
 }
