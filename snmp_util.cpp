@@ -16,6 +16,11 @@ namespace phosphor
 using namespace phosphor::logging;
 using namespace sdbusplus::xyz::openbmc_project::Common::Error;
 
+static constexpr auto snmpServiceUnknown =
+    "org.freedesktop.DBus.Error.ServiceUnknown";
+static constexpr auto snmpUnknownObject =
+    "org.freedesktop.DBus.Error.UnknownObject";
+
 ObjectValueTree getManagedObjects(sdbusplus::bus_t& bus,
                                   const std::string& service,
                                   const std::string& objPath)
@@ -33,7 +38,17 @@ ObjectValueTree getManagedObjects(sdbusplus::bus_t& bus,
     }
     catch (const sdbusplus::exception_t& e)
     {
-        lg2::error("Failed to get managed objects: {PATH}", "PATH", objPath);
+        if (std::string(e.name()) == snmpServiceUnknown ||
+            std::string(e.name()) == snmpUnknownObject)
+        {
+            lg2::warning(
+                "SNMP service not available, skipping GetManagedObjects: "
+                "{PATH}",
+                "PATH", objPath);
+            return interfaces;
+        }
+        lg2::error("Failed to get managed objects: {ERROR} {PATH}", "ERROR",
+                   e.what(), "PATH", objPath);
         elog<InternalFailure>();
     }
 
@@ -114,9 +129,9 @@ static auto& getBus()
 std::vector<std::string> getManagers()
 {
     std::vector<std::string> managers;
-    auto& bus = getBus();
     try
     {
+        auto& bus = getBus();
         auto objTree = phosphor::getManagedObjects(bus, busName, root);
         for (const auto& [_, intfMap] : objTree)
         {
