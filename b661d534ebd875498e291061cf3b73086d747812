@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2e4bb5c_16c18bd0",
+        "filename": "snmp_util.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000022
+      },
+      "writtenOn": "2026-06-30T14:23:06Z",
+      "side": 1,
+      "message": "dbusSvcUnknown?",
+      "range": {
+        "startLine": 19,
+        "startChar": 22,
+        "endLine": 19,
+        "endChar": 40
+      },
+      "revId": "b661d534ebd875498e291061cf3b73086d747812",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "baf5ab7c_5f4f0d2a",
+        "filename": "snmp_util.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000022
+      },
+      "writtenOn": "2026-06-30T14:23:06Z",
+      "side": 1,
+      "message": "dbusUnknownObject",
+      "range": {
+        "startLine": 21,
+        "startChar": 22,
+        "endLine": 21,
+        "endChar": 40
+      },
+      "revId": "b661d534ebd875498e291061cf3b73086d747812",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b36cc985_b92c3583",
+        "filename": "snmp_util.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000022
+      },
+      "writtenOn": "2026-06-30T14:23:06Z",
+      "side": 1,
+      "message": "calling e.name() returns a const char* Constructing a std::string for the comparison works but is a minor allocation. A std::string_view comparison would be more efficient:\nif (e.name() \u003d\u003d std::string_view(snmpServiceUnknown) || ...",
+      "range": {
+        "startLine": 41,
+        "startChar": 12,
+        "endLine": 41,
+        "endChar": 33
+      },
+      "revId": "b661d534ebd875498e291061cf3b73086d747812",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    }
+  ]
+}
