@@ -48,19 +48,20 @@ std::string ConfManager::client(std::string address, uint16_t port)
                               Argument::ARGUMENT_VALUE(address.c_str()));
     }
 
-    lastClientId++;
+    auto nextId = lastClientId + 1;
     // create the D-Bus object
     std::filesystem::path objPath;
     objPath /= objectPath;
-    objPath /= std::to_string(lastClientId);
+    objPath /= std::to_string(nextId);
 
     auto client = std::make_unique<phosphor::network::snmp::Client>(
         bus, objPath.string().c_str(), *this, address, port);
 
     // save the D-Bus object
-    serialize(lastClientId, *client, dbusPersistentLocation);
+    serialize(nextId, *client, dbusPersistentLocation);
 
-    this->clients.emplace(lastClientId, std::move(client));
+    this->clients.emplace(nextId, std::move(client));
+    lastClientId = nextId;
     return objPath.string();
 }
 
@@ -109,6 +110,7 @@ void ConfManager::deleteSNMPClient(Id id)
         {
             lg2::error("Unable to delete {FILE}: {EC}", "FILE", fileName, "EC",
                        ec.value());
+            return;
         }
     }
     else
