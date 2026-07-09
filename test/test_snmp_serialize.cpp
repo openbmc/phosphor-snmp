@@ -48,13 +48,22 @@ TEST_F(TestSerialize, serialize)
 
     Client client(bus, objPath.c_str(), manager, "1.1.1.1", 23);
 
-    auto path = serialize(1, client, manager.dbusPersistentLocation);
+    EXPECT_TRUE(serialize(1, client, manager.dbusPersistentLocation));
+    fs::path path = manager.dbusPersistentLocation;
+    path /= std::to_string(1);
     Client restoreClient(bus, objPath2.c_str(), manager);
 
     deserialize(path, restoreClient);
 
     EXPECT_EQ("1.1.1.1", restoreClient.address());
     EXPECT_EQ(23, restoreClient.port());
+}
+
+TEST_F(TestSerialize, serialize_invalid_path)
+{
+    std::string objPath = std::string(clientObjPath) + "/" + std::to_string(1);
+    Client client(bus, objPath.c_str(), manager, "1.1.1.1", 23);
+    EXPECT_FALSE(serialize(1, client, fs::path("/proc/invalid_path")));
 }
 
 TEST_F(TestSerialize, deserialize_non_existent_file)

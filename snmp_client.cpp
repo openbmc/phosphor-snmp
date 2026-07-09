@@ -3,6 +3,8 @@
 #include "snmp_conf_manager.hpp"
 #include "snmp_serialize.hpp"
 
+#include <phosphor-logging/lg2.hpp>
+
 namespace phosphor
 {
 namespace network
@@ -34,7 +36,11 @@ std::string Client::address(std::string value)
     parent.checkClientConfigured(value, port());
 
     auto addr = Ifaces::address(value);
-    serialize(id, *this, parent.dbusPersistentLocation);
+    if (!serialize(id, *this, parent.dbusPersistentLocation))
+    {
+        lg2::error("Failed to persist client {ID} after address update", "ID",
+                   id);
+    }
     return addr;
 }
 
@@ -48,7 +54,10 @@ uint16_t Client::port(uint16_t value)
     parent.checkClientConfigured(address(), value);
 
     auto port = Ifaces::port(value);
-    serialize(id, *this, parent.dbusPersistentLocation);
+    if (!serialize(id, *this, parent.dbusPersistentLocation))
+    {
+        lg2::error("Failed to persist client {ID} after port update", "ID", id);
+    }
     return port;
 }
 
