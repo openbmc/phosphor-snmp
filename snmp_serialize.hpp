@@ -19,10 +19,10 @@ namespace fs = std::filesystem;
  *  @param[in] id - filename of the persisted SNMP manager object.
  *  @param[in] manager - const reference to snmp client/manager object.
  *  @param[in] path -  path of persistent location where D-Bus object would be
- * saved.
- *  @return fs::path - pathname of persisted snmp manager/client file.
+ *                     saved.
+ *  @return bool - true if the serialization was successful, false otherwise.
  */
-fs::path serialize(Id id, const Client& manager, const fs::path& path);
+bool serialize(Id id, const Client& manager, const fs::path& path);
 
 /** @brief Deserialize SNMP manager/client info into a D-Bus object
  *  @param[in] path - pathname of persisted manager/client file.
