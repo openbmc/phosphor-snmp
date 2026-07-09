@@ -1,5 +1,6 @@
 #include "snmp_conf_manager.hpp"
 #include "xyz/openbmc_project/Common/error.hpp"
+#include "xyz/openbmc_project/Common/event.hpp"
 
 #include <sdbusplus/bus.hpp>
 
@@ -15,6 +16,8 @@ namespace snmp
 auto managerObjPath = "/xyz/openbmc_test/snmp/manager";
 using InvalidArgument =
     sdbusplus::xyz::openbmc_project::Common::Error::InvalidArgument;
+using ObjectAlreadyExists =
+    sdbusplus::error::xyz::openbmc_project::Common::ObjectAlreadyExists;
 
 class TestSNMPConfManager : public testing::Test
 {
@@ -117,7 +120,7 @@ TEST_F(TestSNMPConfManager, AddMultipleSNMPClient)
 TEST_F(TestSNMPConfManager, AddDuplicateSNMPClient)
 {
     createSNMPClient("192.168.1.1", 24);
-    EXPECT_THROW(createSNMPClient("192.168.1.1", 24), InvalidArgument);
+    EXPECT_THROW(createSNMPClient("192.168.1.1", 24), ObjectAlreadyExists);
 }
 
 // Delete SNMP client

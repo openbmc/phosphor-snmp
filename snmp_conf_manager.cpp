@@ -5,6 +5,7 @@
 #include "snmp_serialize.hpp"
 #include "snmp_util.hpp"
 #include "xyz/openbmc_project/Common/error.hpp"
+#include "xyz/openbmc_project/Common/event.hpp"
 
 #include <arpa/inet.h>
 
@@ -23,6 +24,8 @@ namespace snmp
 using namespace phosphor::logging;
 using namespace sdbusplus::xyz::openbmc_project::Common::Error;
 using Argument = xyz::openbmc_project::Common::InvalidArgument;
+using ObjectAlreadyExists =
+    sdbusplus::error::xyz::openbmc_project::Common::ObjectAlreadyExists;
 
 ConfManager::ConfManager(sdbusplus::bus_t& bus, const char* objPath) :
     details::CreateIface(bus, objPath,
@@ -80,12 +83,14 @@ void ConfManager::checkClientConfigured(const std::string& address,
         if (val.second.get()->address() == address &&
             val.second.get()->port() == port)
         {
-            lg2::error("Client already exist");
-            // TODO Add the error(Object already exist) in the D-Bus interface
-            // then make the change here,meanwhile send the Internal Failure.
-            elog<InvalidArgument>(
-                Argument::ARGUMENT_NAME("ADDRESS"),
-                Argument::ARGUMENT_VALUE("Client already exist."));
+            std::filesystem::path objPath = objectPath;
+            objPath /= std::to_string(val.first);
+
+            lg2::error("Client already exists at {OBJECT_PATH}", "OBJECT_PATH",
+                       objPath.string());
+
+            throw ObjectAlreadyExists("OBJECT_PATH",
+                                      sdbusplus::object_path(objPath.string()));
         }
     }
 }
