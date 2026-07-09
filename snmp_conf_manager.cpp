@@ -56,10 +56,14 @@ std::string ConfManager::client(std::string address, uint16_t port)
 
     auto client = std::make_unique<phosphor::network::snmp::Client>(
         bus, objPath.string().c_str(), *this, address, port);
-
-    // save the D-Bus object
-    serialize(nextId, *client, dbusPersistentLocation);
-
+    // save the D-Bus object; if this fails, rollback by letting
+    // the unique_ptr go out of scope which destroys the D-Bus object.
+    if (!serialize(nextId, *client, dbusPersistentLocation))
+    {
+        lg2::error("Failed to persist SNMP client {ID}, rolling back creation",
+                   "ID", nextId);
+        elog<InternalFailure>();
+    }
     this->clients.emplace(nextId, std::move(client));
     lastClientId = nextId;
     return objPath.string();

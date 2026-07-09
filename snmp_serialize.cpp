@@ -56,16 +56,38 @@ void load(Archive& archive, Client& manager, const std::uint32_t /*version*/)
     manager.port(port);
 }
 
-fs::path serialize(Id id, const Client& manager, const fs::path& dir)
+bool serialize(Id id, const Client& manager, const fs::path& dir)
 {
-    fs::path fileName = dir;
-    fs::create_directories(dir);
-    fileName /= std::to_string(id);
+    try
+    {
+        fs::create_directories(dir);
 
-    std::ofstream os(fileName.string(), std::ios::binary);
-    cereal::BinaryOutputArchive oarchive(os);
-    oarchive(manager);
-    return fileName;
+        fs::path fileName = dir;
+        fileName /= std::to_string(id);
+
+        std::ofstream os(fileName.string(), std::ios::binary);
+        if (!os.is_open())
+        {
+            lg2::error("Failed to open file for serialization: {FILE}", "FILE",
+                       fileName);
+            return false;
+        }
+
+        cereal::BinaryOutputArchive oarchive(os);
+        oarchive(manager);
+        return true;
+    }
+    catch (const cereal::Exception& e)
+    {
+        lg2::error("Serialization failed: {ERROR}", "ERROR", e);
+        return false;
+    }
+    catch (const fs::filesystem_error& e)
+    {
+        lg2::error("Filesystem error during serialization: {ERROR}", "ERROR",
+                   e);
+        return false;
+    }
 }
 
 bool deserialize(const fs::path& path, Client& manager)

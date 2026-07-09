@@ -48,7 +48,9 @@ TEST_F(TestSerialize, serialize)
 
     Client client(bus, objPath.c_str(), manager, "1.1.1.1", 23);
 
-    auto path = serialize(1, client, manager.dbusPersistentLocation);
+    EXPECT_TRUE(serialize(1, client, manager.dbusPersistentLocation));
+    fs::path path = manager.dbusPersistentLocation;
+    path /= std::to_string(1);
     Client restoreClient(bus, objPath2.c_str(), manager);
 
     deserialize(path, restoreClient);
