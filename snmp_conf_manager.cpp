@@ -7,8 +7,6 @@
 #include "xyz/openbmc_project/Common/error.hpp"
 #include "xyz/openbmc_project/Common/event.hpp"
 
-#include <arpa/inet.h>
-
 #include <phosphor-logging/elog-errors.hpp>
 #include <phosphor-logging/lg2.hpp>
 
@@ -84,8 +82,7 @@ void ConfManager::checkClientConfigured(const std::string& address,
 
     for (const auto& val : clients)
     {
-        if (val.second.get()->address() == address &&
-            val.second.get()->port() == port)
+        if (val.second->address() == address && val.second->port() == port)
         {
             std::filesystem::path objPath = objectPath;
             objPath /= std::to_string(val.first);
