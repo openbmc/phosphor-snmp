@@ -2,8 +2,6 @@
 
 #include "snmp_serialize.hpp"
 
-#include "snmp_client.hpp"
-
 #include <cereal/archives/binary.hpp>
 #include <cereal/types/string.hpp>
 #include <cereal/types/vector.hpp>
@@ -62,7 +60,7 @@ fs::path serialize(Id id, const Client& manager, const fs::path& dir)
     fs::create_directories(dir);
     fileName /= std::to_string(id);
 
-    std::ofstream os(fileName.string(), std::ios::binary);
+    std::ofstream os(fileName, std::ios::binary);
     cereal::BinaryOutputArchive oarchive(os);
     oarchive(manager);
     return fileName;
@@ -74,7 +72,7 @@ bool deserialize(const fs::path& path, Client& manager)
     {
         if (fs::exists(path))
         {
-            std::ifstream is(path.c_str(), std::ios::in | std::ios::binary);
+            std::ifstream is(path, std::ios::binary);
             cereal::BinaryInputArchive iarchive(is);
             iarchive(manager);
             return true;

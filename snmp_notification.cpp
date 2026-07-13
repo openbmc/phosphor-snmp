@@ -54,7 +54,7 @@ bool Notification::addPDUVar(netsnmp_pdu& pdu, const OID& objID,
         }
         break;
     }
-    return (varList == nullptr ? false : true);
+    return (varList != nullptr);
 }
 
 void Notification::sendTrap()

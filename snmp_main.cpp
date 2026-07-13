@@ -11,7 +11,7 @@
 /* Need a custom deleter for freeing up sd_event */
 struct EventDeleter
 {
-    void operator()(sd_event* event) const
+    void operator()(sd_event* event) const noexcept
     {
         sd_event_unref(event);
     }

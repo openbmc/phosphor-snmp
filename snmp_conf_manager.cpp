@@ -6,8 +6,6 @@
 #include "snmp_util.hpp"
 #include "xyz/openbmc_project/Common/error.hpp"
 
-#include <arpa/inet.h>
-
 #include <phosphor-logging/elog-errors.hpp>
 #include <phosphor-logging/lg2.hpp>
 
@@ -77,8 +75,7 @@ void ConfManager::checkClientConfigured(const std::string& address,
 
     for (const auto& val : clients)
     {
-        if (val.second.get()->address() == address &&
-            val.second.get()->port() == port)
+        if (val.second->address() == address && val.second->port() == port)
         {
             lg2::error("Client already exist");
             // TODO Add the error(Object already exist) in the D-Bus interface

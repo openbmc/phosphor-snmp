@@ -11,8 +11,6 @@ namespace network
 namespace snmp
 {
 
-constexpr auto SEPARATOR = "_";
-
 namespace fs = std::filesystem;
 
 /** @brief Serialize and persist SNMP manager/client D-Bus object.

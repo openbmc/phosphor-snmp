@@ -33,7 +33,6 @@
 
 #include <sdbusplus/server.hpp>
 
-#include <sstream>
 #include <string>
 #include <vector>
 
@@ -95,7 +94,6 @@ u_char getASNType<std::string>()
 
 /** @class Notification
  *  @brief Notification interface.
- *
  *  This class implements the sendTrap function which
  *  send the list of objects defined by the specific notification
  *  to the configured SNMP manager.
