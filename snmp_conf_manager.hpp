@@ -52,7 +52,7 @@ class ConfManager : public details::CreateIface
      */
     std::string client(std::string address, uint16_t port) override;
 
-    /* @brief delete the D-Bus object of the given ID.
+    /* @brief Delete the D-Bus object of the given ID.
      * @param[in] id - client identifier.
      */
     void deleteSNMPClient(Id id);

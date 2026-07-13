@@ -48,7 +48,7 @@ class TestSNMPConfManager : public testing::Test
     {
         for (const auto& val : manager.clients)
         {
-            if (val.second.get()->address() == ipaddress)
+            if (val.second->address() == ipaddress)
             {
                 return true;
             }
@@ -61,9 +61,9 @@ class TestSNMPConfManager : public testing::Test
         std::vector<size_t> ids{};
         for (const auto& val : manager.clients)
         {
-            if (val.second.get()->address() == ipaddress)
+            if (val.second->address() == ipaddress)
             {
-                ids.emplace_back(val.second.get()->id);
+                ids.emplace_back(val.second->id);
             }
         }
 

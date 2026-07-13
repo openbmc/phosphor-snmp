@@ -1,4 +1,5 @@
 #pragma once
+
 #include "xyz/openbmc_project/Network/Client/server.hpp"
 #include "xyz/openbmc_project/Object/Delete/server.hpp"
 

@@ -1,12 +1,12 @@
 #pragma once
 
 #include <netdb.h>
-#include <stdint.h>
 #include <sys/socket.h>
 #include <sys/types.h>
 
 #include <sdbusplus/server.hpp>
 
+#include <cstdint>
 #include <map>
 #include <string>
 
@@ -16,7 +16,7 @@ namespace phosphor
 /* Need a custom deleter for freeing up addrinfo */
 struct AddrDeleter
 {
-    void operator()(addrinfo* addrPtr) const
+    void operator()(addrinfo* addrPtr) const noexcept
     {
         freeaddrinfo(addrPtr);
     }
