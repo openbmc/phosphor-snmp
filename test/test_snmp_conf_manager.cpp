@@ -93,7 +93,7 @@ TEST_F(TestSNMPConfManager, AddSNMPClient)
     // check whether the client created
     auto& clients = getSNMPClients();
     EXPECT_EQ(1U, clients.size());
-    EXPECT_EQ(true, isClientExist("192.168.1.1"));
+    EXPECT_TRUE(isClientExist("192.168.1.1"));
 }
 
 // Add multiple SNMP client
@@ -112,8 +112,8 @@ TEST_F(TestSNMPConfManager, AddMultipleSNMPClient)
     auto& clients = getSNMPClients();
     EXPECT_EQ(2U, clients.size());
 
-    EXPECT_EQ(true, isClientExist("192.168.1.1"));
-    EXPECT_EQ(true, isClientExist("192.168.1.2"));
+    EXPECT_TRUE(isClientExist("192.168.1.1"));
+    EXPECT_TRUE(isClientExist("192.168.1.2"));
 }
 
 // Add duplicate SNMP client
@@ -142,9 +142,9 @@ TEST_F(TestSNMPConfManager, DeleteSNMPClient)
     EXPECT_EQ(path, expectedPath);
 
     EXPECT_EQ(2U, clients.size());
-    EXPECT_EQ(true, isClientExist("192.168.1.2"));
-    EXPECT_EQ(false, isClientExist("192.168.1.1"));
-    EXPECT_EQ(true, isClientExist("192.168.1.3"));
+    EXPECT_TRUE(isClientExist("192.168.1.2"));
+    EXPECT_FALSE(isClientExist("192.168.1.1"));
+    EXPECT_TRUE(isClientExist("192.168.1.3"));
 }
 
 } // namespace snmp

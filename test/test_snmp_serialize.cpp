@@ -77,7 +77,7 @@ TEST_F(TestSerialize, deserialize_non_existent_file)
 
     auto ret = deserialize(path, client);
 
-    EXPECT_EQ(false, ret);
+    EXPECT_FALSE(ret);
 }
 
 TEST_F(TestSerialize, deserialize_empty_file)
@@ -96,7 +96,7 @@ TEST_F(TestSerialize, deserialize_empty_file)
     file.close();
     // deserialize the object with empty file
     auto ret = deserialize(path, restoreClient);
-    EXPECT_EQ(false, ret);
+    EXPECT_FALSE(ret);
 }
 
 } // namespace snmp
