@@ -50,6 +50,24 @@
       "message": "This is a style preference, not a fix for a real problem. Any case where EXPECT_EQ produced misleading output that EXPECT_TRUE would have avoided?\nPlease close this.",
       "revId": "176d707e5e39988cfdb1007e36441fca1d8852b1",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23ee033f_9715fc3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002630
+      },
+      "writtenOn": "2026-07-22T16:32:31Z",
+      "side": 1,
+      "message": "EXPECT_TRUE/EXPECT_FALSE are the intended macros for boolean assertions per GTest documentation.\nref: https://google.github.io/googletest/reference/assertions.html#boolean\n\nEXPECT_EQ(true, expr) works but is not the idiomatic way for boolean checks. This is more than just style, it is just using the right tool for the right job.\n\nEvery assertion changed here operates on functions that return bool, isClientExist() and deserialize()",
+      "parentUuid": "abddeb80_903ac377",
+      "revId": "176d707e5e39988cfdb1007e36441fca1d8852b1",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     }
   ]
 }
