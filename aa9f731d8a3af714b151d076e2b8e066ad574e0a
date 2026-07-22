@@ -56,6 +56,30 @@
       },
       "revId": "aa9f731d8a3af714b151d076e2b8e066ad574e0a",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cddfc41c_3e78576f",
+        "filename": "snmp_conf_manager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1002630
+      },
+      "writtenOn": "2026-07-22T15:30:53Z",
+      "side": 1,
+      "message": "elog\u003c\u003e is not applicable here because ObjectAlreadyExists is generated from Common.events.yaml, not Common.errors.yaml.\nThe generated class inherits from sdbusplus::exception::generated_event\u003cT\u003e, which has no phosphor-logging metadata entry descriptors that elog\u003c\u003e requires.\nThose descriptors are only generated for .errors.yaml-derived types.\n\nref: https://github.com/openbmc/docs/blob/cf706722293b681fbcbb852eee05a9ae045ac635/designs/event-logging.md?plain\u003d1#L470-L562",
+      "parentUuid": "7bacf72e_93f0c3d9",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 80
+      },
+      "revId": "aa9f731d8a3af714b151d076e2b8e066ad574e0a",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     }
   ]
 }
