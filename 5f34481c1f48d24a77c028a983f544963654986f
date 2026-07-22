@@ -41,6 +41,30 @@
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5d98589_cbf875a8",
+        "filename": "snmp_client.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1002630
+      },
+      "writtenOn": "2026-07-22T16:15:29Z",
+      "side": 1,
+      "message": "The log in address/port is intentional.\nserialize() logs the failure reason and file path.\nThe caller log adds the client ID and which property update lost persistence.\nThe behavior is also intentionally different from creation, during a property update the client still exists and remains functional, only the new value won\u0027t survive a reboot/service restart.",
+      "parentUuid": "bdb7c59e_b8c3e9ab",
+      "range": {
+        "startLine": 41,
+        "startChar": 3,
+        "endLine": 42,
+        "endChar": 23
+      },
+      "revId": "5f34481c1f48d24a77c028a983f544963654986f",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6904283d_38f095f4",
@@ -54,6 +78,30 @@
       "writtenOn": "2026-07-22T14:00:16Z",
       "side": 1,
       "message": "why do we need to log here, You have already logged the error in serialise.\n\nserialization failure during client creation throws InternalFailure and rolls back.\nserialization failure during a property update (address/port change) only logs",
+      "range": {
+        "startLine": 59,
+        "startChar": 2,
+        "endLine": 59,
+        "endChar": 80
+      },
+      "revId": "5f34481c1f48d24a77c028a983f544963654986f",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "232a8897_d68e5568",
+        "filename": "snmp_client.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1002630
+      },
+      "writtenOn": "2026-07-22T16:15:29Z",
+      "side": 1,
+      "message": "The log in address/port is intentional.\nserialize() logs the failure reason and file path.\nThe caller log adds the client ID and which property update lost persistence.\nThe behavior is also intentionally different from creation, during a property update the client still exists and remains functional, only the new value won\u0027t survive a reboot/service restart.",
+      "parentUuid": "6904283d_38f095f4",
       "range": {
         "startLine": 59,
         "startChar": 2,
@@ -81,6 +129,24 @@
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bde1898e_744c3161",
+        "filename": "snmp_serialize.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1002630
+      },
+      "writtenOn": "2026-07-22T16:15:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1e00f72_98d6a311",
+      "revId": "5f34481c1f48d24a77c028a983f544963654986f",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "05cf07f3_33d1717c",
@@ -94,6 +160,24 @@
       "writtenOn": "2026-07-22T14:00:16Z",
       "side": 1,
       "message": "Only covers the good path",
+      "revId": "5f34481c1f48d24a77c028a983f544963654986f",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "358ae066_0f5e0399",
+        "filename": "test/test_snmp_serialize.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1002630
+      },
+      "writtenOn": "2026-07-22T16:15:29Z",
+      "side": 1,
+      "message": "Done, added a negative path test using an invalid path to verify serialize() returns false on failure.",
+      "parentUuid": "05cf07f3_33d1717c",
       "revId": "5f34481c1f48d24a77c028a983f544963654986f",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     }
