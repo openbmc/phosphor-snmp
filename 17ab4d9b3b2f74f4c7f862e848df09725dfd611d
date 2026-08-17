@@ -33,6 +33,23 @@
       "message": "@ratankgupta31@gmail.com / @devenrao@in.ibm.com,\ncould you re-review this patch?",
       "revId": "17ab4d9b3b2f74f4c7f862e848df09725dfd611d",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68eae207_05a3ef65",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000022
+      },
+      "writtenOn": "2026-08-17T10:23:14Z",
+      "side": 1,
+      "message": "Acknowledged, and fair point on the documentation. Since nothing is actively breaking here, this is low priority for us.",
+      "revId": "17ab4d9b3b2f74f4c7f862e848df09725dfd611d",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     }
   ]
 }
