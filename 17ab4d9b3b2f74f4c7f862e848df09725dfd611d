@@ -50,6 +50,24 @@
       "message": "Acknowledged, and fair point on the documentation. Since nothing is actively breaking here, this is low priority for us.",
       "revId": "17ab4d9b3b2f74f4c7f862e848df09725dfd611d",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0958ff31_090163aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002630
+      },
+      "writtenOn": "2026-08-17T12:13:38Z",
+      "side": 1,
+      "message": "@ratankgupta31@gmail.com\nthankyou for your feedback,\nshould I abandon this patch, or would you consider merging it at some point?\nLet me know so I can act accordingly.",
+      "parentUuid": "68eae207_05a3ef65",
+      "revId": "17ab4d9b3b2f74f4c7f862e848df09725dfd611d",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     }
   ]
 }
