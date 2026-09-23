@@ -1,0 +1,9 @@
+Code-Review+2: Ratan Gupta <ratankgupta31@gmail.com>
+Code-Review+1: rashidmp <rashidmp@ami.com>
+Verified+1: OpenBMC CI <openbmcbump-ci@yahoo.com>
+Submitted-by: Vijaysankar Ravi <vijaysankarr@ami.com>
+Submitted-at: Wed, 23 Sep 2026 17:58:39 +0000
+Reviewed-on: https://gerrit.openbmc.org/c/openbmc/phosphor-snmp/+/92289
+Comments-Total: 10
+Project: openbmc/phosphor-snmp
+Branch: refs/heads/master
